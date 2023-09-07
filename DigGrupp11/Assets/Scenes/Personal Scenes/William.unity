@@ -893,7 +893,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 481249996}
-  trackPositions: []
+  trackPositions:
+  - {x: 2.98, y: 0, z: 0}
+  - {x: 8.52, y: 0, z: 0}
   detected: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
