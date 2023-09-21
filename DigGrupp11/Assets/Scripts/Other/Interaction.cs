@@ -1,27 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] float          radius;
+    [SerializeField] UnityEvent onInteractEvent;
+    [SerializeField] float radius;
     [SerializeField] protected bool canInteract;
-    [SerializeField] Animator       interactIcon;
-    Transform                       target;
+    [SerializeField] bool hasActivated;
+    [SerializeField] Animator interactIcon;
+    Transform target;
     protected virtual void Start()
     {
-        //target = FindObjectOfType<PlayerMovement>().transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void Update()
     {
         InteractionPassive();
 
-        bool a = Vector2.Distance(transform.position, target.position) < radius;
-        interactIcon.SetBool("Showing", a);
+        canInteract = Vector2.Distance(transform.position, target.position) < radius;
         
-        if (canInteract && a)
+        if (canInteract && !hasActivated)
         {
+            interactIcon.SetBool("Showing", canInteract);
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 InteractionActive();
@@ -34,7 +34,8 @@ public class Interaction : MonoBehaviour
     }
     protected virtual void InteractionActive()
     {
-        canInteract = false;
+        hasActivated = true;
+        onInteractEvent?.Invoke();
     }
     void OnDrawGizmosSelected()
     {
