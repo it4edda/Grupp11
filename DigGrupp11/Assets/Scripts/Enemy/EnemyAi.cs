@@ -26,15 +26,8 @@ public class EnemyAi : MonoBehaviour
     }
     void FindNext()
     {
-        // Vector3 closestPoint = trackPositions[0];
-        //
-        // foreach (Vector3 i in trackPositions)
-        // {
-        //     float a = Vector3.Distance(transform.position, closestPoint);
-        //     if (Vector3.Distance(transform.position, i) < a) closestPoint = i;
-        // }
-        currentNum         = (currentNum++) % trackPositions.Length; 
-        
+        Debug.Log("reached");
+        currentNum       = (currentNum++) % trackPositions.Length;
         currentlyTracked = trackPositions[currentNum];
     }
     void Walk(Vector3 target) => agent.destination = target;
