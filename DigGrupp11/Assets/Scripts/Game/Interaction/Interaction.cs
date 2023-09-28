@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Interaction : MonoBehaviour
 {
+    [SerializeField] KeyCode interactKey; 
     [SerializeField] float          radius;
     [SerializeField] protected bool canInteract;
     [SerializeField] Animator       interactIcon;
@@ -21,7 +23,7 @@ public class Interaction : MonoBehaviour
         
         if (canInteract && a)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(interactKey))
             {
                 InteractionActive();
             }
