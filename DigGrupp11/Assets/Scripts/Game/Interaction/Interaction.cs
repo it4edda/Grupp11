@@ -1,14 +1,14 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] UnityEvent onInteractEvent;
-    [SerializeField] float radius;
+    [SerializeField] float          radius;
     [SerializeField] protected bool canInteract;
-    [SerializeField] bool hasActivated;
-    [SerializeField] Animator interactIcon;
-    Transform target;
+    [SerializeField] Animator       interactIcon;
+    Transform                       target;
     protected virtual void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -17,25 +17,27 @@ public class Interaction : MonoBehaviour
     {
         InteractionPassive();
 
-        canInteract = Vector2.Distance(transform.position, target.position) < radius;
+        bool a = Vector2.Distance(transform.position, target.position) < radius;
+        interactIcon.SetBool("Showing", a);
         
-        if (canInteract && !hasActivated)
+        if (canInteract && a)
         {
-            interactIcon.SetBool("Showing", canInteract);
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 InteractionActive();
             }
         }
     }
+    
+    //MAKE ADDITIONAL INTERACTION COROUTINES?
+    //item logic would profit from this
     protected virtual void InteractionPassive()
     {
         
     }
     protected virtual void InteractionActive()
     {
-        hasActivated = true;
-        onInteractEvent?.Invoke();
+        canInteract = false;
     }
     void OnDrawGizmosSelected()
     {
@@ -43,4 +45,3 @@ public class Interaction : MonoBehaviour
      Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
-

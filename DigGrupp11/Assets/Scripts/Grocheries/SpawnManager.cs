@@ -45,7 +45,8 @@ public class SpawnManager : MonoBehaviour
             while (rerollSpawnPoint && breaker < 50);
             
             GameObject groceriesToSpawn = availableGroceriesToSpawn[Random.Range(0, availableGroceriesToSpawn.Length)];
-            Instantiate(groceriesToSpawn, spawnPoint);
+            GameObject groceriesThatSpawned = Instantiate(groceriesToSpawn, spawnPoint);
+            GameManager.Instance.groceriesToCollect.Add(groceriesThatSpawned);
             spawnPoints.Remove(spawnPoint.gameObject);
         }
     }
