@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
             
             GameObject groceriesToSpawn = availableGroceriesToSpawn[Random.Range(0, availableGroceriesToSpawn.Length)];
             GameObject groceriesThatSpawned = Instantiate(groceriesToSpawn, spawnPoint);
-            GameManager.Instance.groceriesToCollect.Add(groceriesThatSpawned);
+            GameManager.Instance.shoppingList.Add(groceriesThatSpawned);
             spawnPoints.Remove(spawnPoint.gameObject);
         }
     }

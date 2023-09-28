@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -12,12 +9,14 @@ public class Interaction : MonoBehaviour
     protected virtual void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        interactIcon.SetBool("Showing", false);
+
     }
     void Update()
     {
         InteractionPassive();
 
-        bool a = Vector2.Distance(transform.position, target.position) < radius;
+        bool a = Vector3.Distance(transform.position, target.position) < radius;
         interactIcon.SetBool("Showing", a);
         
         if (canInteract && a)
@@ -39,7 +38,7 @@ public class Interaction : MonoBehaviour
     {
         canInteract = false;
     }
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
      Gizmos.color = Color.red;
      Gizmos.DrawWireSphere(transform.position, radius);

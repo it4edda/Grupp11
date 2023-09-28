@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public List<GameObject> groceriesToCollect = new List<GameObject>();
+    public List<GameObject> shoppingList = new List<GameObject>();
     
     void Awake() 
     { 
@@ -19,5 +18,13 @@ public class GameManager : MonoBehaviour
             Instance = this; 
         }
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void CheckShoppingList()
+    {
+        if (shoppingList.Count <= 0)
+        {
+            Debug.Log("Win?");
+        }
     }
 }

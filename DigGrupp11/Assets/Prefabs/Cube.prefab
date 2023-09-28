@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7321f12d4ed12d4fa82952cd3452a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 2
   canInteract: 1
   interactIcon: {fileID: 2125735058824821234}
 --- !u!1001 &6217804837459146504
@@ -153,12 +153,12 @@ PrefabInstance:
     - target: {fileID: 200463671223223871, guid: e6f11acaed9c8264bbe72f8857d355d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 200463671223223871, guid: e6f11acaed9c8264bbe72f8857d355d1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.811
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 200463671223223871, guid: e6f11acaed9c8264bbe72f8857d355d1,
         type: 3}
