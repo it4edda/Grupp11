@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,27 +5,26 @@ public class EnemyAi : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] Vector3[] trackPositions;
-    Vector3                    currentlyTracked;
-    [SerializeField] bool      detected;
-    [SerializeField] bool      stasis;
-    NavMeshAgent               agent;
-    int                        currentNum;
+    [SerializeField] float detectionRange;
+    [SerializeField] bool  detected;
+    [SerializeField] bool  stasis;
+    NavMeshAgent           agent;
+    Vector3                currentlyTracked;
+    int                    currentNum;
     void Start()
     {
         agent            = GetComponent<NavMeshAgent>();
         currentlyTracked = trackPositions[currentNum];
     }
-
-    void Update() 
-    { 
+    void Update()
+    {
+        detected = Vector3.Distance(transform.position,       player.position)  < detectionRange;
         if (!detected && Vector3.Distance(transform.position, currentlyTracked) < agent.stoppingDistance + 0.5) FindNext();
         Walk(stasis ? transform.position:  detected ? player.position : currentlyTracked); 
     }
     void FindNext()
     {
-        Debug.Log("reached");
-        currentNum       = (currentNum++) % trackPositions.Length;
-        currentlyTracked = trackPositions[currentNum];
+        currentlyTracked = trackPositions[currentNum = ++currentNum % trackPositions.Length];
     }
     void Walk(Vector3 target) => agent.destination = target;
     
