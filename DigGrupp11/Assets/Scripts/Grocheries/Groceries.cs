@@ -10,7 +10,6 @@ public class Groceries : Interaction
 
     protected override void InteractionActive()
     {
-        base.InteractionActive();
         GetsPickedUpp();
     }
 
@@ -21,6 +20,7 @@ public class Groceries : Interaction
             GameManager.Instance.shoppingList.Remove(gameObject);
             gameObject.SetActive(false);
             GameManager.Instance.CheckShoppingList();
+            canInteract = false;
         }
     }
 }
