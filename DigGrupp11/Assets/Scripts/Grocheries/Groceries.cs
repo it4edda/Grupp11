@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Groceries : Interaction
 {
     protected override void Start()
@@ -18,9 +14,11 @@ public class Groceries : Interaction
 
     void GetsPickedUpp()
     {
-        if (GameManager.Instance.groceriesToCollect.Contains(gameObject))
+        if (GameManager.Instance.shoppingList.Contains(gameObject))
         {
-            GameManager.Instance.groceriesToCollect.Remove(gameObject);
+            GameManager.Instance.shoppingList.Remove(gameObject);
+            gameObject.SetActive(false);
+            GameManager.Instance.CheckShoppingList();
         }
     }
 }
