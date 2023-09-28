@@ -872,7 +872,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 269.1
-  m_StoppingDistance: 3.03
+  m_StoppingDistance: 1.06
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -894,9 +894,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 481249996}
   trackPositions:
-  - {x: 2.98, y: 0, z: 0}
-  - {x: 8.52, y: 0, z: 0}
-  detected: 1
+  - {x: 2.98, y: 0, z: 2.72}
+  - {x: -3.29, y: 0, z: 2.72}
+  - {x: -3.34, y: 0, z: -3.31}
+  - {x: 2.89, y: 0, z: -3.31}
+  detected: 0
+  stasis: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

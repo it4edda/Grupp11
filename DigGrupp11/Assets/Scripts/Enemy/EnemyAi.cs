@@ -8,33 +8,40 @@ public class EnemyAi : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] Vector3[] trackPositions;
+    Vector3                    currentlyTracked;
     [SerializeField] bool      detected;
+    [SerializeField] bool      stasis;
     NavMeshAgent               agent;
+    int                        currentNum;
     void Start()
     {
-        agent     = GetComponent<NavMeshAgent>();
+        agent            = GetComponent<NavMeshAgent>();
+        currentlyTracked = trackPositions[currentNum];
     }
 
-    void Update() { Walk(detected ? player.position : transform.position /*fix here */); 
+    void Update() 
+    { 
+        if (!detected && Vector3.Distance(transform.position, currentlyTracked) < agent.stoppingDistance + 0.5) FindNext();
+        Walk(stasis ? transform.position:  detected ? player.position : currentlyTracked); 
     }
-    void FindClosest()
+    void FindNext()
     {
-        Vector3 closestPoint = trackPositions[0];
-
-        foreach (Vector3 i in trackPositions)
-        {
-            float a = Vector3.Distance(transform.position, closestPoint);
-            if (Vector3.Distance(transform.position, i) < a) closestPoint = i;
-        }
+        // Vector3 closestPoint = trackPositions[0];
+        //
+        // foreach (Vector3 i in trackPositions)
+        // {
+        //     float a = Vector3.Distance(transform.position, closestPoint);
+        //     if (Vector3.Distance(transform.position, i) < a) closestPoint = i;
+        // }
+        currentNum         = (currentNum++) % trackPositions.Length; 
+        
+        currentlyTracked = trackPositions[currentNum];
     }
-    void Walk(Vector3 target)
-    {
-        agent.destination = target;
-    }
+    void Walk(Vector3 target) => agent.destination = target;
     
-    
-    // if distance is lower than detection range to player / if player is within detection -> change target to player
-    //if distance is lowe than detection range to current target (point to point movement (a -> b -> c -> a))
+    //if something is making noise in bigger circle, turn toward sound
+    //if player is in vision cone, chase
+    //if player is flees cone, stay for a few secs, then continue normal pathing.
     
     void OnDrawGizmosSelected()
     {
@@ -49,5 +56,8 @@ public class EnemyAi : MonoBehaviour
             Gizmos.DrawLine(a, i);
             a = i;
         }
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(currentlyTracked, 1);
     }
 }
