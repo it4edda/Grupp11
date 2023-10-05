@@ -1,25 +1,26 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] float repelRange;
+    [Tooltip("The size of the sphere checking for nearest transform to initially spawned object of each type")]
+    [SerializeField] float sameObjectSpawnRadius;
     [SerializeField, Range(0, 100)] float chanceToRepel;
-    [SerializeField] private LayerMask groceriesMask;
-    [SerializeField] GameObject[] availableGroceriesToSpawn;
-    [SerializeField] int numberOfGroceriesToSpawn;
+    [SerializeField] LayerMask groceriesMask;
+    [SerializeField] LayerMask spawnPointMask;
     [SerializeField] List<GameObject> spawnPoints = new();
 
     void Start()
     {
         spawnPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
-
-        RestockGroceries();
+        
     }
     //TODO not spawning to close to each other
-    void RestockGroceries()
+    void RestockGroceries(List<ShoppingListItem> shoppingList)
     {
-        numberOfGroceriesToSpawn = numberOfGroceriesToSpawn > spawnPoints.Count ? spawnPoints.Count : numberOfGroceriesToSpawn;
+        /*numberOfGroceriesToSpawn = numberOfGroceriesToSpawn > spawnPoints.Count ? spawnPoints.Count : numberOfGroceriesToSpawn;
         for (int i = 0; i < numberOfGroceriesToSpawn; i++)
         {
             Transform spawnPoint;
@@ -48,6 +49,49 @@ public class SpawnManager : MonoBehaviour
             GameObject groceriesThatSpawned = Instantiate(groceriesToSpawn, spawnPoint);
             GameManager.Instance.shoppingList.Add(groceriesThatSpawned);
             spawnPoints.Remove(spawnPoint.gameObject);
+        }*/
+        foreach (ShoppingListItem shoppingListItem in shoppingList)
+        {
+            GameObject firstObjectSpawned = null;
+            for (int i = 0; i < shoppingListItem.amount; i++)
+            {
+                if (i == 0)
+                {
+                    Transform spawnPoint;
+                    bool rerollSpawnPoint;
+                    int breaker = 0;
+
+                    do
+                    {
+                        spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)].transform;
+                        if (Physics.CheckSphere(spawnPoint.position, repelRange, groceriesMask))
+                        {
+                            rerollSpawnPoint = Random.Range(0, 100) < chanceToRepel;
+                            Debug.Log("rolls");
+                        }
+                        else
+                        {
+                            rerollSpawnPoint = false;
+                            Debug.Log("DoesNotRe-roll");
+                        }
+
+                        breaker++;
+                    } 
+                    while (rerollSpawnPoint && breaker < 50);
+                    
+                    firstObjectSpawned = Instantiate(shoppingListItem.item, spawnPoint);
+                    spawnPoints.Remove(spawnPoint.gameObject);
+                }
+                else
+                {
+                    Collider[] closeSpawnPointsColliders =
+                        Physics.OverlapSphere(firstObjectSpawned.transform.position, sameObjectSpawnRadius, spawnPointMask, QueryTriggerInteraction.Collide);
+
+                    List<Transform> closeSpawnPoints = closeSpawnPointsColliders.Select(closeSpawnPoint => closeSpawnPoint.transform).ToList();
+
+                    Instantiate(shoppingListItem.item, closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)]);
+                }
+            }
         }
     }
 }

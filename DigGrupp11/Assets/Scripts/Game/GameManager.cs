@@ -4,8 +4,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public List<GameObject> shoppingList = new List<GameObject>();
-    
+    public List<GameObject> availableGroceriesToSpawn;
+    public int numberOfDifferentGroceriesToSpawn;
+    public MinMax numberOfSameGroceriesToSpawn;
+
     void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.
@@ -22,9 +24,6 @@ public class GameManager : MonoBehaviour
 
     public void CheckShoppingList()
     {
-        if (shoppingList.Count <= 0)
-        {
-            Debug.Log("Win?");
-        }
+        
     }
 }
