@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerHand : MonoBehaviour
 {
     [SerializeField] GameObject playerInventory;
+    public bool IsHoldingSomething { get; private set; }
 
     void Update()
     {
@@ -18,6 +19,7 @@ public class PlayerHand : MonoBehaviour
         if (playerInventory != null) return false;
         
         playerInventory = objectToAdd;
+        IsHoldingSomething = true;
         return true;
     }
 
@@ -25,6 +27,7 @@ public class PlayerHand : MonoBehaviour
     {
         GameObject playerHandObject = playerInventory;
         playerInventory = null;
+        IsHoldingSomething = false;
         return playerHandObject;
     }
 }

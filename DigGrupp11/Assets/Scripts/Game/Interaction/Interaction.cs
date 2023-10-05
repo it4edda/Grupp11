@@ -1,23 +1,23 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] KeyCode interactKey; 
-    [SerializeField] float          radius;
+    [SerializeField] protected KeyCode interactKey; 
+    [SerializeField] protected float          radius;
     [SerializeField] protected bool canInteract;
-    [SerializeField] Animator       interactIcon;
-    Transform                       target;
+    [SerializeField] protected Animator       interactIcon;
+    protected Transform                       target;
     protected virtual void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         interactIcon.SetBool("Showing", false);
 
     }
-    void Update()
+    protected virtual void Update()
     {
         InteractionPassive();
 
+        Debug.Log(target.name);
         bool a = Vector3.Distance(transform.position, target.position) < radius;
         interactIcon.SetBool("Showing", a);
         

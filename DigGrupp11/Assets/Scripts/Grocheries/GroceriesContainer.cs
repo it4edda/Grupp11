@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Groceries : Interaction
+public class GroceriesContainer : Interaction
 {
+    [SerializeField] List<GameObject> pickedUpGroceries = new();
     PlayerHand playerHand;
     protected override void Start()
     {
         base.Start();
-        canInteract = true;
         playerHand = FindObjectOfType<PlayerHand>();
     }
 
@@ -15,7 +16,7 @@ public class Groceries : Interaction
         InteractionPassive();
 
         Debug.Log(target.name);
-        bool a = Vector3.Distance(transform.position, target.position) < radius && !playerHand.IsHoldingSomething;
+        bool a = Vector3.Distance(transform.position, target.position) < radius && playerHand.IsHoldingSomething;
         interactIcon.SetBool("Showing", a);
         
         if (canInteract && a)
@@ -29,17 +30,11 @@ public class Groceries : Interaction
 
     protected override void InteractionActive()
     {
-        GetsPickedUpp();
+        DepositGroceries();
     }
 
-    void GetsPickedUpp()
+    void DepositGroceries()
     {
-        if (GameManager.Instance.shoppingList.Contains(gameObject) && playerHand.AddToHand(gameObject))
-        {
-            GameManager.Instance.shoppingList.Remove(gameObject);
-            gameObject.SetActive(false);
-            GameManager.Instance.CheckShoppingList();
-            canInteract = false;
-        }
+        pickedUpGroceries.Add(playerHand.RemoveFromHand());
     }
 }
