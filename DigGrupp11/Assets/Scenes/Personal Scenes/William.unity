@@ -826,21 +826,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 481249996}
-    - target: {fileID: 5775463208431484842, guid: 74ffad55ad4f587479fe8a303f222c22,
-        type: 3}
-      propertyPath: chaseRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775463208431484842, guid: 74ffad55ad4f587479fe8a303f222c22,
-        type: 3}
-      propertyPath: detectionRange
-      value: 4.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775463208431484842, guid: 74ffad55ad4f587479fe8a303f222c22,
-        type: 3}
-      propertyPath: playerMask.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 6653552502459089536, guid: 74ffad55ad4f587479fe8a303f222c22,
         type: 3}
       propertyPath: m_Name

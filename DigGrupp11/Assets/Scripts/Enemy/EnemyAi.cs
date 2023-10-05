@@ -1,5 +1,3 @@
-
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -74,24 +72,17 @@ public class EnemyAi : MonoBehaviour
     
 #endregion
 */
+    [SerializeField] bool      stasis;
     [SerializeField] Vector3[] trackPositions;
-    int                        currentTrackNumber;
-    
-    
-    [SerializeField] float detectionRange;
-    bool                   playerDetected;
-    
-    [SerializeField] float chaseRange;
-    bool                   InChaseRange;
-
-    bool chasing;
-
+    [SerializeField] float     detectionRange;
+    [SerializeField] float     chaseRange;
     [SerializeField] Transform player;
-
-    Vector3 currentTarget;
-    bool stasis;
-
-    NavMeshAgent agent;
+    Vector3                    currentTarget;
+    bool                       inChaseRange;
+    bool                       playerDetected;
+    bool                       chasing;
+    int                        currentTrackNumber;
+    NavMeshAgent               agent;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -99,15 +90,16 @@ public class EnemyAi : MonoBehaviour
     void Update()
     {
         //set values
-        playerDetected = Vector3.Distance(transform.position, player.position) < detectionRange;
-        InChaseRange  = Vector3.Distance(transform.position, player.position) < chaseRange;
+        playerDetected = Vector3.Distance(transform.position, player.position) < detectionRange; //TODO CHANGE THIS TO CONE
+        inChaseRange  = Vector3.Distance(transform.position, player.position) < chaseRange;
         
         //set current target (for walking back and forth)
         if (!chasing && Vector3.Distance(transform.position, trackPositions[currentTrackNumber]) < 0.5f) 
             currentTrackNumber = ++currentTrackNumber % trackPositions.Length;
 
+        //should he be chasing?
         if (playerDetected) chasing           = true;
-        if (!InChaseRange) chasing = false;
+        if (!inChaseRange) chasing = false;
         
         //pick target
         currentTarget = chasing ? player.position : trackPositions[currentTrackNumber];
@@ -116,8 +108,6 @@ public class EnemyAi : MonoBehaviour
         agent.destination = stasis  ? transform.position :
                             chasing ? player.position : trackPositions[currentTrackNumber];
     }
-    
-    
     void OnDrawGizmos()//Selected()
     {
         Gizmos.color = Color.blue;
