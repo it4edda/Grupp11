@@ -1,30 +1,36 @@
+
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
+    /*
     [SerializeField] Transform player;
     [SerializeField] Vector3[] trackPositions;
-    [SerializeField] float detectionRange;
-    [SerializeField] bool  detected;
-    [SerializeField] bool  stasis;
-    NavMeshAgent           agent;
-    Vector3                currentlyTracked;
-    int                    currentNum;
+    [SerializeField] float     detectionRange;
+    [SerializeField] float     chaseRange;
+    [SerializeField] bool      detected;
+    [SerializeField] bool      stasis;
+    [SerializeField] LayerMask playerMask;
+    NavMeshAgent               agent;
+    Vector3                    currentlyTrackedPathTarget;
+    int                        currentNum;
     void Start()
     {
         agent            = GetComponent<NavMeshAgent>();
-        currentlyTracked = trackPositions[currentNum];
+        currentlyTrackedPathTarget = trackPositions[currentNum];
     }
     void Update()
     {
-        detected = Vector3.Distance(transform.position,       player.position)  < detectionRange;
-        if (!detected && Vector3.Distance(transform.position, currentlyTracked) < agent.stoppingDistance + 0.5) FindNext();
-        Walk(stasis ? transform.position:  detected ? player.position : currentlyTracked); 
+        //detected = Vector3.Distance(transform.position,       player.position)  < detectionRange; //CHANGED IN UPDATED
+        DetectionScan();
+        if (!detected && Vector3.Distance(transform.position, currentlyTrackedPathTarget) < agent.stoppingDistance + 0.5) FindNext();
+        Walk(stasis ? transform.position:  detected ? player.position : currentlyTrackedPathTarget); 
     }
     void FindNext()
     {
-        currentlyTracked = trackPositions[currentNum = ++currentNum % trackPositions.Length];
+        currentlyTrackedPathTarget = trackPositions[currentNum = ++currentNum % trackPositions.Length];
     }
     void Walk(Vector3 target) => agent.destination = target;
     
@@ -47,6 +53,92 @@ public class EnemyAi : MonoBehaviour
         }
 
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(currentlyTracked, 1);
+        Gizmos.DrawWireSphere(currentlyTrackedPathTarget, 1);
+    }
+
+
+#region UPDATED
+    
+    void DetectionScan() //call on collision with "imaginary cone"
+    {
+        var distance = Vector3.Distance(player.position, player.position);
+        if (Vector3.Distance(agent.destination, transform.position) < 2) detected = false;
+        if (distance > detectionRange) return; //add stasis here
+
+        
+        Vector3 direction =(transform.position - player.position).normalized;
+        detected = Physics.Raycast(transform.position, direction, detectionRange, playerMask);
+        Walk(detected ? player.position : currentlyTrackedPathTarget);
+
+    }
+    
+#endregion
+*/
+    [SerializeField] Vector3[] trackPositions;
+    int                        currentTrackNumber;
+    
+    
+    [SerializeField] float detectionRange;
+    bool                   playerDetected;
+    
+    [SerializeField] float chaseRange;
+    bool                   InChaseRange;
+
+    bool chasing;
+
+    [SerializeField] Transform player;
+
+    Vector3 currentTarget;
+    bool stasis;
+
+    NavMeshAgent agent;
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+    void Update()
+    {
+        //set values
+        playerDetected = Vector3.Distance(transform.position, player.position) < detectionRange;
+        InChaseRange  = Vector3.Distance(transform.position, player.position) < chaseRange;
+        
+        //set current target (for walking back and forth)
+        if (!chasing && Vector3.Distance(transform.position, trackPositions[currentTrackNumber]) < 0.5f) 
+            currentTrackNumber = ++currentTrackNumber % trackPositions.Length;
+
+        if (playerDetected) chasing           = true;
+        if (!InChaseRange) chasing = false;
+        
+        //pick target
+        currentTarget = chasing ? player.position : trackPositions[currentTrackNumber];
+        
+        //walk to target
+        agent.destination = stasis  ? transform.position :
+                            chasing ? player.position : trackPositions[currentTrackNumber];
+    }
+    
+    
+    void OnDrawGizmos()//Selected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+        
+        
+        if (trackPositions.Length < 1) return;
+        
+        var a = trackPositions[^1];
+        Gizmos.color = Color.red;
+
+        foreach (var i in trackPositions)
+        {
+            Gizmos.DrawWireSphere(i, 0.4f);
+            Gizmos.DrawLine(a, i);
+            a = i;
+        }
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(currentTarget, 1);
     }
 }
+
