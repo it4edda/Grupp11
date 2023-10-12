@@ -12,7 +12,14 @@ public struct ShoppingListItem
 
 public class ShoppingList : MonoBehaviour
 {
+    public static ShoppingList Instance;
+    
     [SerializeField] List<ShoppingListItem> shoppingList = new();
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public List<ShoppingListItem> WriteList()
     {
@@ -21,9 +28,11 @@ public class ShoppingList : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.numberOfDifferentGroceriesToSpawn; i++)
         {
             GameObject theChosenObject = tempGroceriesAvailable[Random.Range(0, tempGroceriesAvailable.Count)];
+            tempGroceriesAvailable.Remove(theChosenObject);
             ShoppingListItem newItem;
             newItem.item = theChosenObject;
             newItem.amount = GameManager.Instance.numberOfSameGroceriesToSpawn.GetRandom();
+            shoppingList.Add(newItem);
         }
         return shoppingList;
     }

@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 1732202579}
   - component: {fileID: 1732202583}
   - component: {fileID: 1732202584}
+  - component: {fileID: 1732202585}
   m_Layer: 0
   m_Name: Shopping cart
   m_TagString: Untagged
@@ -556,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 1732202578}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.95, y: 1.34, z: -0.76}
+  m_LocalPosition: {x: 1.58, y: 1.34, z: 1.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -587,7 +588,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1732202584
 MonoBehaviour:
@@ -604,9 +605,24 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 231
-  checkPos: {x: -1.76, y: 0.24, z: 0}
-  checkSize: {x: 1.92, y: 1.83, z: 2.12}
-  plyerPos: {x: -1.23, y: 0.7, z: 0}
+  checkPos: {x: 0, y: 0.41, z: -1.66}
+  checkSize: {x: 1.54, y: 1.7, z: 1.7}
+  playerPos: {x: 0, y: 0.5, z: -1.2}
+--- !u!114 &1732202585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732202578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0932431ebd5dff48a522a2b0cd83a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 2
+  backSpeed: 1
+  rotateSpeed: 25
 --- !u!1 &1848069187
 GameObject:
   m_ObjectHideFlags: 0
