@@ -11,16 +11,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] LayerMask groceriesMask;
     [SerializeField] LayerMask spawnPointMask;
     [SerializeField] List<GameObject> spawnPoints = new();
+    [SerializeField] List<ShoppingListItem> shoppingList;
+
 
     void Start()
     {
         spawnPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
-        var shoppingList = ShoppingList.Instance.WriteList();
+        shoppingList = ShoppingList.Instance.WriteList();
         RestockGroceries(shoppingList);
         FindObjectOfType<ShoppingListUI>().SetUpShoppingListText(shoppingList);
         
     }
-    //TODO not spawning to close to each other
     void RestockGroceries(List<ShoppingListItem> shoppingList)
     {
         foreach (ShoppingListItem shoppingListItem in shoppingList)
@@ -66,5 +67,11 @@ public class SpawnManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RemoveGroceryFromList(GameObject item)
+    {
+        Debug.Log("PickingUpItem");
+        shoppingList.Find(listItem => listItem.item == item).DecreaseAmount(-1);
     }
 }

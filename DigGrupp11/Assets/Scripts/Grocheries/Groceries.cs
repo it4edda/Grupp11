@@ -34,6 +34,7 @@ public class Groceries : Interaction
 
     void GetsPickedUpp()
     {
+        FindObjectOfType<SpawnManager>().RemoveGroceryFromList(gameObject);
         // if (GameManager.Instance.shoppingList.Contains(gameObject) && playerHand.AddToHand(gameObject))
         // {
         //     GameManager.Instance.shoppingList.Remove(gameObject);

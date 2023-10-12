@@ -8,6 +8,11 @@ public struct ShoppingListItem
 { 
     public GameObject item;
     public int amount;
+
+    public void DecreaseAmount(int amountToIncrease)
+    {
+        amount += amountToIncrease;
+    }
 }
 
 public class ShoppingList : MonoBehaviour
