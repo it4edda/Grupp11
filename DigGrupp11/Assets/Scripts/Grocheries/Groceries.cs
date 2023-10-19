@@ -3,6 +3,7 @@ using UnityEngine;
 public class Groceries : Interaction
 {
     PlayerHand playerHand;
+    public GameObject text;
     protected override void Start()
     {
         base.Start();
@@ -34,13 +35,16 @@ public class Groceries : Interaction
 
     void GetsPickedUpp()
     {
-        FindObjectOfType<SpawnManager>().RemoveGroceryFromList(gameObject);
+        if(!playerHand.AddToHand(gameObject)){return;}
+
+        FindObjectOfType<SpawnManager>().RemoveGroceryFromList(text);
+        Debug.Log(text);
+        gameObject.SetActive(false);
+        canInteract = false;
         // if (GameManager.Instance.shoppingList.Contains(gameObject) && playerHand.AddToHand(gameObject))
         // {
         //     GameManager.Instance.shoppingList.Remove(gameObject);
-        //     gameObject.SetActive(false);
         //     GameManager.Instance.CheckShoppingList();
-        //     canInteract = false;
         // }
     }
 }

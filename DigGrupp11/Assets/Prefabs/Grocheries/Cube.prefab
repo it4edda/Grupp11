@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1054646673081771494}
   - component: {fileID: 720935231740383045}
   - component: {fileID: 2689763848702918009}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,7 @@ MonoBehaviour:
   radius: 2
   canInteract: 1
   interactIcon: {fileID: 2125735058824821234}
+  text: {fileID: 7546802652246686952}
 --- !u!1001 &6217804837459146504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185,6 +186,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298980375231602460, guid: e6f11acaed9c8264bbe72f8857d355d1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562053944578567774, guid: e6f11acaed9c8264bbe72f8857d355d1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

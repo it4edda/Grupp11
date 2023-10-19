@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] LayerMask spawnPointMask;
     [SerializeField] List<GameObject> spawnPoints = new();
     [SerializeField] List<ShoppingListItem> shoppingList;
+    ShoppingListUI shoppingListUI;
 
 
     void Start()
@@ -19,8 +20,9 @@ public class SpawnManager : MonoBehaviour
         spawnPoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPoint"));
         shoppingList = ShoppingList.Instance.WriteList();
         RestockGroceries(shoppingList);
-        FindObjectOfType<ShoppingListUI>().SetUpShoppingListText(shoppingList);
-        
+        shoppingListUI = FindObjectOfType<ShoppingListUI>();
+        shoppingListUI.SetUpShoppingListText(shoppingList);
+
     }
     void RestockGroceries(List<ShoppingListItem> shoppingList)
     {
@@ -54,6 +56,7 @@ public class SpawnManager : MonoBehaviour
                     while (rerollSpawnPoint && breaker < 50);
                     
                     firstObjectSpawned = Instantiate(shoppingListItem.item, spawnPoint);
+                    firstObjectSpawned.GetComponent<Groceries>().text = shoppingListItem.item;
                     spawnPoints.Remove(spawnPoint.gameObject);
                 }
                 else
@@ -63,7 +66,8 @@ public class SpawnManager : MonoBehaviour
 
                     List<Transform> closeSpawnPoints = closeSpawnPointsColliders.Select(closeSpawnPoint => closeSpawnPoint.transform).ToList();
 
-                    Instantiate(shoppingListItem.item, closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)]);
+                    GameObject spawnedObject = Instantiate(shoppingListItem.item, closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)]);
+                    spawnedObject.GetComponent<Groceries>().text = shoppingListItem.item;
                 }
             }
         }
@@ -72,6 +76,8 @@ public class SpawnManager : MonoBehaviour
     public void RemoveGroceryFromList(GameObject item)
     {
         Debug.Log("PickingUpItem");
-        shoppingList.Find(listItem => listItem.item == item).DecreaseAmount(-1);
+        SetShoppingListText text = shoppingListUI.currentShoppingList.FirstOrDefault(n => n.CurrentShoppingListItem.item == item);
+        text.AmountCollected++;
+        text.SetText();
     }
 }

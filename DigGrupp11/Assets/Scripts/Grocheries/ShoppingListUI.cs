@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class ShoppingListUI : MonoBehaviour
 {
     [SerializeField] GameObject textPrefab;
     [SerializeField] Transform textParent;
-    List<SetShoppingListText> currentShoppingList;
+    public List<SetShoppingListText> currentShoppingList;
 
     public void SetUpShoppingListText(List<ShoppingListItem> shoppingList)
     {
@@ -14,7 +13,21 @@ public class ShoppingListUI : MonoBehaviour
         {
             GameObject newGrocery = Instantiate(textPrefab, textParent);
             newGrocery.GetComponent<SetShoppingListText>().SetText(item);
-            //currentShoppingList.Add(newGrocery.GetComponent<SetShoppingListText>());
+            currentShoppingList.Add(newGrocery.GetComponent<SetShoppingListText>());
         }
+    }
+
+    public GameObject TestShoppingList(GameObject gameObject)
+    {
+        GameObject textWithRightItem = null;
+        foreach (SetShoppingListText listText in currentShoppingList)
+        {
+            if (listText.CurrentShoppingListItem.item == gameObject)
+            {
+                textWithRightItem = listText.gameObject;
+            }
+        }
+
+        return textWithRightItem;
     }
 }
