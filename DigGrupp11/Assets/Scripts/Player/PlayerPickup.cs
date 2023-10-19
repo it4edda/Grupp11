@@ -23,14 +23,20 @@ public class PlayerPickup : MonoBehaviour
             {
                 held                     = hit.transform;
                 hit.transform.parent     = transform;
-                hit.rigidbody.useGravity = false;
+                Rigidbody a;
+                if (a = held.GetComponent<Rigidbody>())
+                    a.useGravity = false;
             } 
                 
         }
         else
         {
             held.parent                               = null;
-            held.GetComponent<Rigidbody>().useGravity = true;  
+            Rigidbody a;
+            if (a = held.GetComponent<Rigidbody>())
+            a.useGravity = true;
+
+              
             held                                      = null;
             
         }
