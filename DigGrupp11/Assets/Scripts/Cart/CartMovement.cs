@@ -13,7 +13,6 @@ public class CartMovement : MonoBehaviour
     [SerializeField] bool havePlayer = false;
 
     Rigidbody rb;
-    TempP     player;
 
     private void Start()
     {
@@ -22,7 +21,7 @@ public class CartMovement : MonoBehaviour
 
     private void Update()
     {
-        /*if (!havePlayer)
+        if (!havePlayer)
         {
             return;
         }
@@ -43,14 +42,16 @@ public class CartMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < backMax)
         {
             rb.AddForce(-transform.forward * backSpeed, ForceMode.Force);
-        }*/
+        }
     }
 
 
     public void SetHavePlayer(bool a)
-    {
+    { 
         havePlayer       = a;
         Debug.Log("did cart stuff" + " ---  holding cart =" + a);
-        transform.parent = havePlayer ? FindObjectOfType<TempP>().transform : null;
+        TempP b = FindObjectOfType<TempP>();
+        b.CanMove            = !a;
+        b.transform.parent   = a ? transform : null;
     }
 }
