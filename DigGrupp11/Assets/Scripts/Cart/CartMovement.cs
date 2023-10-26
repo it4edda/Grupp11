@@ -13,6 +13,7 @@ public class CartMovement : MonoBehaviour
     [SerializeField] bool havePlayer = false;
 
     Rigidbody rb;
+    TempP     player;
 
     private void Start()
     {
@@ -21,16 +22,11 @@ public class CartMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!havePlayer)
+        /*if (!havePlayer)
         {
             return;
         }
-
-        if (rb.velocity != Vector3.zero)
-        {
-            print(rb.velocity);
-        }
-
+        
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(new Vector3(0, -rotateSpeed * Time.deltaTime, 0)); 
@@ -39,15 +35,6 @@ public class CartMovement : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime, 0));
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (!havePlayer)
-        {
-            return;
-        }
-
         if (Input.GetKey(KeyCode.W) && rb.velocity.magnitude < forwardMax)
         {
             rb.AddForce(transform.forward * forwardSpeed, ForceMode.Force);
@@ -56,11 +43,14 @@ public class CartMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < backMax)
         {
             rb.AddForce(-transform.forward * backSpeed, ForceMode.Force);
-        }
+        }*/
     }
+
 
     public void SetHavePlayer(bool a)
     {
-        havePlayer = a;
+        havePlayer       = a;
+        Debug.Log("did cart stuff" + " ---  holding cart =" + a);
+        transform.parent = havePlayer ? FindObjectOfType<TempP>().transform : null;
     }
 }

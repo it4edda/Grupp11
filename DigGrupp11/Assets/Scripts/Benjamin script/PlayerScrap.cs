@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Playerscrap : MonoBehaviour
 {
-    [SerializeField] float mouseSensetivity = 3f;
+   // [SerializeField] float mouseSensetivity = 3f;
     [SerializeField] float movementSpeed = 3f;
     [SerializeField] float mass = 3f;
     [SerializeField] Transform cameraTransform;
