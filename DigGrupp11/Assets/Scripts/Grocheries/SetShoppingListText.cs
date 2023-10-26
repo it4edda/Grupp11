@@ -24,5 +24,9 @@ public class SetShoppingListText : MonoBehaviour
             text.fontStyle = FontStyles.Strikethrough;
             Debug.Log("done");
         }
+        else
+        {
+            text.fontStyle = FontStyles.Normal;
+        }
     }
 }

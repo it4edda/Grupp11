@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Groceries : Interaction
@@ -14,8 +16,7 @@ public class Groceries : Interaction
     protected override void Update()
     {
         InteractionPassive();
-
-        Debug.Log(target.name);
+        
         bool a = Vector3.Distance(transform.position, target.position) < radius && !playerHand.IsHoldingSomething;
         interactIcon.SetBool("Showing", a);
         
@@ -30,7 +31,7 @@ public class Groceries : Interaction
 
     protected override void InteractionActive()
     {
-        GetsPickedUpp();
+        //GetsPickedUpp();
     }
 
     void GetsPickedUpp()
@@ -46,5 +47,23 @@ public class Groceries : Interaction
         //     GameManager.Instance.shoppingList.Remove(gameObject);
         //     GameManager.Instance.CheckShoppingList();
         // }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Hit");
+        if (other.CompareTag("CartZone"))
+        {
+            Debug.Log(text);
+            FindObjectOfType<SpawnManager>().RemoveGroceryFromList(text);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("CartZone"))
+        {
+            Debug.Log(text);
+            FindObjectOfType<SpawnManager>().AddGroceryToList(text);
+        }
     }
 }

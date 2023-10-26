@@ -80,4 +80,16 @@ public class SpawnManager : MonoBehaviour
         text.AmountCollected++;
         text.SetText();
     }
+
+    public void AddGroceryToList(GameObject item)
+    {
+        Debug.Log("PickingUpItem");
+        SetShoppingListText text = shoppingListUI.currentShoppingList.FirstOrDefault(n => n.CurrentShoppingListItem.item == item);
+        text.AmountCollected--;
+        if (text.AmountCollected <= 0)
+        {
+            text.AmountCollected = 0;
+        }
+        text.SetText();
+    }
 }
