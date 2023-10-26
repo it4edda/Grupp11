@@ -29,6 +29,7 @@ public class ShoppingCart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             a[0].transform.parent = null;
+            a[0].GetComponent<Rigidbody>().isKinematic = false;
 
             GetComponent<CartMovement>().SetHavePlayer(false);
         }
