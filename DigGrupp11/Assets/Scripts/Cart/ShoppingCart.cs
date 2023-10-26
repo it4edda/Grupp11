@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShoppingCart : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class ShoppingCart : MonoBehaviour
         _checkPos = transform.rotation * checkPos + transform.position;
         _playerPos = transform.rotation * playerPos + transform.position;
         PlayerCheck();
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private void PlayerCheck()
@@ -23,12 +29,16 @@ public class ShoppingCart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             a[0].transform.parent = null;
+
+            GetComponent<CartMovement>().SetHavePlayer(false);
         }
         if (a.Length > 0 && Input.GetKeyDown(KeyCode.K))
         {
             a[0].transform.parent = gameObject.transform;
             a[0].transform.position = _playerPos;
             a[0].GetComponent<Rigidbody>().isKinematic = true;
+
+            GetComponent<CartMovement>().SetHavePlayer(true);
         }
     }
 

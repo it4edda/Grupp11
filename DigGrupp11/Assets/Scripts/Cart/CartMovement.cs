@@ -7,8 +7,11 @@ public class CartMovement : MonoBehaviour
     [SerializeField] float forwardSpeed;
     [SerializeField] float forwardMax;
     [SerializeField] float backSpeed;
+    [SerializeField] float backMax;
     [SerializeField] float rotateSpeed;
-    
+
+    [SerializeField] bool havePlayer = false;
+
     Rigidbody rb;
 
     private void Start()
@@ -18,6 +21,16 @@ public class CartMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!havePlayer)
+        {
+            return;
+        }
+
+        if (rb.velocity != Vector3.zero)
+        {
+            print(rb.velocity);
+        }
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(new Vector3(0, -rotateSpeed * Time.deltaTime, 0)); 
@@ -30,13 +43,24 @@ public class CartMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (!havePlayer)
         {
-            rb.velocity = transform.forward * forwardSpeed;
+            return;
         }
-        if (Input.GetKey(KeyCode.S))
+
+        if (Input.GetKey(KeyCode.W) && rb.velocity.magnitude < forwardMax)
         {
-            rb.velocity = transform.forward * -backSpeed;
+            rb.AddForce(transform.forward * forwardSpeed, ForceMode.Force);
+            //rb.velocity += transform.forward * forwardSpeed;
         }
+        if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < backMax)
+        {
+            rb.AddForce(-transform.forward * backSpeed, ForceMode.Force);
+        }
+    }
+
+    public void SetHavePlayer(bool a)
+    {
+        havePlayer = a;
     }
 }
