@@ -24,6 +24,7 @@ public class TempP : MonoBehaviour
     bool isGrounded;
     //bool canDash;
     bool isCrouching;
+    bool canMove = true;
 
     CharacterController characterController;
 
@@ -68,6 +69,8 @@ public class TempP : MonoBehaviour
 
     void Move()
     {
+        if (!CanMove)
+            return;
         float movementSpeed = 1;
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
@@ -101,5 +104,10 @@ public class TempP : MonoBehaviour
     {
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
+    }
+    public bool CanMove
+    {
+        get => canMove;
+        set => canMove = value;
     }
 }
