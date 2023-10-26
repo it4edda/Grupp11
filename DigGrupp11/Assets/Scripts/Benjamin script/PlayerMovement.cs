@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
             Jump();
 
-            Invoke(nameof(ResetJump))
+            //Invoke(nameof(ResetJump))
         }
     }
 
