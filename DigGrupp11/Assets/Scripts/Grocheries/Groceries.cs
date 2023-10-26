@@ -17,7 +17,7 @@ public class Groceries : Interaction
     {
         InteractionPassive();
         
-        bool a = Vector3.Distance(transform.position, target.position) < radius && !playerHand.IsHoldingSomething;
+        bool a = Vector3.Distance(transform.position, target.position) < radius;
         interactIcon.SetBool("Showing", a);
         
         if (canInteract && a)
