@@ -4611,6 +4611,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TEMP PLAYER
       objectReference: {fileID: 0}
+    - target: {fileID: 8325584566740392478, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 952
+      objectReference: {fileID: 0}
     - target: {fileID: 8707184835152905720, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_LocalPosition.x
