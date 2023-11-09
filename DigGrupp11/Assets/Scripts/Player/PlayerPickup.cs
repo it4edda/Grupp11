@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
@@ -25,7 +22,10 @@ public class PlayerPickup : MonoBehaviour
                 hit.transform.parent     = transform;
                 Rigidbody a;
                 if (a = held.GetComponent<Rigidbody>())
-                    a.useGravity = false;
+                    a.isKinematic = true;
+                BoxCollider b;
+                if (b = held.GetComponent<BoxCollider>())
+                    b.enabled = false;
             } 
                 
         }
@@ -34,7 +34,10 @@ public class PlayerPickup : MonoBehaviour
             held.parent                               = null;
             Rigidbody a;
             if (a = held.GetComponent<Rigidbody>())
-            a.useGravity = true;
+                a.isKinematic = false;
+            BoxCollider b;
+            if (b = held.GetComponent<BoxCollider>())
+                b.enabled = true;
 
               
             held                                      = null;
