@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -22,13 +24,14 @@ public class SpawnManager : MonoBehaviour
         RestockGroceries(shoppingList);
         shoppingListUI = FindObjectOfType<ShoppingListUI>();
         shoppingListUI.SetUpShoppingListText(shoppingList);
-
     }
+
     void RestockGroceries(List<ShoppingListItem> shoppingList)
     {
         foreach (ShoppingListItem shoppingListItem in shoppingList)
         {
             GameObject firstObjectSpawned = null;
+            List<Transform> alreadySpawnedList = new ();
             for (int i = 0; i < shoppingListItem.amount; i++)
             {
                 if (i == 0)
@@ -57,6 +60,7 @@ public class SpawnManager : MonoBehaviour
                     
                     firstObjectSpawned = Instantiate(shoppingListItem.item, spawnPoint);
                     firstObjectSpawned.GetComponent<Groceries>().text = shoppingListItem.item;
+                    alreadySpawnedList.Add(spawnPoint);
                     spawnPoints.Remove(spawnPoint.gameObject);
                 }
                 else
@@ -65,7 +69,10 @@ public class SpawnManager : MonoBehaviour
                         Physics.OverlapSphere(firstObjectSpawned.transform.position, sameObjectSpawnRadius, spawnPointMask, QueryTriggerInteraction.Collide);
 
                     List<Transform> closeSpawnPoints = closeSpawnPointsColliders.Select(closeSpawnPoint => closeSpawnPoint.transform).ToList();
-
+                    foreach (Transform points in alreadySpawnedList.Where(points => closeSpawnPoints.Contains(points)))
+                    {
+                        closeSpawnPoints.Remove(points);
+                    }
                     GameObject spawnedObject = Instantiate(shoppingListItem.item, closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)]);
                     spawnedObject.GetComponent<Groceries>().text = shoppingListItem.item;
                 }
