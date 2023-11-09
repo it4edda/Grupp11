@@ -1,3 +1,4 @@
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,16 +13,19 @@ public class ShoppingCart : MonoBehaviour
     bool playerAttach = false;
     public bool PlayerAttach{ get => playerAttach; }
 
+    TempP player;
     Vector3 _checkPos;
     Vector3 _playerPos;
-    Rigidbody rd;
+    Rigidbody rb;
+    [SerializeField] float playerSpeed;
 
     private void Update()
     {
         _checkPos = transform.rotation * checkPos + transform.position;
         _playerPos = transform.rotation * playerPos + transform.position;
 
-        rd = GetComponent<Rigidbody>();
+        player = FindObjectOfType<TempP>();
+        rb = GetComponent<Rigidbody>();
 
         PlayerCheck();
 
@@ -51,17 +55,20 @@ public class ShoppingCart : MonoBehaviour
             GetComponent<CartMovement>().SetHavePlayer(true);
         }*/
 
-        if (Input.GetKeyDown(KeyCode.Q) && !playerAttach)
+        if (a.Length > 0 && Input.GetKeyDown(KeyCode.Q) && !playerAttach)
         {
+            player.transform.position = _playerPos;
+            rb.isKinematic = true;
             gameObject.transform.parent = a[0].transform;
-            rd.isKinematic = true;
-            FindObjectOfType<TempP>().MovementSpeed = moveSpeed;
+            playerSpeed = player.MovementSpeed;
+            player.MovementSpeed = moveSpeed;
             playerAttach = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && playerAttach)
+        else if (a.Length > 0 && Input.GetKeyDown(KeyCode.Q) && playerAttach)
         {
             gameObject.transform.parent = null;
-            rd.isKinematic = false;
+            rb.isKinematic = false;
+            player.MovementSpeed = playerSpeed;
             playerAttach = false;
         }
     }

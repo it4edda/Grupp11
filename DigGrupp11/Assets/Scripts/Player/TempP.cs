@@ -73,7 +73,7 @@ public class TempP : MonoBehaviour
 
         movement = Vector3.ClampMagnitude((transform.right * xInput) + (transform.forward * zInput), 1f);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !FindObjectOfType<ShoppingCart>().PlayerAttach)
         {
             movementSpeed = runSpeed;
         }
