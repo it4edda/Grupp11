@@ -110,4 +110,9 @@ public class TempP : MonoBehaviour
         get => canMove;
         set => canMove = value;
     }
+    public float MovementSpeed
+    {
+        get => walkSpeed;
+        set => walkSpeed = value;
+    }
 }
