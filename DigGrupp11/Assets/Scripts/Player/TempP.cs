@@ -26,22 +26,20 @@ public class TempP : MonoBehaviour
     bool isCrouching;
     bool canMove = true;
 
-    CharacterController characterController;
+    Rigidbody rb;
 
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ground();
+        //Ground();
         Crouch();
         Move();
         Jump();
-        //Dash();
-        Gravity();
     }
     void Ground()
     {
@@ -53,8 +51,6 @@ public class TempP : MonoBehaviour
     }
     void Crouch()
     {
-        //not too proud of these but 
-        // if it works it works
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             isCrouching = true;
@@ -90,7 +86,9 @@ public class TempP : MonoBehaviour
             movementSpeed = walkSpeed;
         }
 
-        characterController.Move(movement * (movementSpeed * Time.deltaTime));
+       
+        if (velocity.magnitude < movementSpeed) rb.AddForce(movement * movementSpeed, ForceMode.Impulse);
+        //characterController.Move(movement * (movementSpeed * Time.deltaTime));x
     }
     void Jump()
     {
@@ -98,12 +96,6 @@ public class TempP : MonoBehaviour
         {
             velocity.y = MathF.Sqrt(jumpHeight * -2f * gravity);   
         }
-    }
-
-    void Gravity()
-    {
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
     }
     public bool CanMove
     {

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 9183451175965703395}
   - component: {fileID: 456961687187408104}
   - component: {fileID: 3330802718358385004}
-  - component: {fileID: 8170499966144744238}
+  - component: {fileID: 2658979591738284697}
   m_Layer: 6
   m_Name: TEMP PLAYER
   m_TagString: Player
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3d57da4e4a24842be0654c43a808a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 3
   runSpeed: 8
   crouchSpeed: 2
   crouchSize: 0.5
@@ -204,7 +204,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5814452403944671113}
   serializedVersion: 4
-  m_Mass: 25.51
+  m_Mass: 22.93
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -223,8 +223,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!143 &8170499966144744238
-CharacterController:
+--- !u!136 &2658979591738284697
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -241,14 +241,11 @@ CharacterController:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2.43
+  serializedVersion: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -0.55, z: 0}
+  m_Height: 2.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6428013583770429656
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71daa1a61393eb4e8ef47aa1545ef3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 1500
+  mouseSensitivity: 952
 --- !u!114 &2409133496839837708
 MonoBehaviour:
   m_ObjectHideFlags: 0
