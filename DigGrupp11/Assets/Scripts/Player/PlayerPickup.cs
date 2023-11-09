@@ -25,7 +25,7 @@ public class PlayerPickup : MonoBehaviour
                     a.isKinematic = true;
                 BoxCollider b;
                 if (b = held.GetComponent<BoxCollider>())
-                    b.enabled = false;
+                    b.isTrigger = true;
             } 
                 
         }
@@ -37,7 +37,7 @@ public class PlayerPickup : MonoBehaviour
                 a.isKinematic = false;
             BoxCollider b;
             if (b = held.GetComponent<BoxCollider>())
-                b.enabled = true;
+                b.isTrigger = false;
 
               
             held                                      = null;
