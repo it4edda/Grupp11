@@ -7,14 +7,22 @@ public class ShoppingCart : MonoBehaviour
     [SerializeField] Vector3 checkPos;
     [SerializeField] Vector3 checkSize;
     [SerializeField] Vector3 playerPos;
+    [SerializeField] float moveSpeed;
+
+    bool playerAttach = false;
+    public bool PlayerAttach{ get => playerAttach; }
 
     Vector3 _checkPos;
     Vector3 _playerPos;
+    Rigidbody rd;
 
     private void Update()
     {
         _checkPos = transform.rotation * checkPos + transform.position;
         _playerPos = transform.rotation * playerPos + transform.position;
+
+        rd = GetComponent<Rigidbody>();
+
         PlayerCheck();
 
         if(Input.GetKeyDown(KeyCode.R))
@@ -26,8 +34,9 @@ public class ShoppingCart : MonoBehaviour
     private void PlayerCheck()
     {
         Collider[] a = Physics.OverlapBox(_checkPos, checkSize / 2, transform.rotation, playerLayer);
-        if (Input.GetKeyDown(KeyCode.M))
+        /*if (Input.GetKeyDown(KeyCode.M))
         {
+            
             a[0].transform.parent = null;
             a[0].GetComponent<Rigidbody>().isKinematic = false;
 
@@ -40,6 +49,20 @@ public class ShoppingCart : MonoBehaviour
             a[0].GetComponent<Rigidbody>().isKinematic = true;
 
             GetComponent<CartMovement>().SetHavePlayer(true);
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.Q) && !playerAttach)
+        {
+            gameObject.transform.parent = a[0].transform;
+            rd.isKinematic = true;
+            FindObjectOfType<TempP>().MovementSpeed = moveSpeed;
+            playerAttach = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Q) && playerAttach)
+        {
+            gameObject.transform.parent = null;
+            rd.isKinematic = false;
+            playerAttach = false;
         }
     }
 
