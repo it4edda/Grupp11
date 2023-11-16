@@ -224,7 +224,6 @@ GameObject:
   - component: {fileID: 1804378915358998997}
   - component: {fileID: 8798723042256426327}
   - component: {fileID: 8351178901980646518}
-  - component: {fileID: 2652364808450648542}
   - component: {fileID: 145255559177699699}
   m_Layer: 0
   m_Name: Shopping cart
@@ -288,7 +287,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 96
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8351178901980646518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,26 +307,7 @@ MonoBehaviour:
   checkSize: {x: 1.54, y: 1.7, z: 2.61}
   playerPos: {x: 0, y: 0.5, z: -1.5}
   moveSpeed: 3.42
-  playerAttach: 0
   playerSpeed: 0
---- !u!114 &2652364808450648542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7954889564068763499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0932431ebd5dff48a522a2b0cd83a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forwardSpeed: 13
-  forwardMax: 4
-  backSpeed: 11
-  backMax: 2
-  rotateSpeed: 25
-  havePlayer: 1
 --- !u!65 &145255559177699699
 BoxCollider:
   m_ObjectHideFlags: 0

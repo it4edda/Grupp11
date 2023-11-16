@@ -26,6 +26,7 @@ public class PlayerPickup : MonoBehaviour
                 BoxCollider b;
                 if (b = held.GetComponent<BoxCollider>())
                     b.isTrigger = true;
+                held.GetComponent<Groceries>().SetShadow(true);
             } 
                 
         }
@@ -38,10 +39,8 @@ public class PlayerPickup : MonoBehaviour
             BoxCollider b;
             if (b = held.GetComponent<BoxCollider>())
                 b.isTrigger = false;
-
-              
+            held.GetComponent<Groceries>().SetShadow(false);
             held                                      = null;
-            
         }
             
             

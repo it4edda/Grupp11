@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
 
     public void CheckShoppingList()
     {
-        
+        ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
+        if (shoppingListUI.currentShoppingList.Count(text => text.Complete == true) >= shoppingListUI.currentShoppingList.Count)
+        {
+            
+        }
     }
 }
