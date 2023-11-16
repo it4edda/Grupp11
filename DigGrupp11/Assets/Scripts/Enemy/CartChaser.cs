@@ -9,13 +9,13 @@ public class CartChaser : EnemyAi
     Vector3                launchVector;
     protected override bool Check()
     {
-        if (base.Check())
+        if (!base.Check())
         {
             return false;
         }
 
         
-        launchVector = transform.position - targetToChase.position;
+        launchVector = targetToChase.position - transform.position;
         launchVector = Vector3.Normalize(launchVector);
         
         targetToChase.GetComponent<Rigidbody>().AddForce(launchVector * power, ForceMode.Impulse);
