@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAi : Interaction
+public class EnemyAi : MonoBehaviour
 {
     [Header("Enemy")]
     [SerializeField]           float     speed;
@@ -26,14 +26,9 @@ public class EnemyAi : Interaction
         return returnVal;
     }
 
-    protected virtual void Kill()
+    public virtual void Kill()
     {
         Destroy(gameObject);
-    }
-    protected override void InteractionActive()
-    {
-        base.InteractionActive();
-        Kill();
     }
     void OnDrawGizmos()
     {

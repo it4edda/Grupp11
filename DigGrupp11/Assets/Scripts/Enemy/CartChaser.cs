@@ -18,7 +18,7 @@ public class CartChaser : EnemyAi
         launchVector = targetToChase.position - transform.position;
         launchVector = Vector3.Normalize(launchVector);
         
-        targetToChase.GetComponent<Rigidbody>().AddForce(launchVector * power, ForceMode.Impulse);
+        targetToChase.GetComponent<Rigidbody>().AddForce(launchVector * power + Vector3.up * 2, ForceMode.Impulse);
         
         Kill();
         return true;

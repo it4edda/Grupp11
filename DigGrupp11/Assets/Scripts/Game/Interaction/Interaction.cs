@@ -30,9 +30,6 @@ public class Interaction : MonoBehaviour
             }
         }
     }
-    
-    //MAKE ADDITIONAL INTERACTION COROUTINES?
-    //item logic would profit from this
     protected virtual void InteractionPassive()
     {
         
