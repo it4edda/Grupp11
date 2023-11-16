@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TempC : MonoBehaviour
 {
+    bool Leoiscool = true;
 #region
     [SerializeField] float mouseSensitivity = 1500f;
 

@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3d57da4e4a24842be0654c43a808a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
-  runSpeed: 8
+  walkSpeed: 4
+  runSpeed: 6
   crouchSpeed: 2
   crouchSize: 0.5
   gravity: -29.46
@@ -204,9 +204,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5814452403944671113}
   serializedVersion: 4
-  m_Mass: 22.93
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 4.12
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -243,7 +243,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.2
+  m_Height: 4.13
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6428013583770429656
