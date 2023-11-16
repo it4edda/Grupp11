@@ -64,7 +64,7 @@ public class ShoppingCart : MonoBehaviour
             player.MovementSpeed = moveSpeed;
             playerAttach = true;
         }
-        else if (a.Length > 0 && Input.GetKeyDown(KeyCode.Q) && playerAttach)
+        else if (Input.GetKeyDown(KeyCode.Q) && playerAttach)
         {
             gameObject.transform.parent = null;
             rb.isKinematic = false;
