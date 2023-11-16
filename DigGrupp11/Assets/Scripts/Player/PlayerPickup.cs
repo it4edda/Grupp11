@@ -4,7 +4,8 @@ public class PlayerPickup : MonoBehaviour
 {
     [SerializeField] float     range;
     [SerializeField] LayerMask mask;
-    Transform                  held;
+    [SerializeField] LayerMask enemyMask;
+    Transform held;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -28,7 +29,12 @@ public class PlayerPickup : MonoBehaviour
                     b.isTrigger = true;
                 held.GetComponent<Groceries>().SetShadow(true);
             } 
-                
+            
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, mask))
+            {
+                Debug.Log("SLAP");
+                hitB.transform.gameObject.GetComponent<EnemyAi>().Kill();
+            }                
         }
         else
         {

@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 540897999}
   - component: {fileID: 540897998}
   - component: {fileID: 540897997}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,6 +529,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2409133496839837708, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 5814452403944671113, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Name
@@ -609,7 +614,7 @@ GameObject:
   - component: {fileID: 892632047}
   - component: {fileID: 892632046}
   - component: {fileID: 892632051}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cartenem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,11 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789195a795e083b409b03d1c0bb3ff74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactKey: 101
-  radius: 10.09
-  canInteract: 1
-  hasIcon: 0
-  interactIcon: {fileID: 0}
   speed: 1
   targetToChase: {fileID: 772168661}
   distance: 1.78
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 2008761869}
   - component: {fileID: 2008761871}
   - component: {fileID: 2008761870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5763,7 +5763,7 @@ GameObject:
   - component: {fileID: 3344818502539715735}
   - component: {fileID: 1214940538072787077}
   - component: {fileID: 3344818502539715736}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prototype Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5826,11 +5826,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99aa0b6ce012ed46a014022362cc3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactKey: 101
-  radius: 3
-  canInteract: 1
-  hasIcon: 0
-  interactIcon: {fileID: 0}
   speed: 2
   targetToChase: {fileID: 54886325}
   distance: 1
