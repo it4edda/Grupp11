@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1305456290387069768}
   - component: {fileID: 6998653275475264031}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ItemCheckBox
   m_TagString: CartZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.04, y: 2.5, z: 4.32}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.74233055, y: 0.6369959, z: 1.3702793}
+  m_Center: {x: 0.0003299713, y: 0.17150205, z: 0.1530838}
 --- !u!1 &7954889564068763499
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,9 +141,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  checkPos: {x: 0, y: 0.41, z: 0}
-  checkSize: {x: 1.54, y: 1.7, z: 1.7}
-  playerPos: {x: 0, y: 0.5, z: -1.2}
+  checkPos: {x: 0, y: 0.41, z: -0.48}
+  checkSize: {x: 1.54, y: 1.7, z: 2.61}
+  playerPos: {x: 0, y: 0.5, z: -1.5}
   moveSpeed: 3.42
   playerSpeed: 0
 --- !u!114 &2652364808450648542
