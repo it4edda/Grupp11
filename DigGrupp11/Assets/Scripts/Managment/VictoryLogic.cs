@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class VictoryLogic : MonoBehaviour
@@ -10,5 +8,18 @@ public class VictoryLogic : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (canWin && other.CompareTag("Player")) SceneManagerExtended.ReloadScene();
+    }
+    
+    public void CheckShoppingList()
+    {
+        ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
+        if (shoppingListUI.currentShoppingList.Count(text => text.Complete) >= shoppingListUI.currentShoppingList.Count)
+        {
+            canWin = true;
+        }
+        else
+        {
+            canWin = false;
+        }
     }
 }

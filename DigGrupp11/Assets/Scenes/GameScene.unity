@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b82cfb61b9f0342950c6ce1e656ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canWin: 1
+  canWin: 0
 --- !u!1001 &627712242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1880,6 +1880,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
         type: 3}
+      propertyPath: numberOfSameGroceriesToSpawn.max
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
+        type: 3}
+      propertyPath: numberOfSameGroceriesToSpawn.min
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
+        type: 3}
       propertyPath: availableGroceriesToSpawn.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -2032,41 +2042,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6998653275475264031, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.74233055
-      objectReference: {fileID: 0}
-    - target: {fileID: 6998653275475264031, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.6369959
-      objectReference: {fileID: 0}
-    - target: {fileID: 6998653275475264031, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1.3702793
-      objectReference: {fileID: 0}
-    - target: {fileID: 6998653275475264031, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.0003299713
-      objectReference: {fileID: 0}
-    - target: {fileID: 6998653275475264031, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.17150205
-      objectReference: {fileID: 0}
-    - target: {fileID: 6998653275475264031, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0.1530838
-      objectReference: {fileID: 0}
-    - target: {fileID: 7466812323552524257, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: m_Name
-      value: ItemCheckBox
-      objectReference: {fileID: 0}
     - target: {fileID: 7912769025802086740, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2121,21 +2096,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shopping cart
-      objectReference: {fileID: 0}
-    - target: {fileID: 8351178901980646518, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: checkPos.z
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 8351178901980646518, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: checkSize.z
-      value: 2.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 8351178901980646518, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
-        type: 3}
-      propertyPath: playerPos.z
-      value: -1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4631,6 +4591,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1680088911478128360, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2658979591738284697, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Height
@@ -4753,6 +4718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653552502459089536, guid: 74ffad55ad4f587479fe8a303f222c22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8442443389013411548, guid: 74ffad55ad4f587479fe8a303f222c22,
         type: 3}

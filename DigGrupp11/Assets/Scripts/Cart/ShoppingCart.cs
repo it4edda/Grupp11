@@ -58,6 +58,7 @@ public class ShoppingCart : MonoBehaviour
         if (a.Length > 0 && Input.GetKeyDown(KeyCode.Q) && !playerAttach)
         {
             player.transform.position = new Vector3(_playerPos.x, player.transform.position.y, _playerPos.z);
+            player.transform.forward = new Vector3(transform.position.x - player.transform.position.x, 0, transform.position.z - player.transform.position.z);
             rb.isKinematic = true;
             gameObject.transform.parent = a[0].transform;
             playerSpeed = player.MovementSpeed;

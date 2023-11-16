@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Groceries : Interaction
 {
+    [SerializeField] LineRenderer lineRenderer;
     PlayerHand playerHand;
     public GameObject text;
+
+    bool isPickedUp;
     protected override void Start()
     {
         base.Start();
@@ -16,6 +19,10 @@ public class Groceries : Interaction
     protected override void Update()
     {
         InteractionPassive();
+        if (isPickedUp)
+        {
+            DropShadow();
+        }
         
         bool a = Vector3.Distance(transform.position, target.position) < radius;
         interactIcon.SetBool("Showing", a);
@@ -29,25 +36,21 @@ public class Groceries : Interaction
         }
     }
 
-    protected override void InteractionActive()
+    public void SetShadow(bool isPicked)
     {
-        //GetsPickedUpp();
+        isPickedUp = isPicked;
+        lineRenderer.gameObject.SetActive(isPicked);
     }
 
-    void GetsPickedUpp()
+    void DropShadow()
     {
-        if(!playerHand.AddToHand(gameObject)){return;}
-
-        FindObjectOfType<SpawnManager>().RemoveGroceryFromList(text);
-        Debug.Log(text);
-        gameObject.SetActive(false);
-        canInteract = false;
-        // if (GameManager.Instance.shoppingList.Contains(gameObject) && playerHand.AddToHand(gameObject))
-        // {
-        //     GameManager.Instance.shoppingList.Remove(gameObject);
-        //     GameManager.Instance.CheckShoppingList();
-        // }
+        var position = transform.position;
+        Physics.Raycast(position, Vector3.down, out RaycastHit hit, 100000);
+        lineRenderer.SetPosition(0, position);
+        Vector3 lineVector = new(position.x, hit.transform.position.y, position.z);
+        lineRenderer.SetPosition(1, lineVector);
     }
+    
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Hit");

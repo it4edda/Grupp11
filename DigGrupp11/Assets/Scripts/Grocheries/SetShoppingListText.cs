@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,8 +9,15 @@ public class SetShoppingListText : MonoBehaviour
     [SerializeField] ShoppingListItem currentShoppingListItem;
     public ShoppingListItem CurrentShoppingListItem => currentShoppingListItem;
     [SerializeField] int amountCollected;
-
     public int AmountCollected { get => amountCollected; set => amountCollected = value; }
+    public bool Complete { get; private set; }
+
+    VictoryLogic victoryLogic;
+
+    void Start()
+    {
+        victoryLogic = FindObjectOfType<VictoryLogic>();
+    }
 
     public void SetText(ShoppingListItem newItem)
     {
@@ -23,10 +31,17 @@ public class SetShoppingListText : MonoBehaviour
         {
             text.fontStyle = FontStyles.Strikethrough;
             Debug.Log("done");
+            Complete = true;
         }
         else
         {
             text.fontStyle = FontStyles.Normal;
+            Complete = false;
+        }
+
+        if (victoryLogic)
+        {
+            victoryLogic.CheckShoppingList();
         }
     }
 }
