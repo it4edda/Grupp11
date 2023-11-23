@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -43,16 +42,8 @@ public class SpawnManager : MonoBehaviour
                     do
                     {
                         spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)].transform;
-                        if (Physics.CheckSphere(spawnPoint.position, repelRange, groceriesMask))
-                        {
-                            rerollSpawnPoint = Random.Range(0, 100) < chanceToRepel;
-                            Debug.Log("rolls");
-                        }
-                        else
-                        {
-                            rerollSpawnPoint = false;
-                            Debug.Log("DoesNotRe-roll");
-                        }
+                        rerollSpawnPoint = Physics.CheckSphere(spawnPoint.position, repelRange, groceriesMask) &&
+                                           Random.Range(0, 100) < chanceToRepel;
 
                         breaker++;
                     } 
@@ -60,6 +51,7 @@ public class SpawnManager : MonoBehaviour
                     
                     firstObjectSpawned = Instantiate(shoppingListItem.item, spawnPoint);
                     firstObjectSpawned.GetComponent<Groceries>().text = shoppingListItem.item;
+                    firstObjectSpawned.GetComponent<Groceries>().spawnPoint = spawnPoint;
                     alreadySpawnedList.Add(spawnPoint);
                     spawnPoints.Remove(spawnPoint.gameObject);
                 }
@@ -73,8 +65,12 @@ public class SpawnManager : MonoBehaviour
                     {
                         closeSpawnPoints.Remove(points);
                     }
-                    GameObject spawnedObject = Instantiate(shoppingListItem.item, closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)]);
+
+                    Transform chosenSpawnPoint = closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)];
+                    alreadySpawnedList.Add(chosenSpawnPoint);
+                    GameObject spawnedObject = Instantiate(shoppingListItem.item, chosenSpawnPoint);
                     spawnedObject.GetComponent<Groceries>().text = shoppingListItem.item;
+                    spawnedObject.GetComponent<Groceries>().spawnPoint = chosenSpawnPoint;
                 }
             }
         }
