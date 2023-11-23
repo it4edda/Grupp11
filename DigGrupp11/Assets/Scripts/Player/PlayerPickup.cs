@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class PlayerPickup : MonoBehaviour
 {
@@ -8,10 +9,8 @@ public class PlayerPickup : MonoBehaviour
     Transform held;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Pickup();
-        }
+        if (Input.GetKeyDown(KeyCode.E)) Pickup();
+        if (Input.GetKeyDown(KeyCode.Mouse0)) Attack();
     }
     void Pickup()
     {
@@ -29,12 +28,6 @@ public class PlayerPickup : MonoBehaviour
                     b.isTrigger = true;
                 held.GetComponent<Groceries>().SetShadow(true);
             } 
-            
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, mask))
-            {
-                Debug.Log("SLAP");
-                hitB.transform.gameObject.GetComponent<EnemyAi>().Kill();
-            }                
         }
         else
         {
@@ -50,6 +43,14 @@ public class PlayerPickup : MonoBehaviour
         }
             
             
+    }
+    void Attack()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, enemyMask))
+        {
+            Debug.Log("SLAP");
+            hitB.transform.gameObject.GetComponent<EnemyAi>().Kill();
+        }
     }
     void OnDrawGizmos()
     {
