@@ -636,6 +636,7 @@ MonoBehaviour:
   speed: 1
   targetToChase: {fileID: 772168661}
   distance: 1.78
+  knockbackPower: 5
   power: 8.12
 --- !u!135 &892632047
 SphereCollider:
@@ -5829,6 +5830,7 @@ MonoBehaviour:
   speed: 2
   targetToChase: {fileID: 54886325}
   distance: 1
+  knockbackPower: 23.58
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

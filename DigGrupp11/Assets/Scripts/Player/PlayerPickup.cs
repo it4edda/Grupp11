@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -6,7 +7,7 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] float     range;
     [SerializeField] LayerMask mask;
     [SerializeField] LayerMask enemyMask;
-    Transform held;
+    Transform                  held;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) Pickup();
@@ -49,9 +50,10 @@ public class PlayerPickup : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, enemyMask))
         {
             Debug.Log("SLAP");
-            hitB.transform.gameObject.GetComponent<EnemyAi>().Kill();
+            hitB.transform.gameObject.GetComponent<EnemyAi>().Attacked();
         }
     }
+    
     void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 5);
