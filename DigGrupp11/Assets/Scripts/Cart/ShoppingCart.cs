@@ -9,6 +9,7 @@ public class ShoppingCart : MonoBehaviour
     [SerializeField] Vector3 checkSize;
     [SerializeField] Vector3 playerPos;
     [SerializeField] float moveSpeed;
+    [SerializeField] float upAfterFixingRotation;
 
     bool playerAttach = false;
     public bool PlayerAttach{ get => playerAttach; }
@@ -41,7 +42,7 @@ public class ShoppingCart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && (Mathf.Abs(transform.eulerAngles.x) > 0.1f || Mathf.Abs(transform.eulerAngles.z) > 0.1f)) 
         {
             transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
-            transform.position += new Vector3(0, 0.5f, 0); 
+            transform.position += new Vector3(0, upAfterFixingRotation, 0); 
         }
         else if (Input.GetKeyDown(KeyCode.Q) && a.Length > 0 && !playerAttach)
         {

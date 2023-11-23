@@ -307,6 +307,7 @@ MonoBehaviour:
   checkSize: {x: 1.54, y: 1.7, z: 2.61}
   playerPos: {x: 0, y: 0.5, z: -1.5}
   moveSpeed: 3.42
+  upAfterFixingRotation: 0.5
   playerSpeed: 0
 --- !u!65 &145255559177699699
 BoxCollider:
