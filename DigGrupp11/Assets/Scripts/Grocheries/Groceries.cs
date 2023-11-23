@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Groceries : Interaction
@@ -7,8 +5,9 @@ public class Groceries : Interaction
     [SerializeField] LineRenderer lineRenderer;
     PlayerHand playerHand;
     public GameObject text;
+    public Transform spawnPoint;
 
-    bool isPickedUp;
+    public bool isPickedUp;
     protected override void Start()
     {
         base.Start();
