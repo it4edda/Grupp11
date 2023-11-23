@@ -41,6 +41,7 @@ public class ShoppingCart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && (Mathf.Abs(transform.eulerAngles.x) > 0.1f || Mathf.Abs(transform.eulerAngles.z) > 0.1f)) 
         {
             transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
+            transform.position += new Vector3(0, 0.5f, 0); 
         }
         else if (Input.GetKeyDown(KeyCode.Q) && a.Length > 0 && !playerAttach)
         {
