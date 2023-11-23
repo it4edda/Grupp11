@@ -633,9 +633,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789195a795e083b409b03d1c0bb3ff74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   targetToChase: {fileID: 772168661}
   distance: 1.78
+  speed: 2.36
+  drag: 0.6
+  spring: 0.4
   knockbackPower: 5
   power: 8.12
 --- !u!135 &892632047
@@ -5827,9 +5829,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99aa0b6ce012ed46a014022362cc3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   targetToChase: {fileID: 54886325}
-  distance: 1
+  distance: 1.72
+  speed: 2.36
+  drag: 0.6
+  spring: 0.4
   knockbackPower: 23.58
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

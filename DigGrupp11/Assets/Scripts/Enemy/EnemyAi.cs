@@ -1,19 +1,16 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
     [Header("Enemy")]
-    [SerializeField]           float     speed;
     [SerializeField] protected Transform targetToChase;
-    [SerializeField]           float     distance    = 1;
-    [SerializeField]           float     maxVelocity = 5;
-    bool                                 canMove     = true;
-    Rigidbody                            rb;
-    Vector3                              movementVector = Vector3.zero;
+    [SerializeField] float distance = 1;
+    [SerializeField] float speed = 2.36f;
+    bool                   canMove = true;
+    Rigidbody              rb;
+    Vector3                movementVector = Vector3.zero;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,10 +22,25 @@ public class EnemyAi : MonoBehaviour
         Movement();
         Check();
     }
+    Vector3 velocity = Vector3.zero;
+    [SerializeField] float     drag     = 0.6f;
+    [SerializeField] float     spring   = 0.4f;
     protected virtual void Movement()
     {
         if (!canMove) return;
-            rb.AddForce(movementVector * speed, ForceMode.Force);
+        
+        //rb.AddForce(movementVector * speed, ForceMode.Force);
+        
+        velocity    += (movementVector - rb.velocity) * spring;
+        velocity    -= drag                           * velocity;
+        rb.velocity += velocity * speed; 
+/*
+Velocity += (targetPos - currentPos) * spring;
+Velocity -= drag * velocity;
+CurrentPos += Velocity
+drag ~0.6
+spring ~0.4
+*/
     }
     
     protected virtual bool Check()
@@ -64,9 +76,5 @@ public class EnemyAi : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, distance);
     }
-
-    //one that fucks with progress, cart, player
-    
-    //make ghosts slap-able???????
 }
 

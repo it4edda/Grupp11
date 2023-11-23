@@ -521,4 +521,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  held: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 1024
