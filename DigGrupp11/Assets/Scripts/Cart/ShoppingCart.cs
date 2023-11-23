@@ -38,24 +38,12 @@ public class ShoppingCart : MonoBehaviour
     private void PlayerCheck()
     {
         Collider[] a = Physics.OverlapBox(_checkPos, checkSize / 2, transform.rotation, playerLayer);
-        /*if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Q) && (Mathf.Abs(transform.eulerAngles.x) > 0.1f || Mathf.Abs(transform.eulerAngles.z) > 0.1f)) 
         {
-            
-            a[0].transform.parent = null;
-            a[0].GetComponent<Rigidbody>().isKinematic = false;
-
-            GetComponent<CartMovement>().SetHavePlayer(false);
+            transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
+            print("Rotation");
         }
-        if (a.Length > 0 && Input.GetKeyDown(KeyCode.K))
-        {
-            a[0].transform.parent = gameObject.transform;
-            a[0].transform.position = _playerPos;
-            a[0].GetComponent<Rigidbody>().isKinematic = true;
-
-            GetComponent<CartMovement>().SetHavePlayer(true);
-        }*/
-
-        if (a.Length > 0 && Input.GetKeyDown(KeyCode.Q) && !playerAttach)
+        else if (Input.GetKeyDown(KeyCode.Q) && a.Length > 0 && !playerAttach)
         {
             player.transform.position = new Vector3(_playerPos.x, player.transform.position.y, _playerPos.z);
             player.transform.forward = new Vector3(transform.position.x - player.transform.position.x, 0, transform.position.z - player.transform.position.z);
@@ -81,6 +69,6 @@ public class ShoppingCart : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube(checkPos, checkSize);
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(playerPos, 0.2f);
+        Gizmos.DrawSphere(playerPos, 0.1f);
     }
 }

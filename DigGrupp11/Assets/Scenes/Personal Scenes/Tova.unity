@@ -570,7 +570,7 @@ PrefabInstance:
     - target: {fileID: 7912769025802086740, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.34
+      value: 2.29
       objectReference: {fileID: 0}
     - target: {fileID: 7912769025802086740, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
         type: 3}
@@ -641,6 +641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerPos.z
       value: -3.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798723042256426327, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2652364808450648542, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8, type: 3}
