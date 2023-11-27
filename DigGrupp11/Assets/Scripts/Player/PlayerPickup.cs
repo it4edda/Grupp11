@@ -1,13 +1,22 @@
+using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Timeline;
+using Random = UnityEngine.Random;
 
 public class PlayerPickup : MonoBehaviour
 {
     [SerializeField] float     range;
     [SerializeField] LayerMask mask;
     [SerializeField] LayerMask enemyMask;
+    [SerializeField] Transform handPivot;
+    Animator                   animator;
     Transform                  held;
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) Pickup();
@@ -49,6 +58,8 @@ public class PlayerPickup : MonoBehaviour
     }
     void Attack()
     {
+        handPivot.rotation = quaternion.Euler(handPivot.rotation.x, Random.Range(0, 360), handPivot.rotation.z);
+        animator.SetTrigger("");
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, enemyMask))
         {
             Debug.Log("SLAP");
