@@ -31,7 +31,7 @@ namespace Enemy
 
             grocery = targetToChase.gameObject;
             grocery.transform.parent = transform;
-            grocery.transform.position = 
+            //grocery.transform.position = 
             return true;
         }
 
