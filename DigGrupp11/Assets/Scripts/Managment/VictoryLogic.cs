@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VictoryLogic : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class VictoryLogic : MonoBehaviour
     public bool CanWin { get => canWin; set => canWin = value; }
     void OnTriggerEnter(Collider other)
     {
-        if (canWin && other.CompareTag("Player")) SceneManagerExtended.ReloadScene();
+        if (canWin && other.CompareTag("Player")) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     
     public void CheckShoppingList()
