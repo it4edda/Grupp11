@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour
             timerOn= false;
             Cursor.lockState = CursorLockMode.None;
         }
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            ResetTimer();
+        }
         sceneLoader = FindObjectOfType<SceneLoader>();
         sceneLoader.TimerText(time);
     }
