@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Groceries : Interaction
@@ -48,15 +49,16 @@ public class Groceries : Interaction
     void DropShadow()
     {
         var position = transform.position;
-        Physics.Raycast(position, Vector3.down, out RaycastHit hit, 100000);
-        lineRenderer.SetPosition(0, position);
-        Vector3 lineVector = new(position.x, hit.transform.position.y, position.z);
-        lineRenderer.SetPosition(1, lineVector);
+        if (Physics.Raycast(position, Vector3.down, out RaycastHit hit, 100000))
+        {
+            lineRenderer.SetPosition(0, position);
+            Vector3 lineVector = new(position.x, hit.transform.position.y, position.z);
+            lineRenderer.SetPosition(1, lineVector);
+        }
     }
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
         if (other.CompareTag("CartZone"))
         {
             Debug.Log(text);

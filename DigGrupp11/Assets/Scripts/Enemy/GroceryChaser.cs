@@ -57,7 +57,8 @@ namespace Enemy
 
         void ChooseTarget(bool isPickingUpSomething, Transform holding)
         {
-            if (targetToChase && targetToChase != holding && grocery && grocery.transform != holding) { return; }
+            if ((grocery && grocery.transform != holding)) { return;}
+            if (targetToChase && targetToChase != holding && !grocery) { return; }
             
             List<Groceries> availableGroceries = new List<Groceries>();
             availableGroceries.AddRange(FindObjectsOfType<Groceries>()
@@ -65,10 +66,12 @@ namespace Enemy
             if (availableGroceries.Count > 0)
             {
                 targetToChase = availableGroceries[Random.Range(0, availableGroceries.Count)].transform;
+                grocery = null;
             }
             else
             {
                 targetToChase = null;
+                grocery = null;
             }
         }
     }

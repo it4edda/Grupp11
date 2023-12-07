@@ -1,14 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public List<GameObject> availableGroceriesToSpawn;
-    public int numberOfDifferentGroceriesToSpawn;
-    public MinMax numberOfSameGroceriesToSpawn;
 
     [SerializeField] int gameSceneIndex;
 
@@ -75,13 +70,4 @@ public class GameManager : MonoBehaviour
         time = 0;
     }
     #endregion
-
-    public void CheckShoppingList()
-    {
-        ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
-        if (shoppingListUI.currentShoppingList.Count(text => text.Complete == true) >= shoppingListUI.currentShoppingList.Count)
-        {
-            
-        }
-    }
 }

@@ -5,6 +5,10 @@ using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    public List<GameObject> availableGroceriesToSpawn;
+    public int numberOfDifferentGroceriesToSpawn;
+    public MinMax numberOfSameGroceriesToSpawn;
+    
     [SerializeField] float repelRange;
     [Tooltip("The size of the sphere checking for nearest transform to initially spawned object of each type")]
     [SerializeField] float sameObjectSpawnRadius;

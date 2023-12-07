@@ -21,6 +21,8 @@ public class ShoppingList : MonoBehaviour
     
     [SerializeField] List<ShoppingListItem> shoppingList = new();
 
+    SpawnManager spawnManager;
+    
     void Awake()
     {
         Instance = this;
@@ -29,14 +31,15 @@ public class ShoppingList : MonoBehaviour
     public List<ShoppingListItem> WriteList()
     {
         shoppingList.Clear();
-        List<GameObject> tempGroceriesAvailable = GameManager.Instance.availableGroceriesToSpawn;
-        for (int i = 0; i < GameManager.Instance.numberOfDifferentGroceriesToSpawn; i++)
+        spawnManager = FindObjectOfType<SpawnManager>();
+        List<GameObject> tempGroceriesAvailable = spawnManager.availableGroceriesToSpawn;
+        for (int i = 0; i < spawnManager.numberOfDifferentGroceriesToSpawn; i++)
         {
             GameObject theChosenObject = tempGroceriesAvailable[Random.Range(0, tempGroceriesAvailable.Count)];
             tempGroceriesAvailable.Remove(theChosenObject);
             ShoppingListItem newItem;
             newItem.item = theChosenObject;
-            newItem.amount = GameManager.Instance.numberOfSameGroceriesToSpawn.GetRandom();
+            newItem.amount = spawnManager.numberOfSameGroceriesToSpawn.GetRandom();
             shoppingList.Add(newItem);
         }
         return shoppingList;
