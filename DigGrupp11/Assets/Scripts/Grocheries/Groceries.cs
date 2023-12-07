@@ -3,22 +3,26 @@ using UnityEngine;
 public class Groceries : Interaction
 {
     [SerializeField] LineRenderer lineRenderer;
-    PlayerHand playerHand;
     public GameObject text;
     public Transform spawnPoint;
 
+    Rigidbody rb;
+    BoxCollider boxCollider;
+
     public bool isPickedUp;
+    bool showShadow;
     protected override void Start()
     {
         base.Start();
         canInteract = true;
-        playerHand = FindObjectOfType<PlayerHand>();
+        rb = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     protected override void Update()
     {
         InteractionPassive();
-        if (isPickedUp)
+        if (showShadow)
         {
             DropShadow();
         }
@@ -37,7 +41,7 @@ public class Groceries : Interaction
 
     public void SetShadow(bool isPicked)
     {
-        isPickedUp = isPicked;
+        showShadow = isPicked;
         lineRenderer.gameObject.SetActive(isPicked);
     }
 
@@ -67,5 +71,12 @@ public class Groceries : Interaction
             Debug.Log(text);
             FindObjectOfType<SpawnManager>().AddGroceryToList(text);
         }
+    }
+
+    public void GetsPickedUp(bool pickupStatus)
+    {
+        boxCollider.isTrigger = pickupStatus;
+        rb.isKinematic = pickupStatus;
+        isPickedUp = pickupStatus;
     }
 }

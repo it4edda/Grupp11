@@ -17,8 +17,6 @@ public class EnemyAi : MonoBehaviour
     }
     void Update()
     {
-        movementVector = targetToChase.position - transform.position;
-        movementVector = Vector3.Normalize(movementVector);
         Movement();
         Check();
     }
@@ -27,6 +25,8 @@ public class EnemyAi : MonoBehaviour
     [SerializeField] float     spring   = 0.4f;
     protected virtual void Movement()
     {
+        movementVector = targetToChase.position - transform.position;
+        movementVector = Vector3.Normalize(movementVector);
         if (!canMove) return;
         
         //rb.AddForce(movementVector * speed, ForceMode.Force);

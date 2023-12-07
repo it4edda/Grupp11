@@ -4,9 +4,12 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
+using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
 {
+    public static event Action<bool, Transform> PickingUpSomething;
+
     [SerializeField] float     range;
     [SerializeField] LayerMask mask;
     [SerializeField] LayerMask enemyMask;
@@ -30,36 +33,29 @@ public class PlayerPickup : MonoBehaviour
             {
                 held                     = hit.transform;
                 hit.transform.parent     = transform;
-                Rigidbody a;
-                if (a = held.GetComponent<Rigidbody>())
-                    a.isKinematic = true;
-                BoxCollider b;
-                if (b = held.GetComponent<BoxCollider>())
-                    b.isTrigger = true;
+                held.GetComponent<Groceries>().GetsPickedUp(true);                  
                 held.GetComponent<Groceries>().SetShadow(true);
-                held.GetComponent<Groceries>().isPickedUp = true;
+                PickingUpSomething?.Invoke(true, held);
             } 
         }
         else
         {
             held.parent                               = null;
-            Rigidbody a;
-            if (a = held.GetComponent<Rigidbody>())
-                a.isKinematic = false;
-            BoxCollider b;
-            if (b = held.GetComponent<BoxCollider>())
-                b.isTrigger = false;
+            held.GetComponent<Groceries>().GetsPickedUp(false);
             held.GetComponent<Groceries>().SetShadow(false);
-            held.GetComponent<Groceries>().isPickedUp = false;
             held                                      = null;
+            PickingUpSomething?.Invoke(false, held);
         }
             
             
     }
     void Attack()
     {
-        handPivot.rotation = quaternion.Euler(handPivot.rotation.x, Random.Range(0, 360), handPivot.rotation.z);
-        animator.SetTrigger("");
+        if (handPivot)
+        {
+            handPivot.rotation = quaternion.Euler(handPivot.rotation.x, Random.Range(0, 360), handPivot.rotation.z);
+            animator.SetTrigger("");
+        }
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, enemyMask))
         {
             Debug.Log("SLAP");
