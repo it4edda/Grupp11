@@ -32,7 +32,10 @@ public class TempC : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         //GetAxisRaw is instant, otherwise it lerps
         //left right
+        
         playerBody.Rotate(Vector3.up * mouseX);
+        //rb.addtorque 
+        
 
         //up down
         xRotation               -= mouseY;
