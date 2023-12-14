@@ -14,12 +14,9 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] LayerMask mask;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] Transform handPivot;
-    Animator                   animator;
+    [SerializeField] Animator  handAnimator;
     Transform                  held;
-    void Start()
-    {
-        animator = GetComponentInChildren<Animator>();
-    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) Pickup();
@@ -51,11 +48,9 @@ public class PlayerPickup : MonoBehaviour
     }
     void Attack()
     {
-        if (handPivot)
-        {
             handPivot.rotation = quaternion.Euler(handPivot.rotation.x, Random.Range(0, 360), handPivot.rotation.z);
-            animator.SetTrigger("");
-        }
+            handAnimator.SetTrigger("Slap");
+        
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, enemyMask))
         {
             Debug.Log("SLAP");

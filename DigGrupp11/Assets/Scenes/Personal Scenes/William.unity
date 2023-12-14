@@ -589,6 +589,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2409133496839837708, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: handPivot
+      value: 
+      objectReference: {fileID: 411721885}
+    - target: {fileID: 2409133496839837708, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: handAnimator
+      value: 
+      objectReference: {fileID: 411721886}
     - target: {fileID: 5814452403944671113, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Name
@@ -5825,8 +5835,7 @@ GameObject:
   - component: {fileID: 2015802562}
   - component: {fileID: 2015802565}
   - component: {fileID: 2015802564}
-  - component: {fileID: 2015802563}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5848,27 +5857,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 411721885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2015802563
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2015802561}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2015802564
 MeshRenderer:
   m_ObjectHideFlags: 0
