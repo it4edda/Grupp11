@@ -3383,7 +3383,7 @@ GameObject:
   - component: {fileID: 906964317}
   - component: {fileID: 906964321}
   - component: {fileID: 906964322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroceryChaiser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3405,7 +3405,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3488,12 +3488,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d952bb59e0d44db8c01209d2484d75f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackPower: 5
+  health: 3
   targetToChase: {fileID: 0}
   distance: 2
   speed: 0.1
   drag: 0.6
   spring: 0.4
-  knockbackPower: 5
   carryingOffset: {x: 0, y: 1, z: 0}
   grocery: {fileID: 0}
 --- !u!54 &906964322
@@ -3518,10 +3519,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &970869377
 GameObject:
@@ -5738,11 +5739,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ListCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7691163977581530508, guid: e82428f6c91e7034dae560f79e14a745,
-        type: 3}
-      propertyPath: m_IgnoreReversedGraphics
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8082,56 +8078,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: numberOfSameGroceriesToSpawn.max
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: numberOfSameGroceriesToSpawn.min
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: numberOfDifferentGroceriesToSpawn
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: availableGroceriesToSpawn.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: availableGroceriesToSpawn.Array.data[0]
-      value: 
-      objectReference: {fileID: 6876700999631919821, guid: b210dae9393438e489c3e6d98a635b03,
-        type: 3}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: availableGroceriesToSpawn.Array.data[1]
-      value: 
-      objectReference: {fileID: 6876700999631919821, guid: 3403ef1cd2e0d2444ac9756e26cb9ae6,
-        type: 3}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: availableGroceriesToSpawn.Array.data[2]
-      value: 
-      objectReference: {fileID: 6876700999631919821, guid: 56412859a7b38564993fbc61fb55eeaf,
-        type: 3}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: availableGroceriesToSpawn.Array.data[3]
-      value: 
-      objectReference: {fileID: 6876700999631919821, guid: 2ee871cfd545ca74eae5a8eb4ca97265,
-        type: 3}
-    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
-        type: 3}
-      propertyPath: availableGroceriesToSpawn.Array.data[4]
-      value: 
-      objectReference: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
-        type: 3}
     - target: {fileID: 9186811804542085494, guid: dd976e060ef830247bb59c67e5d687d8,
         type: 3}
       propertyPath: m_LocalPosition.x

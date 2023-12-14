@@ -44,6 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbda3469bb6baef47b1ca6808860e1fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableGroceriesToSpawn:
+  - {fileID: 6876700999631919821, guid: b210dae9393438e489c3e6d98a635b03, type: 3}
+  - {fileID: 6876700999631919821, guid: 3403ef1cd2e0d2444ac9756e26cb9ae6, type: 3}
+  - {fileID: 6876700999631919821, guid: 56412859a7b38564993fbc61fb55eeaf, type: 3}
+  - {fileID: 6876700999631919821, guid: 2ee871cfd545ca74eae5a8eb4ca97265, type: 3}
+  - {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6, type: 3}
+  numberOfDifferentGroceriesToSpawn: 3
+  numberOfSameGroceriesToSpawn:
+    min: 2
+    max: 5
   repelRange: 5
   sameObjectSpawnRadius: 3
   chanceToRepel: 80

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
+    [Header("Health")]
+    [SerializeField] float knockbackPower = 5f;
+    [SerializeField] int   health         = 3;
+    
     [Header("Enemy")]
     [SerializeField] protected Transform targetToChase;
     [SerializeField] float distance = 1;
     [SerializeField] float speed = 2.36f;
     bool                   canMove = true;
-    Rigidbody              rb;
+    protected Rigidbody              rb;
     Vector3                movementVector = Vector3.zero;
     void Start()
     {
@@ -49,8 +53,7 @@ spring ~0.4
         return returnVal;
     }
 
-    [SerializeField] float knockbackPower = 5f;
-    int                    health         = 3;
+    
     public virtual void Attacked()
     {
         StartCoroutine(Yield());

@@ -23,6 +23,7 @@ namespace Enemy
 
             if (targetToChase == null)
             {
+                rb.velocity = Vector3.zero;
                 return;
             }
             
@@ -73,6 +74,17 @@ namespace Enemy
                 targetToChase = null;
                 grocery = null;
             }
+        }
+
+        public override void Attacked()
+        {
+            if (grocery)
+            {
+                grocery.GetComponent<Groceries>().GetsPickedUp(false);
+                grocery = null;
+            }
+            base.Attacked();
+            ChooseTarget(true, null);
         }
     }
 }
