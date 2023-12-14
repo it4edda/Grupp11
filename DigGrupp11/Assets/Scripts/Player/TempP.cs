@@ -34,7 +34,7 @@ public class TempP : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Ground();
         Crouch();
