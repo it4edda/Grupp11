@@ -33,8 +33,9 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().buildIndex == gameSceneIndex)
+        if (SceneManager.GetActiveScene().name == "GameScene")
         {
+            time = 0f;
             timerOn = true;
         }
         else
@@ -43,10 +44,6 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            ResetTimer();
-        }
         sceneLoader = FindObjectOfType<SceneLoader>();
         sceneLoader.TimerText(time);
     }
@@ -63,11 +60,6 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
             sceneLoader.TimerText(time);
         }
-    }
-
-    private void ResetTimer()
-    {
-        time = 0;
     }
     #endregion
 }
