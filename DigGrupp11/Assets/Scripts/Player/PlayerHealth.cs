@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (/*other is harmful ||*/ false)
+        if (/*other is harmful*/ false)
         {
             health -= 1;
 
