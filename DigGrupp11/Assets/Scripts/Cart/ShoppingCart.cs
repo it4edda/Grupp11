@@ -13,7 +13,7 @@ public class ShoppingCart : MonoBehaviour
     [SerializeField] float timePlayerToPos;
     [SerializeField] float moveSpeed;
     [SerializeField] float rotationMinDegrees;
-    [SerializeField] float rotattionMaxDistasns;
+    [SerializeField] float rotattionMaxDistance;
     [SerializeField] float heightAfterFixingRotation;
 
     bool playerAttaching = false;
@@ -47,7 +47,7 @@ public class ShoppingCart : MonoBehaviour
         Collider[] a = Physics.OverlapBox(_checkPos, checkSize / 2, transform.rotation, playerLayer);
         if (Input.GetKeyDown(KeyCode.Q) && 
             ((transform.eulerAngles.x > rotationMinDegrees && transform.eulerAngles.x < (360 - rotationMinDegrees)) || (transform.eulerAngles.z > rotationMinDegrees && transform.eulerAngles.z < (360 - rotationMinDegrees))) &&
-            Vector3.Distance(transform.position, player.transform.position) < rotattionMaxDistasns) 
+            Vector3.Distance(transform.position, player.transform.position) < rotattionMaxDistance) 
         {
             transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
             transform.position += new Vector3(0, heightAfterFixingRotation, 0); 
