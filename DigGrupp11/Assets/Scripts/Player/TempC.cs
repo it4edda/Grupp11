@@ -9,11 +9,13 @@ public class TempC : MonoBehaviour
 
     float xRotation = 0f;
 
+    Rigidbody rb;
     Transform playerBody;
 #endregion
     private void Awake()
     {
         playerBody = transform.parent.transform;
+        rb = GetComponentInParent<Rigidbody>();
     }
 
     void Start()
@@ -32,7 +34,17 @@ public class TempC : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         //GetAxisRaw is instant, otherwise it lerps
         //left right
+        
+        
+        
+        //works 
         playerBody.Rotate(Vector3.up * mouseX);
+
+        
+        
+        //Vector3 a = new Vector3(mouseX,0, 0);
+        //rb.AddTorque(a * 100, ForceMode.Force);
+        Debug.Log("WILLIAM JOBBAR HÄR");
 
         //up down
         xRotation               -= mouseY;

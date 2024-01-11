@@ -123,69 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &52215516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 52215518}
-  - component: {fileID: 52215517}
-  m_Layer: 0
-  m_Name: NavMesh Surface
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &52215517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52215516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 503
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: df8456c7878741c4c85bf888476da03f, type: 2}
-  m_BuildHeightMesh: 0
---- !u!4 &52215518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52215516}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03160148, y: 3.48, z: -0.022565935}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &69743367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2238,6 +2175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8351178901980646518, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
         type: 3}
+      propertyPath: rotationMin
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351178901980646518, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
+        type: 3}
       propertyPath: timePlayerToPos
       value: 3
       objectReference: {fileID: 0}
@@ -3326,6 +3268,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 7321833732378976045, guid: 34732849a4cdd3944a3d82f7990ebba6,
+        type: 3}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[1]
+      value: 
+      objectReference: {fileID: 6922560534891484419, guid: 4f5b0d86b3cf29844b5dcd0f65c50468,
+        type: 3}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[2]
+      value: 
+      objectReference: {fileID: 6876700999631919821, guid: b210dae9393438e489c3e6d98a635b03,
+        type: 3}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[3]
+      value: 
+      objectReference: {fileID: 6876700999631919821, guid: 3403ef1cd2e0d2444ac9756e26cb9ae6,
+        type: 3}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[4]
+      value: 
+      objectReference: {fileID: 6876700999631919821, guid: 56412859a7b38564993fbc61fb55eeaf,
+        type: 3}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[5]
+      value: 
+      objectReference: {fileID: 6876700999631919821, guid: 2ee871cfd545ca74eae5a8eb4ca97265,
+        type: 3}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: availableGroceriesToSpawn.Array.data[6]
+      value: 
+      objectReference: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
     - target: {fileID: 9186811804542085494, guid: dd976e060ef830247bb59c67e5d687d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4948,7 +4937,6 @@ SceneRoots:
   - {fileID: 285123079}
   - {fileID: 601484127}
   - {fileID: 6576024274911748683}
-  - {fileID: 52215518}
   - {fileID: 2253589761754212462}
   - {fileID: 6328516256180995964}
   - {fileID: 1174913589}
