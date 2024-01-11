@@ -7,8 +7,8 @@ public class VictoryLogic : MonoBehaviour
     [SerializeField] bool canWin;
     public bool CanWin { get => canWin; set => canWin = value; }
     void OnTriggerEnter(Collider other)
-    {
-        if (canWin && other.CompareTag("Player")) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    {   
+        if (canWin && other.CompareTag("Player")) SceneManager.LoadScene("WinScene");
     }
     
     public void CheckShoppingList()
