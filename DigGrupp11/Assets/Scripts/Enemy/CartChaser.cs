@@ -1,12 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class CartChaser : EnemyAi
 {
     [SerializeField] float power;
     Vector3                launchVector;
+
+    protected override void Start()
+    {
+        base.Start();
+        targetToChase = FindObjectOfType<ShoppingCart>().transform;
+    }
+
     protected override bool Check()
     {
         if (!base.Check())

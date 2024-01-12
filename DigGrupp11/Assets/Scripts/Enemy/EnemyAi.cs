@@ -15,7 +15,7 @@ public class EnemyAi : MonoBehaviour
     bool                   canMove = true;
     protected Rigidbody              rb;
     Vector3                movementVector = Vector3.zero;
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
     }

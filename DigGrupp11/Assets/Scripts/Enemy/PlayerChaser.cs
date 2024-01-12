@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PlayerChaser : EnemyAi
 {
+    [SerializeField] int damage = 1;
+    protected override void Start()
+    {
+        base.Start();
+        targetToChase = FindObjectOfType<TempP>().transform;
+    }
+
     protected override bool Check()
     {
         if (!base.Check())
         {
             return false;
         }
-        Debug.Log("i have damaged the player");
+        targetToChase.GetComponent<PlayerHealth>().TakeDamage(damage);
         Kill();
         return true;
     }

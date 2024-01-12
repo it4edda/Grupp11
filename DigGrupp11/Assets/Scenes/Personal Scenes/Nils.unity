@@ -1312,6 +1312,8 @@ MonoBehaviour:
   numberOfEnemiesToSpawn: 1
   enemiesToSpawn:
   - {fileID: 1335110264934515106, guid: 46d954b9991ab0c4e84a66bf1bcccc88, type: 3}
+  - {fileID: 1335110264934515106, guid: 9bd7f03d79fd29f449ab0632890cc1ce, type: 3}
+  - {fileID: 1335110264934515106, guid: b0a0ff1f24c5f1b41978bf65f771f63f, type: 3}
   enemySpawnPoints:
   - {fileID: 682605551}
   - {fileID: 1216841040}
@@ -3388,11 +3390,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2409133496839837708, guid: c59489fbd61dd42469a01608215d5fb5,
-        type: 3}
-      propertyPath: handPivot
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5814452403944671113, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Name
@@ -8271,74 +8268,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2913193696434058338}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3077807263927248045
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1335110264934515106, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_Name
-      value: GroceryChaiser
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -13.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.704228
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5423978584654755648, guid: 46d954b9991ab0c4e84a66bf1bcccc88,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 46d954b9991ab0c4e84a66bf1bcccc88, type: 3}
 --- !u!1001 &9165069006392074135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8416,7 +8345,6 @@ SceneRoots:
   - {fileID: 1790748789}
   - {fileID: 1590740807}
   - {fileID: 833841381}
-  - {fileID: 3077807263927248045}
   - {fileID: 207418031}
   - {fileID: 944827416}
   - {fileID: 40938998}
