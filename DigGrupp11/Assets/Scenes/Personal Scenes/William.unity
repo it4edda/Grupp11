@@ -529,10 +529,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3330802718358385004, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330802718358385004, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5814452403944671113, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Name
       value: TEMP PLAYER (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325584566740392478, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325584566740392478, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: mouseSensitivityY
+      value: 950
       objectReference: {fileID: 0}
     - target: {fileID: 8707184835152905720, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
