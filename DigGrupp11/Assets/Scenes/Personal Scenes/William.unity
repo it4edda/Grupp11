@@ -529,6 +529,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2409133496839837708, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: handPrefab
+      value: 
+      objectReference: {fileID: 1895547295879405027, guid: dab3b98cc939bd24d9c4686d6eb8fc66,
+        type: 3}
     - target: {fileID: 3330802718358385004, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Drag
@@ -5920,6 +5926,7 @@ MonoBehaviour:
   speed: 2.36
   drag: 0.6
   spring: 0.4
+  damage: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -7,8 +7,9 @@ public class TempC : MonoBehaviour
     //bool Leoiscool = true;
 #region
 
-    [SerializeField] float mouseSensitivity = 1500f;
-    [SerializeField] float mouseSensitivityY = 1500f;
+    [SerializeField] float     mouseSensitivity  = 1500f;
+    [SerializeField] float     mouseSensitivityY = 1500f;
+    [SerializeField] Transform followPoint;
 
     float     xRotation = 0f;
     float     yRotation = 0f;
@@ -39,12 +40,12 @@ transform.parent.transform.localRotation = Quaternion.Euler(0,yRotation,0);
     }
     void FixedUpdate()
     {
-        //Look();
+        Look();
     }
 
     void Look()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        /*float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 
         Vector3 torque = Vector3.up * mouseX;
 
@@ -53,5 +54,6 @@ transform.parent.transform.localRotation = Quaternion.Euler(0,yRotation,0);
         Debug.Log("Current Angular Velocity: " + rb.angularVelocity);
 
         rb.AddTorque(torque, ForceMode.VelocityChange);
+        */
     }
 }

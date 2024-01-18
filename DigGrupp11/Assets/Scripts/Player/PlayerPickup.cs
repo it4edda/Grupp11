@@ -10,12 +10,14 @@ public class PlayerPickup : MonoBehaviour
 {
     public static event Action<bool, Transform> PickingUpSomething;
 
-    [SerializeField] float     range;
-    [SerializeField] LayerMask mask;
-    [SerializeField] LayerMask enemyMask;
-    [SerializeField] Transform handPivot;
-    [SerializeField] Animator  handAnimator;
-    Transform                  held;
+    [SerializeField] float      range;
+    [SerializeField] LayerMask  mask;
+    [SerializeField] LayerMask  enemyMask;
+    [SerializeField] Transform  handPivot;
+    [SerializeField] Animator   handAnimator;
+    [SerializeField] GameObject handPrefab;
+    Transform                   held;
+    GameObject                  instantiatedHand;
 
     void Update()
     {
@@ -28,8 +30,10 @@ public class PlayerPickup : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range, mask))
             {
-                held                     = hit.transform;
-                hit.transform.parent     = transform;
+                held                              = hit.transform;
+                instantiatedHand                  = Instantiate(handPrefab, hit.transform.position + Vector3.up * 0.5f, quaternion.identity);
+                instantiatedHand.transform.parent = hit.transform;
+                hit.transform.parent              = transform;
                 held.GetComponent<Groceries>().GetsPickedUp(true);                  
                 held.GetComponent<Groceries>().SetShadow(true);
                 PickingUpSomething?.Invoke(true, held);
@@ -37,6 +41,7 @@ public class PlayerPickup : MonoBehaviour
         }
         else
         {
+            Destroy(instantiatedHand);
             held.parent                               = null;
             held.GetComponent<Groceries>().GetsPickedUp(false);
             held.GetComponent<Groceries>().SetShadow(false);
