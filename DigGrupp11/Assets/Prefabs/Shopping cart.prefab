@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 8798723042256426327}
   - component: {fileID: 8351178901980646518}
   - component: {fileID: 145255559177699699}
+  - component: {fileID: 4948567677818126462}
   m_Layer: 0
   m_Name: Shopping cart
   m_TagString: Untagged
@@ -269,8 +270,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7954889564068763499}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 10
+  m_Drag: 4
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -286,7 +287,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 96
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &8351178901980646518
 MonoBehaviour:
@@ -300,14 +301,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4c76614f7679649bb8257c41374ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cartMovement: {fileID: 4948567677818126462}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   checkPos: {x: 0, y: 0.41, z: -0.48}
   checkSize: {x: 1.54, y: 1.7, z: 2.61}
-  playerPos: {x: 0, y: 0.5, z: -1.5}
+  playerPos: {x: 0, y: 0.5, z: -1.7}
+  timePlayerToPos: 0.1
   moveSpeed: 3.42
-  upAfterFixingRotation: 0.5
+  rotationMinDegrees: 0
+  rotattionMaxDistance: 0
+  heightAfterFixingRotation: 0
   playerSpeed: 0
 --- !u!65 &145255559177699699
 BoxCollider:
@@ -330,6 +335,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.7300329, z: 1.361413}
   m_Center: {x: 0, y: -0.45066714, z: 0.09629202}
+--- !u!114 &4948567677818126462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7954889564068763499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0932431ebd5dff48a522a2b0cd83a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 100
+  forwardMax: 15
+  backSpeed: 100
+  backMax: 10
+  rotateSpeed: 100
+  havePlayer: 0
+  rb: {fileID: 0}
 --- !u!1 &8570158236343256884
 GameObject:
   m_ObjectHideFlags: 0
