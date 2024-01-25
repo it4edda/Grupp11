@@ -625,7 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200695508479595904}
   m_Layer: 0
-  m_Name: Hylla
+  m_Name: TempHylla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
