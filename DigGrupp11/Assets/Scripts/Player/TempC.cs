@@ -15,6 +15,8 @@ public class TempC : MonoBehaviour
     float     yRotation = 0f;
     Rigidbody rb;
     Transform playerBody;
+
+    public bool isHoldingCart = false;
 #endregion
     private void Awake()
     {
@@ -32,11 +34,11 @@ public class TempC : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityY * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
-        xRotation               -= mouseY;
-        yRotation               += mouseX;
-        xRotation               =  Mathf.Clamp(xRotation, -90f, 90f);
-        transform.localRotation =  Quaternion.Euler(xRotation, 0f, 0f);
-transform.parent.transform.localRotation = Quaternion.Euler(0,yRotation,0);
+        xRotation -= mouseY;
+        yRotation += mouseX;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.parent.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
     }
     void FixedUpdate()
     {

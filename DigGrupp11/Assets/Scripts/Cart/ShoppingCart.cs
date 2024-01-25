@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ShoppingCart : MonoBehaviour
 {
+    [Header("Cart Stuff")] 
+    [SerializeField] CartMovement cartMovement;
+    
+    [Header("player stuff")]
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Vector3 checkPos;
     [SerializeField] Vector3 checkSize;
@@ -32,7 +36,7 @@ public class ShoppingCart : MonoBehaviour
         _playerPos = transform.rotation * playerPos + transform.position;
 
         player = FindObjectOfType<TempP>();
-        rb = GetComponent<Rigidbody>();
+        rb = player.GetComponent<Rigidbody>();
 
         PlayerCheck();
 
@@ -62,10 +66,12 @@ public class ShoppingCart : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Q) && playerAttach && !playerAttaching)
         {
-            gameObject.transform.parent = null;
+            player.transform.parent = null;
+            //gameObject.transform.parent = null;
             rb.isKinematic = false;
             player.MovementSpeed = playerSpeed;
             playerAttach = false;
+            cartMovement.SetHavePlayer(playerAttach);
         }
         /*
         else if (Input.GetKeyDown(KeyCode.Q) && a.Length > 0 && !playerAttach)
@@ -105,10 +111,12 @@ public class ShoppingCart : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        gameObject.transform.parent = player.transform;
+        player.transform.parent = transform;
+        //gameObject.transform.parent = player.transform;
         playerAttaching = false;
         playerAttach = true;
-        player.CanMove = true;
+        cartMovement.SetHavePlayer(playerAttach);
+        //player.CanMove = true;
         yield return null;
     }
 

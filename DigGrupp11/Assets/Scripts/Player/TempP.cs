@@ -36,6 +36,7 @@ public class TempP : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!canMove) { return;}
         //Ground();
         Crouch();
         Move();
@@ -65,8 +66,6 @@ public class TempP : MonoBehaviour
 
     void Move()
     {
-        if (!CanMove)
-            return;
         float movementSpeed = 1;
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
