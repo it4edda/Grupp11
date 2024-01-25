@@ -12,13 +12,13 @@ public class CartMovement : MonoBehaviour
 
     [SerializeField] bool havePlayer = false;
 
-    Rigidbody rb;
+    [SerializeField] Rigidbody rb;
     TempP     player;
 
     private void Start()
     {
-        rb     = GetComponent<Rigidbody>();
         player = FindObjectOfType<TempP>();
+        rb     = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -53,6 +53,8 @@ public class CartMovement : MonoBehaviour
         havePlayer       = a;
         Debug.Log("did cart stuff" + " ---  holding cart =" + a);
         TempP b = FindObjectOfType<TempP>();
+        TempC c = FindObjectOfType<TempC>();
+        c.isHoldingCart = a;
         b.CanMove            = !a;
         //b.transform.parent   = a ? transform : null;
     }
