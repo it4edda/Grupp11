@@ -12,13 +12,15 @@ public class CartMovement : MonoBehaviour
 
     [SerializeField] bool havePlayer = false;
 
-    Rigidbody rb;
-    TempP     player;
+    [SerializeField] Rigidbody rb;
+    TempP player;
+    RotationThingy RotationThingy;
 
     private void Start()
     {
-        rb     = GetComponent<Rigidbody>();
         player = FindObjectOfType<TempP>();
+        rb = GetComponent<Rigidbody>();
+        RotationThingy = FindObjectOfType<RotationThingy>();
     }
 
     private void Update()
@@ -28,11 +30,11 @@ public class CartMovement : MonoBehaviour
             return;
         }
         
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && RotationThingy.CanRotateRight)
         {
             transform.Rotate(new Vector3(0, -rotateSpeed * Time.deltaTime, 0)); 
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && RotationThingy.CanRotateLeft)
         {
             transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime, 0));
         }
@@ -49,11 +51,13 @@ public class CartMovement : MonoBehaviour
 
 
     public void SetHavePlayer(bool a)
-    { 
-        havePlayer       = a;
+    {
+        havePlayer = a;
         Debug.Log("did cart stuff" + " ---  holding cart =" + a);
         TempP b = FindObjectOfType<TempP>();
-        b.CanMove            = !a;
+        TempC c = FindObjectOfType<TempC>();
+        c.isHoldingCart = a;
+        b.CanMove = !a;
         //b.transform.parent   = a ? transform : null;
     }
 }

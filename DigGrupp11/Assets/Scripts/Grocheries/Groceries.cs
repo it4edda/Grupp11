@@ -1,21 +1,32 @@
-using System;
-using Unity.VisualScripting;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Groceries : Interaction
 {
-    PlayerHand playerHand;
+    [SerializeField] LineRenderer lineRenderer;
     public GameObject text;
+    public Transform spawnPoint;
+
+    Rigidbody rb;
+    BoxCollider boxCollider;
+
+    public bool isPickedUp;
+    bool showShadow;
     protected override void Start()
     {
         base.Start();
         canInteract = true;
-        playerHand = FindObjectOfType<PlayerHand>();
+        rb = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     protected override void Update()
     {
         InteractionPassive();
+        if (showShadow)
+        {
+            DropShadow();
+        }
         
         bool a = Vector3.Distance(transform.position, target.position) < radius;
         interactIcon.SetBool("Showing", a);
@@ -29,28 +40,25 @@ public class Groceries : Interaction
         }
     }
 
-    protected override void InteractionActive()
+    public void SetShadow(bool isPicked)
     {
-        //GetsPickedUpp();
+        showShadow = isPicked;
+        lineRenderer.gameObject.SetActive(isPicked);
     }
 
-    void GetsPickedUpp()
+    void DropShadow()
     {
-        if(!playerHand.AddToHand(gameObject)){return;}
-
-        FindObjectOfType<SpawnManager>().RemoveGroceryFromList(text);
-        Debug.Log(text);
-        gameObject.SetActive(false);
-        canInteract = false;
-        // if (GameManager.Instance.shoppingList.Contains(gameObject) && playerHand.AddToHand(gameObject))
-        // {
-        //     GameManager.Instance.shoppingList.Remove(gameObject);
-        //     GameManager.Instance.CheckShoppingList();
-        // }
+        var position = transform.position;
+        if (Physics.Raycast(position, Vector3.down, out RaycastHit hit, 100000))
+        {
+            lineRenderer.SetPosition(0, position);
+            Vector3 lineVector = new(position.x, hit.transform.position.y, position.z);
+            lineRenderer.SetPosition(1, lineVector);
+        }
     }
+    
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
         if (other.CompareTag("CartZone"))
         {
             Debug.Log(text);
@@ -65,5 +73,12 @@ public class Groceries : Interaction
             Debug.Log(text);
             FindObjectOfType<SpawnManager>().AddGroceryToList(text);
         }
+    }
+
+    public void GetsPickedUp(bool pickupStatus)
+    {
+        boxCollider.isTrigger = pickupStatus;
+        rb.isKinematic = pickupStatus;
+        isPickedUp = pickupStatus;
     }
 }

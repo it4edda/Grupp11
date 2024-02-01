@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
+    public List<GameObject> availableGroceriesToSpawn;
+    public int numberOfDifferentGroceriesToSpawn;
+    public MinMax numberOfSameGroceriesToSpawn;
+    
     [SerializeField] float repelRange;
     [Tooltip("The size of the sphere checking for nearest transform to initially spawned object of each type")]
     [SerializeField] float sameObjectSpawnRadius;
@@ -22,13 +27,14 @@ public class SpawnManager : MonoBehaviour
         RestockGroceries(shoppingList);
         shoppingListUI = FindObjectOfType<ShoppingListUI>();
         shoppingListUI.SetUpShoppingListText(shoppingList);
-
     }
+
     void RestockGroceries(List<ShoppingListItem> shoppingList)
     {
         foreach (ShoppingListItem shoppingListItem in shoppingList)
         {
             GameObject firstObjectSpawned = null;
+            List<Transform> alreadySpawnedList = new ();
             for (int i = 0; i < shoppingListItem.amount; i++)
             {
                 if (i == 0)
@@ -40,16 +46,8 @@ public class SpawnManager : MonoBehaviour
                     do
                     {
                         spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)].transform;
-                        if (Physics.CheckSphere(spawnPoint.position, repelRange, groceriesMask))
-                        {
-                            rerollSpawnPoint = Random.Range(0, 100) < chanceToRepel;
-                            Debug.Log("rolls");
-                        }
-                        else
-                        {
-                            rerollSpawnPoint = false;
-                            Debug.Log("DoesNotRe-roll");
-                        }
+                        rerollSpawnPoint = Physics.CheckSphere(spawnPoint.position, repelRange, groceriesMask) &&
+                                           Random.Range(0, 100) < chanceToRepel;
 
                         breaker++;
                     } 
@@ -57,6 +55,8 @@ public class SpawnManager : MonoBehaviour
                     
                     firstObjectSpawned = Instantiate(shoppingListItem.item, spawnPoint);
                     firstObjectSpawned.GetComponent<Groceries>().text = shoppingListItem.item;
+                    firstObjectSpawned.GetComponent<Groceries>().spawnPoint = spawnPoint;
+                    alreadySpawnedList.Add(spawnPoint);
                     spawnPoints.Remove(spawnPoint.gameObject);
                 }
                 else
@@ -65,9 +65,16 @@ public class SpawnManager : MonoBehaviour
                         Physics.OverlapSphere(firstObjectSpawned.transform.position, sameObjectSpawnRadius, spawnPointMask, QueryTriggerInteraction.Collide);
 
                     List<Transform> closeSpawnPoints = closeSpawnPointsColliders.Select(closeSpawnPoint => closeSpawnPoint.transform).ToList();
+                    foreach (Transform points in alreadySpawnedList.Where(points => closeSpawnPoints.Contains(points)))
+                    {
+                        closeSpawnPoints.Remove(points);
+                    }
 
-                    GameObject spawnedObject = Instantiate(shoppingListItem.item, closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)]);
+                    Transform chosenSpawnPoint = closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)];
+                    alreadySpawnedList.Add(chosenSpawnPoint);
+                    GameObject spawnedObject = Instantiate(shoppingListItem.item, chosenSpawnPoint);
                     spawnedObject.GetComponent<Groceries>().text = shoppingListItem.item;
+                    spawnedObject.GetComponent<Groceries>().spawnPoint = chosenSpawnPoint;
                 }
             }
         }

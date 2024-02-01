@@ -1,19 +1,28 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.Timeline;
+using Random = UnityEngine.Random;
 using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
 {
-    [SerializeField] float     range;
-    [SerializeField] LayerMask mask;
-    Transform                  held;
+    public static event Action<bool, Transform> PickingUpSomething;
+
+    [SerializeField] float      range;
+    [SerializeField] LayerMask  mask;
+    [SerializeField] LayerMask  enemyMask;
+    [SerializeField] Transform  handPivot;
+    [SerializeField] Animator   handAnimator;
+    [SerializeField] GameObject handPrefab;
+    Transform                   held;
+    GameObject                  instantiatedHand;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Pickup();
-        }
+        if (Input.GetKeyDown(KeyCode.E)) Pickup();
+        if (Input.GetKeyDown(KeyCode.Mouse0)) Attack();
     }
     void Pickup()
     {
@@ -21,28 +30,39 @@ public class PlayerPickup : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range, mask))
             {
-                held                     = hit.transform;
-                hit.transform.parent     = transform;
-                Rigidbody a;
-                if (a = held.GetComponent<Rigidbody>())
-                    a.useGravity = false;
+                held                              = hit.transform;
+                instantiatedHand                  = Instantiate(handPrefab, hit.transform.position + Vector3.up * 0.5f, quaternion.identity);
+                instantiatedHand.transform.parent = hit.transform;
+                hit.transform.parent              = transform;
+                held.GetComponent<Groceries>().GetsPickedUp(true);                  
+                held.GetComponent<Groceries>().SetShadow(true);
+                PickingUpSomething?.Invoke(true, held);
             } 
-                
         }
         else
         {
+            Destroy(instantiatedHand);
             held.parent                               = null;
-            Rigidbody a;
-            if (a = held.GetComponent<Rigidbody>())
-            a.useGravity = true;
-
-              
+            held.GetComponent<Groceries>().GetsPickedUp(false);
+            held.GetComponent<Groceries>().SetShadow(false);
             held                                      = null;
-            
+            PickingUpSomething?.Invoke(false, held);
         }
             
             
     }
+    void Attack()
+    {
+            handPivot.rotation = quaternion.Euler(handPivot.rotation.x, Random.Range(0, 360), handPivot.rotation.z);
+            handAnimator.SetTrigger("Slap");
+        
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitB, range, enemyMask))
+        {
+            Debug.Log("SLAP");
+            hitB.transform.gameObject.GetComponent<EnemyAi>().Attacked();
+        }
+    }
+    
     void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * 5);

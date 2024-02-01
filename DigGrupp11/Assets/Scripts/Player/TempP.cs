@@ -26,22 +26,21 @@ public class TempP : MonoBehaviour
     bool isCrouching;
     bool canMove = true;
 
-    CharacterController characterController;
+    Rigidbody rb;
 
     private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Ground();
+        if (!canMove) { return;}
+        //Ground();
         Crouch();
         Move();
         Jump();
-        //Dash();
-        Gravity();
     }
     void Ground()
     {
@@ -53,8 +52,6 @@ public class TempP : MonoBehaviour
     }
     void Crouch()
     {
-        //not too proud of these but 
-        // if it works it works
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             isCrouching = true;
@@ -69,15 +66,13 @@ public class TempP : MonoBehaviour
 
     void Move()
     {
-        if (!CanMove)
-            return;
         float movementSpeed = 1;
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
 
         movement = Vector3.ClampMagnitude((transform.right * xInput) + (transform.forward * zInput), 1f);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && !FindObjectOfType<ShoppingCart>().PlayerAttach)
         {
             movementSpeed = runSpeed;
         }
@@ -90,7 +85,9 @@ public class TempP : MonoBehaviour
             movementSpeed = walkSpeed;
         }
 
-        characterController.Move(movement * (movementSpeed * Time.deltaTime));
+       
+        if (velocity.magnitude < movementSpeed) rb.AddForce(movement * movementSpeed, ForceMode.Impulse);
+        //characterController.Move(movement * (movementSpeed * Time.deltaTime));x
     }
     void Jump()
     {
@@ -99,15 +96,14 @@ public class TempP : MonoBehaviour
             velocity.y = MathF.Sqrt(jumpHeight * -2f * gravity);   
         }
     }
-
-    void Gravity()
-    {
-        velocity.y += gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
-    }
     public bool CanMove
     {
         get => canMove;
         set => canMove = value;
+    }
+    public float MovementSpeed
+    {
+        get => walkSpeed;
+        set => walkSpeed = value;
     }
 }

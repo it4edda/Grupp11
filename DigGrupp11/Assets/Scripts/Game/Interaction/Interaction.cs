@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] protected KeyCode interactKey; 
-    [SerializeField] protected float          radius;
-    [SerializeField] protected bool canInteract;
-    [SerializeField] protected Animator       interactIcon;
-    protected Transform                       target;
+    [SerializeField] protected KeyCode   interactKey; 
+    [SerializeField] protected float     radius;
+    [SerializeField] protected bool      canInteract;
+    [SerializeField]           bool      hasIcon = true;
+    [SerializeField] protected Animator  interactIcon;
+    protected                  Transform target;
     protected virtual void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        interactIcon.SetBool("Showing", false);
+        if (hasIcon) interactIcon.SetBool("Showing", false);
 
     }
     protected virtual void Update()
@@ -19,7 +20,7 @@ public class Interaction : MonoBehaviour
 
         Debug.Log(target.name);
         bool a = Vector3.Distance(transform.position, target.position) < radius;
-        interactIcon.SetBool("Showing", a);
+        if (hasIcon) interactIcon.SetBool("Showing", a);
         
         if (canInteract && a)
         {
@@ -29,9 +30,6 @@ public class Interaction : MonoBehaviour
             }
         }
     }
-    
-    //MAKE ADDITIONAL INTERACTION COROUTINES?
-    //item logic would profit from this
     protected virtual void InteractionPassive()
     {
         
