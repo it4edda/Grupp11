@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 456961687187408104}
   - component: {fileID: 3330802718358385004}
   - component: {fileID: 2658979591738284697}
+  - component: {fileID: 916680307431677566}
   m_Layer: 6
   m_Name: TEMP PLAYER
   m_TagString: Player
@@ -397,6 +398,25 @@ CapsuleCollider:
   m_Height: 3.47
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &916680307431677566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814452403944671113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0591d2de644ac5847bea6fae72be68c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gizmos: 1
+  size: {x: 0.5, y: 1, z: 1}
+  rigthPos: {x: 0.25, y: 0, z: 0}
+  leftPos: {x: -0.25, y: 0, z: 0}
+  layer:
+    serializedVersion: 2
+    m_Bits: 4023
 --- !u!1 &6428013583770429656
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +679,7 @@ MonoBehaviour:
   mouseSensitivity: 1000
   mouseSensitivityY: 950
   followPoint: {fileID: 0}
+  isHoldingCart: 0
 --- !u!114 &2409133496839837708
 MonoBehaviour:
   m_ObjectHideFlags: 0
