@@ -5,48 +5,53 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float moveSpeed;
+
+    // IMPORTANT! moveSpeed and walkSpeed have to be the same
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float walkSpeed = 5f;
+
+    [SerializeField] float sprintSpeed = 10f;
+    [SerializeField] float crouchSpeed = 5f;
+    [SerializeField] float jumpForce = 5f;
 
     [SerializeField] float groundDrag;
 
-    [SerializeField] float jumpForce;
-    [SerializeField] float jumpCooldown;
-    [SerializeField] float airMultiplier;
-    bool readyToJump;
-
-    [Header("Keybimd")]
-    [SerializeField] KeyCode jumpKey = KeyCode.Space;
-
     [Header("Ground Check")]
-    [SerializeField] float playerHeight;
+
     [SerializeField] LayerMask Ground;
-    bool grounded;
+    bool isGrounded = true;
 
     [SerializeField] Transform orientation;
 
     float horizantalInput;
     float verticalInput;
 
+    bool isCrouching = false;
+  
+
     Vector3 moveDirection;
 
-    Rigidbody rb;
+    Rigidbody playerRb;
+
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        playerRb = GetComponent<Rigidbody>();
+        playerRb.freezeRotation = true;
     }
 
     private void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
-
+        Jump();
+        Crouch();
         MyInput();
         SpeedControl();
 
-        if (grounded)
-            rb.drag = groundDrag;
+        if (isGrounded)
+            playerRb.drag = groundDrag;
         else
-            rb.drag = 0;
+            playerRb.drag = 0;
+
     }
 
     private void FixedUpdate()
@@ -58,41 +63,74 @@ public class PlayerMovement : MonoBehaviour
         horizantalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
-        {
-            readyToJump = false;
-
-            Jump();
-
-            //Invoke(nameof(ResetJump))
-        }
     }
 
     private void MovePlayer()
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizantalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        playerRb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
     }
     private void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Vector3 flatVel = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
 
-        if(flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            playerRb.velocity = new Vector3(limitedVel.x, playerRb.velocity.y, limitedVel.z);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = sprintSpeed;
+        }
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            moveSpeed = crouchSpeed;
+        }
+
+        else
+        {
+            moveSpeed = walkSpeed;
         }
     }
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    private void Crouch()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            Crouching();
+        }
+
+        else
+        {
+            StandingUp();
+        }
     }
 
-    private void ResetJump()
+    private void Crouching()
     {
-        readyToJump = true;
+        isCrouching = true;
+        transform.localScale = new Vector3(1, 0.5f, 1);
+        moveSpeed = crouchSpeed;
+    }
+
+    private void StandingUp()
+    {
+        isCrouching = false;
+        transform.localScale = new Vector3(1, 1, 1);
+        moveSpeed = walkSpeed;
+    }
+
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            
+            isGrounded = false;
+        }
+
     }
 }
