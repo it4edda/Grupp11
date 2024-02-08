@@ -1078,16 +1078,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'TODO:
-
-
-    WIFE IS HUNGRY
-
-    MONEY IS HEALTH
-
-    PAY FOR YOUR GROCERIES
-
-'
+  m_text: "TODO:\n\nWIFe IS HUNGRY\nMONEY IS HEALTH\nPAY FOR her GROCERIES\n!\n\nkasta
+    pengar i kassan f\xF6r att betala\nm\xE5ste ha cart f\xF6r att g\xE5 ut \n\nTappa
+    pengar on danage\nplocka upp pengar fron damaged p\xE5 marken"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6179,7 +6172,7 @@ GameObject:
   - component: {fileID: 2115236222}
   - component: {fileID: 2115236221}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TODO CANVAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
