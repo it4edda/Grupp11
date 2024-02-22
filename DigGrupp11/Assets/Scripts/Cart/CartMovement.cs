@@ -6,6 +6,8 @@ public class CartMovement : MonoBehaviour
     [SerializeField] float forwardMax;
     [SerializeField] float backSpeed;
     [SerializeField] float backMax;
+    [SerializeField] float sideSpeed;
+    [SerializeField] float sideMax;
     [SerializeField] float rotateSpeed;
 
     [SerializeField] bool havePlayer = false;
@@ -28,13 +30,13 @@ public class CartMovement : MonoBehaviour
             return;
         }
         
-        if (Input.GetKey(KeyCode.A) && RotationThingy.CanRotateRight)
+        if (Input.GetKey(KeyCode.A) && rb.velocity.magnitude < sideSpeed)
         {
-            transform.Rotate(new Vector3(0, -rotateSpeed * Time.deltaTime, 0)); 
+            rb.AddForce(-transform.right * sideSpeed, ForceMode.Force);
         }
-        if (Input.GetKey(KeyCode.D) && RotationThingy.CanRotateLeft)
+        if (Input.GetKey(KeyCode.D) && rb.velocity.magnitude < sideSpeed)
         {
-            transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime, 0));
+            rb.AddForce(transform.right * sideSpeed, ForceMode.Force);
         }
         if (Input.GetKey(KeyCode.W) && rb.velocity.magnitude < forwardMax)
         {
@@ -55,6 +57,14 @@ public class CartMovement : MonoBehaviour
         TempP b = FindObjectOfType<TempP>();
         TempC c = FindObjectOfType<TempC>();
         c.isHoldingCart = a;
+        if (havePlayer)
+        {
+            c.SetBody(transform);
+        }
+        else
+        {
+            c.SetBody();
+        }
         b.CanMove = !a;
         //b.transform.parent   = a ? transform : null;
     }

@@ -18,7 +18,7 @@ public class TempC : MonoBehaviour
 #endregion
     private void Awake()
     {
-        playerBody = transform.parent.transform;
+        SetBody();
         rb = GetComponentInParent<Rigidbody>();
         Debug.Log(rb);
     }
@@ -36,8 +36,18 @@ public class TempC : MonoBehaviour
         yRotation += mouseX;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.parent.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
+        playerBody.localRotation = Quaternion.Euler(0, yRotation, 0);
     }
+
+    public void SetBody( Transform newTransform)
+    {
+        playerBody = newTransform;
+    }
+    public void SetBody()
+    {
+        playerBody = transform.parent.transform;
+    }
+    
     void FixedUpdate()
     {
         Look();

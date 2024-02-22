@@ -36,8 +36,8 @@ public class TempP : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!canMove) { return;}
-        //Ground();
+        
+        Ground();
         Crouch();
         Move();
         Jump();
@@ -47,7 +47,7 @@ public class TempP : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -2f;//??
         }
     }
     void Crouch()
@@ -66,6 +66,7 @@ public class TempP : MonoBehaviour
 
     void Move()
     {
+        if (!canMove) { return;}
         float movementSpeed = 1;
         xInput = Input.GetAxis("Horizontal");
         zInput = Input.GetAxis("Vertical");
