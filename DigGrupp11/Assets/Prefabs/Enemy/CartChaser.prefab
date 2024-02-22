@@ -150,7 +150,7 @@ MonoBehaviour:
   health: 3
   targetToChase: {fileID: 0}
   distance: 1
-  speed: 2.36
+  speed: 3
   drag: 0.6
   spring: 0.4
-  power: 0
+  power: 100
