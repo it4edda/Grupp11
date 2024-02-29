@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*
- * Money is health
+ * Wealth is health
  * When beginning to scan items starts a timer
  * need to scan all the stuff and pay under time limit?
  * if timer runs out either loose or ghost from spelunky?
