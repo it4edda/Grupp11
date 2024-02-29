@@ -59,7 +59,7 @@ public class CartMovement : MonoBehaviour
         c.isHoldingCart = a;
         if (havePlayer)
         {
-            c.SetBody(GetComponent<Rigidbody>());
+            c.SetBody(GetComponent<Transform>());
         }
         else
         {

@@ -12,7 +12,7 @@ public class TempC : MonoBehaviour
     float     xRotation = 0f;
     float     yRotation = 0f;
     Rigidbody rb;
-    Rigidbody playerBody;
+    Transform playerBody;
 
     public bool isHoldingCart = false;
 #endregion
@@ -39,13 +39,13 @@ public class TempC : MonoBehaviour
         playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
-    public void SetBody( Rigidbody newRB)
+    public void SetBody( Transform newRB)
     {
         playerBody = newRB;
     }
     public void SetBody()
     {
-        playerBody = transform.parent.GetComponent<Rigidbody>();
+        playerBody = transform.parent.transform;
     }
     
     void FixedUpdate()
