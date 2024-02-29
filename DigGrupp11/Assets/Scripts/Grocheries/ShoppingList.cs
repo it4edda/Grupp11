@@ -30,6 +30,8 @@ public class ShoppingList : MonoBehaviour
         Instance = this;
     }
 
+    //TODO fix this shit
+    //Make it so objects can only spawn in their designated shelves
     public List<ShoppingListItem> WriteList()
     {
         cumulativePrice = 0;
