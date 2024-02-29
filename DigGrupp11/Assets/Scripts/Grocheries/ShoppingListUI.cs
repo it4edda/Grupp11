@@ -12,18 +12,20 @@ public class ShoppingListUI : MonoBehaviour
 
     public void SetUpShoppingListText(List<ShoppingListItem> shoppingList)
     {
+        float cumulativeCost = 0;
         foreach (ShoppingListItem item in shoppingList)
         {
             GameObject newGrocery = Instantiate(textPrefab, textParent);
             newGrocery.GetComponent<SetShoppingListText>().SetText(item);
+            cumulativeCost += item.item.GetComponent<Groceries>().Price * item.amount;
             currentShoppingList.Add(newGrocery.GetComponent<SetShoppingListText>());
         }
-        SetCosts();
+        SetCosts(cumulativeCost);
     }
 
-    public void SetCosts()
+    public void SetCosts(float cost)
     {
-        
+        costText.text = cost.ToString();
     }
     
     public GameObject TestShoppingList(GameObject gameObject)
