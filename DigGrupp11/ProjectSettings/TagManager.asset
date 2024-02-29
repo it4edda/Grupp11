@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - CartZone
   - Groceries
+  - Cash
   layers:
   - Default
   - TransparentFX

@@ -29,7 +29,7 @@ public class RotationThingy : MonoBehaviour
         Collider[] R = Physics.OverlapBox(_rigthPos, size / 2, transform.rotation, layer);
         if (R.Length == 0) { canRotateRight = true; }
         else { canRotateRight = false; }
-        print("R = " + R.Length);
+        //print("R = " + R.Length);
 
         Collider[] L = Physics.OverlapBox(_leftPos, size / 2, transform.rotation, layer) ;
         if (L.Length == 0) { canRotateLeft = true; }

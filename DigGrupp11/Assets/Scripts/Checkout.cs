@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Checkout : MonoBehaviour
 {
-    [SerializeField] LayerMask cashMask;
-    [SerializeField] LayerMask groceryMask; 
-    
+    [SerializeField] string   cashTag;
+    [SerializeField] string   groceryTag;
+    [SerializeField] Animator payAnimator;
+
+    bool canPay       = false;
     int  amountPayed  = 0;
     int  amountNeeded = 0;
     void Start()
@@ -17,20 +19,24 @@ public class Checkout : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == cashMask)
+        Debug.Log("OTHER IS ON ME");
+        
+        if (other.CompareTag(cashTag))
         {
             amountPayed++;
+            if (amountPayed >= amountNeeded) canPay = true;
             Destroy(other);
         }
         
-        else if (other.gameObject.layer == groceryMask)
+        else if (other.CompareTag(groceryTag))
         {
-            
+            payAnimator.SetTrigger("PUShow");
+            Debug.Log("HAHAH");
         }
     }
-    void OnCollisionExit(Collision other) 
+    void OnTriggerExit(Collider other) 
     { 
-        if (other.gameObject.layer == groceryMask)
+        if (other.CompareTag(groceryTag))
         {
             
         } 
