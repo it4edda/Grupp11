@@ -265,6 +265,8 @@ MonoBehaviour:
   interactIcon: {fileID: 2125735058824821234}
   lineRenderer: {fileID: 1871211155348825026}
   text: {fileID: 7546802652246686952}
+  spawnPoint: {fileID: 0}
+  isPickedUp: 0
 --- !u!54 &-6388008351615493981
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -289,7 +291,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!1001 &6072177917217411315

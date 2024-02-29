@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Groceries : Interaction
 {
+    [SerializeField] float price;
+    public float Price => price;
+
     [SerializeField] LineRenderer lineRenderer;
     public GameObject text;
     public Transform spawnPoint;

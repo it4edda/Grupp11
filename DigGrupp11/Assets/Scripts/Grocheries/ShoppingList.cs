@@ -21,6 +21,8 @@ public class ShoppingList : MonoBehaviour
     
     [SerializeField] List<ShoppingListItem> shoppingList = new();
 
+    float cumulativePrice;
+    
     SpawnManager spawnManager;
     
     void Awake()
@@ -30,6 +32,7 @@ public class ShoppingList : MonoBehaviour
 
     public List<ShoppingListItem> WriteList()
     {
+        cumulativePrice = 0;
         shoppingList.Clear();
         spawnManager = FindObjectOfType<SpawnManager>();
         List<GameObject> tempGroceriesAvailable = spawnManager.availableGroceriesToSpawn;
@@ -41,6 +44,7 @@ public class ShoppingList : MonoBehaviour
             newItem.item = theChosenObject;
             newItem.amount = spawnManager.numberOfSameGroceriesToSpawn.GetRandom();
             shoppingList.Add(newItem);
+            cumulativePrice += theChosenObject.GetComponent<Groceries>().Price;
         }
         return shoppingList;
     }
