@@ -31,7 +31,7 @@ public class PlayerPickup : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range, mask))
             {
                 held                              = hit.transform;
-                instantiatedHand                  = Instantiate(handPrefab, hit.transform.position + Vector3.up * 0.5f, quaternion.identity);
+                instantiatedHand                  = Instantiate(handPrefab, hit.transform.position + Vector3.up * 0.2f, quaternion.identity);
                 instantiatedHand.transform.parent = hit.transform;
                 hit.transform.parent              = transform;
                 held.GetComponent<Groceries>().GetsPickedUp(true);                  
