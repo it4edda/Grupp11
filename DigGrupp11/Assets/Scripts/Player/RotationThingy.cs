@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class RotationThingy : MonoBehaviour
 {
+    //CHECKS IF THERE IS A WALL IN THE WAY OF THE ROTATION
     [SerializeField] bool gizmos;
 
     [SerializeField] Vector3 size;
