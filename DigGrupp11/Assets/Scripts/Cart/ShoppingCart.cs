@@ -89,7 +89,7 @@ public class ShoppingCart : MonoBehaviour
             playerAttach = false;
         }*/
     }
-
+    //TODO
     IEnumerator MovePlayer()
     {
         playerAttaching = true;
