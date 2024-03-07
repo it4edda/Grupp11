@@ -1,28 +1,33 @@
 using System;
-using System.Collections;
+using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Timeline;
 using Random = UnityEngine.Random;
-using UnityEngine;
 
 public class PlayerPickup : MonoBehaviour
 {
     public static event Action<bool, Transform> PickingUpSomething;
 
     [SerializeField] float      range;
+    [SerializeField] float      throwPower;
     [SerializeField] LayerMask  mask;
     [SerializeField] LayerMask  enemyMask;
     [SerializeField] Transform  handPivot;
     [SerializeField] Animator   handAnimator;
     [SerializeField] GameObject handPrefab;
+    [SerializeField] GameObject moneyPrefab;
+    PlayerMoney                 playerMoney;
     Transform                   held;
     GameObject                  instantiatedHand;
-
+    void Start()
+    {
+        playerMoney = FindObjectOfType<PlayerMoney>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) Pickup();
         if (Input.GetKeyDown(KeyCode.Mouse0)) Attack();
+        if (Input.GetKeyDown(KeyCode.Mouse1)) ThrowMoney();
     }
     void Pickup()
     {
@@ -31,7 +36,7 @@ public class PlayerPickup : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range, mask))
             {
                 held                              = hit.transform;
-                instantiatedHand                  = Instantiate(handPrefab, hit.transform.position + Vector3.up * 0.2f, quaternion.identity);
+                instantiatedHand                  = Instantiate(handPrefab, hit.transform.position + Vector3.up * 0.2f, Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0)));
                 instantiatedHand.transform.parent = hit.transform;
                 hit.transform.parent              = transform;
                 held.GetComponent<Groceries>().GetsPickedUp(true);                  
@@ -61,6 +66,12 @@ public class PlayerPickup : MonoBehaviour
             Debug.Log("SLAP");
             hitB.transform.gameObject.GetComponent<EnemyAi>().Attacked();
         }
+    }
+    void ThrowMoney()
+    {
+        if (--playerMoney.CurrentMoney <= -1) return;
+        var a = Instantiate(moneyPrefab, transform.position + transform.forward * 1, quaternion.identity);
+        a.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower);
     }
     
     void OnDrawGizmos()

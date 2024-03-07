@@ -18,7 +18,6 @@ public class Interaction : MonoBehaviour
     {
         InteractionPassive();
 
-        Debug.Log(target.name);
         bool a = Vector3.Distance(transform.position, target.position) < radius;
         if (hasIcon) interactIcon.SetBool("Showing", a);
         

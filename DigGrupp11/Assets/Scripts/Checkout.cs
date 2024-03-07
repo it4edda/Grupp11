@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkout : MonoBehaviour
@@ -19,20 +17,27 @@ public class Checkout : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OTHER IS ON ME");
+        Debug.Log("SOMETHING IS IS ON ME (Cash-out)");
         
         if (other.CompareTag(cashTag))
         {
+            Debug.Log("MONEY IS IS ON ME (Cash-out)");
             amountPayed++;
             if (amountPayed >= amountNeeded) canPay = true;
+            StartCoroutine(DestroyMoney(other.gameObject));
             Destroy(other);
         }
         
         else if (other.CompareTag(groceryTag))
         {
             payAnimator.SetTrigger("PUShow");
-            Debug.Log("HAHAH");
+            Debug.Log("GROCERY TOUCHED ME (Cash-out)");
         }
+    }
+    IEnumerator DestroyMoney(GameObject money)
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(money);
     }
     void OnTriggerExit(Collider other) 
     { 
