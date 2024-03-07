@@ -8,11 +8,16 @@ public class TempC : MonoBehaviour
     [SerializeField] float     mouseSensitivity  = 1500f;
     [SerializeField] float     mouseSensitivityY = 1500f;
     [SerializeField] Transform followPoint;
-
-    float     xRotation = 0f;
-    float     yRotation = 0f;
-    Rigidbody rb;
-    Transform playerBody;
+    [SerializeField] bool      allowRotation = true;
+    public bool AllowRotation
+    {
+        get => allowRotation;
+        set => allowRotation = value;
+    }
+    float                      xRotation     = 0f;
+    float                      yRotation     = 0f;
+    Rigidbody                  rb;
+    Transform                  playerBody;
 
     public bool isHoldingCart = false;
 #endregion
@@ -30,6 +35,7 @@ public class TempC : MonoBehaviour
 
     void Update()
     {
+        if (!allowRotation) return;
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityY * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
         xRotation -= mouseY;
@@ -52,6 +58,7 @@ public class TempC : MonoBehaviour
     {
         Look();
     }
+    
 
     void Look()
     {
