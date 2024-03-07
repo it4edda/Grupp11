@@ -2602,6 +2602,11 @@ PrefabInstance:
       propertyPath: playerPos.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 8351178901980646518, guid: 25f5e0d0ea52e274ab4c46ee7f13d6a8,
+        type: 3}
+      propertyPath: rotationMinDegrees
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7808,6 +7813,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 916680307431677566, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 916680307431677566, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 916680307431677566, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: leftPos.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 916680307431677566, guid: c59489fbd61dd42469a01608215d5fb5,
+        type: 3}
+      propertyPath: rigthPos.x
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5814452403944671113, guid: c59489fbd61dd42469a01608215d5fb5,
         type: 3}
       propertyPath: m_Name

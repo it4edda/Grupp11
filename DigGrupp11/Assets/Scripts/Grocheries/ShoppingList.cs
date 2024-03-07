@@ -8,6 +8,7 @@ public struct ShoppingListItem
 { 
     public GameObject item;
     public int amount;
+    public ShelfType shelfType;
 
     public void DecreaseAmount(int amountToIncrease)
     {
@@ -45,6 +46,7 @@ public class ShoppingList : MonoBehaviour
             ShoppingListItem newItem;
             newItem.item = theChosenObject;
             newItem.amount = spawnManager.numberOfSameGroceriesToSpawn.GetRandom();
+            newItem.shelfType = theChosenObject.GetComponent<Groceries>().Type;
             shoppingList.Add(newItem);
             cumulativePrice += theChosenObject.GetComponent<Groceries>().Price;
         }

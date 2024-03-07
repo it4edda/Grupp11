@@ -89,20 +89,20 @@ public class ShoppingCart : MonoBehaviour
             playerAttach = false;
         }*/
     }
-
+    //TODO
     IEnumerator MovePlayer()
     {
         playerAttaching = true;
         float currentTime = 0;
         Vector3 pPos = player.transform.position;
-        //Vector3 pRo = player.transform.forward;
+        Vector3 pRo = player.transform.forward;
 
         while (currentTime < timePlayerToPos)
         {
             float b = currentTime / timePlayerToPos;
 
             player.transform.position = Vector3.Lerp(pPos, new Vector3(_playerPos.x, player.transform.position.y, _playerPos.z), b);
-            //player.transform.forward = Vector3.Lerp(pRo, new Vector3(transform.position.x - player.transform.position.x, 0, transform.position.z - player.transform.position.z), b);
+            player.transform.forward = Vector3.Lerp(pRo, new Vector3(transform.position.x - player.transform.position.x, 0, transform.position.z - player.transform.position.z), b);
 
             currentTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();

@@ -18,6 +18,7 @@ public class TempC : MonoBehaviour
     float                      yRotation     = 0f;
     Rigidbody                  rb;
     Transform                  playerBody;
+    RotationThingy rotationThingy;
 
     public bool isHoldingCart = false;
 #endregion
@@ -26,6 +27,7 @@ public class TempC : MonoBehaviour
         SetBody();
         rb = GetComponentInParent<Rigidbody>();
         Debug.Log(rb);
+        rotationThingy = FindObjectOfType<RotationThingy>();
     }
 
     void Start()
@@ -39,10 +41,29 @@ public class TempC : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityY * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
         xRotation -= mouseY;
-        yRotation += mouseX;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        if (!isHoldingCart)
+        {
+            playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
+            yRotation += mouseX;
+        }
+        else //if (isHoldingCart)
+        {
+            if (mouseX <= 0 && rotationThingy.CanRotateRight)
+            {
+                //right
+                playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
+                yRotation += mouseX;
+            }
+            else if (mouseX > 0 && rotationThingy.CanRotateLeft)
+            {
+                //left
+                playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
+                yRotation += mouseX;
+            }
+        }
     }
 
     public void SetBody( Transform newRB)
