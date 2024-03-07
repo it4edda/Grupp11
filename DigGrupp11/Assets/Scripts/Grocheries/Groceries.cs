@@ -1,8 +1,16 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Groceries : Interaction
 {
     [SerializeField] float price;
+    [FormerlySerializedAs("typte")] [SerializeField] ShelfType type;
+
+    public ShelfType Type
+    {
+        get => type;
+        set => type = value;
+    }
     public float Price => price;
 
     [SerializeField] LineRenderer lineRenderer;

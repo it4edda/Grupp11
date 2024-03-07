@@ -9,7 +9,7 @@ public enum ShelfType
     Fridge
 }
 
-public class GrocerySpawn : MonoBehaviour
+public class GrocerySpawnPoint : MonoBehaviour
 {
     public ShelfType shelfType;
     public bool available = true;
