@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 public class Groceries : Interaction
 {
-    [SerializeField] float price;
+    [SerializeField] int price;
     [FormerlySerializedAs("typte")] [SerializeField] ShelfType type;
 
     public ShelfType Type
@@ -11,7 +11,7 @@ public class Groceries : Interaction
         get => type;
         set => type = value;
     }
-    public float Price => price;
+    public int Price => price;
 
     [SerializeField] LineRenderer lineRenderer;
     public GameObject text;

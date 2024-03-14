@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: ' Shoppingspree'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -207,13 +207,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 72
+  m_fontSizeBase: 83.43
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 39
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -5793,6 +5793,8 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 1189673994}
+  price: 0
+  type: 0
   lineRenderer: {fileID: 970033091}
   text: {fileID: 812251820}
   spawnPoint: {fileID: 0}
@@ -11562,6 +11564,8 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 1472151128}
+  price: 0
+  type: 0
   lineRenderer: {fileID: 1713374111}
   text: {fileID: 1459933366}
   spawnPoint: {fileID: 0}
@@ -12750,6 +12754,8 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 80678678}
+  price: 0
+  type: 0
   lineRenderer: {fileID: 1499735348309854232}
   text: {fileID: 7321833733108537138}
   spawnPoint: {fileID: 0}
