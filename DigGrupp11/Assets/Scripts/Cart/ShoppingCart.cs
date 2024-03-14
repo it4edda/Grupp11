@@ -28,13 +28,16 @@ public class ShoppingCart : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float playerSpeed;
 
+    private void Start()
+    {
+        player = FindObjectOfType<TempP>();
+        rb = player.GetComponent<Rigidbody>();
+    }
+
     private void Update()
     {
         _checkPos = transform.rotation * checkPos + transform.position;
         _playerPos = transform.rotation * playerPos + transform.position;
-
-        player = FindObjectOfType<TempP>();
-        rb = player.GetComponent<Rigidbody>();
 
         PlayerCheck();
 
@@ -47,6 +50,7 @@ public class ShoppingCart : MonoBehaviour
     private void PlayerCheck()
     {
         Collider[] a = Physics.OverlapBox(_checkPos, checkSize / 2, transform.rotation, playerLayer);
+
         if (Input.GetKeyDown(KeyCode.Q) && 
             ((transform.eulerAngles.x > rotationMinDegrees && transform.eulerAngles.x < (360 - rotationMinDegrees)) || (transform.eulerAngles.z > rotationMinDegrees && transform.eulerAngles.z < (360 - rotationMinDegrees))) &&
             Vector3.Distance(transform.position, player.transform.position) < rotattionMaxDistance) 
@@ -70,28 +74,13 @@ public class ShoppingCart : MonoBehaviour
             playerAttach = false;
             cartMovement.SetHavePlayer(playerAttach);
         }
-        /*
-        else if (Input.GetKeyDown(KeyCode.Q) && a.Length > 0 && !playerAttach)
-        {
-            player.transform.position = new Vector3(_playerPos.x, player.transform.position.y, _playerPos.z);
-            player.transform.forward = new Vector3(transform.position.x - player.transform.position.x, 0, transform.position.z - player.transform.position.z);
-            rb.isKinematic = true;
-            gameObject.transform.parent = a[0].transform;
-            playerSpeed = player.MovementSpeed;
-            player.MovementSpeed = moveSpeed;
-            playerAttach = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Q) && playerAttach)
-        {
-            gameObject.transform.parent = null;
-            rb.isKinematic = false;
-            player.MovementSpeed = playerSpeed;
-            playerAttach = false;
-        }*/
     }
     //TODO
     IEnumerator MovePlayer()
     {
+        TempC c = FindObjectOfType<TempC>();
+        player.CanMove = false;
+        c.AllowRotation = false;
         playerAttaching = true;
         float currentTime = 0;
         Vector3 pPos = player.transform.position;
@@ -113,7 +102,10 @@ public class ShoppingCart : MonoBehaviour
         playerAttaching = false;
         playerAttach = true;
         cartMovement.SetHavePlayer(playerAttach);
-        //player.CanMove = true;
+        c.YRotation = transform.rotation.y;
+
+        player.CanMove = true;
+        c.AllowRotation = true;
         yield return null;
     }
 

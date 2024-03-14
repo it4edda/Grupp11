@@ -16,6 +16,11 @@ public class TempC : MonoBehaviour
     }
     float                      xRotation     = 0f;
     float                      yRotation     = 0f;
+    public float YRotation
+    {
+        get => yRotation;
+        set => yRotation = value;
+    }
     Rigidbody                  rb;
     Transform                  playerBody;
     RotationThingy rotationThingy;
@@ -46,22 +51,22 @@ public class TempC : MonoBehaviour
 
         if (!isHoldingCart)
         {
-            playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
             yRotation += mouseX;
+            playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
         }
         else //if (isHoldingCart)
         {
             if (mouseX <= 0 && rotationThingy.CanRotateRight)
             {
                 //right
-                playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
                 yRotation += mouseX;
+                playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
             }
             else if (mouseX > 0 && rotationThingy.CanRotateLeft)
             {
                 //left
-                playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
                 yRotation += mouseX;
+                playerBody.rotation = Quaternion.Euler(0, yRotation, 0);
             }
         }
     }
