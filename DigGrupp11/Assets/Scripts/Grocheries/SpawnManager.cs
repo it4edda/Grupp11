@@ -48,9 +48,9 @@ public class SpawnManager : MonoBehaviour
     
     void RestockBackgroundGroceries()
     {
-        List<GrocerySpawnPoint> availableSpawns =
-            new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>().Where(point => point.available));
-        for (int i = 0; i < availableSpawns.Count / 10; i++)
+        List<GrocerySpawnPoint> availableFridgeSpawns =
+            new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>().Where(point => point.available && point.shelfType == ShelfType.Fridge));
+        for (int i = 0; i < availableFridgeSpawns.Count / 5; i++)
         {
             firstObjectSpawned = null;
             GameObject objectToSpawn = availableGroceriesToSpawn[Random.Range(0, availableGroceriesToSpawn.Count)];

@@ -14,6 +14,9 @@ public class Checkout : MonoBehaviour
     [SerializeField] int amountNeededInCart = 0;
     [SerializeField] int amountNeeded       = 0;
 
+    public int AmountNeeded { get => amountNeeded; set => amountNeeded = value; }
+
+
     bool canPay       = false;
     int  amountPayed  = 0;
     void Start()

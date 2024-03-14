@@ -22,7 +22,7 @@ public class ShoppingList : MonoBehaviour
     
     [SerializeField] List<ShoppingListItem> shoppingList = new();
 
-    float cumulativePrice;
+    int cumulativePrice;
     
     SpawnManager spawnManager;
     
@@ -49,6 +49,8 @@ public class ShoppingList : MonoBehaviour
             newItem.shelfType = theChosenObject.GetComponent<Groceries>().Type;
             shoppingList.Add(newItem);
             cumulativePrice += theChosenObject.GetComponent<Groceries>().Price;
+            Checkout checkout = FindObjectOfType<Checkout>();
+            checkout.AmountNeeded = cumulativePrice;
         }
         return shoppingList;
     }

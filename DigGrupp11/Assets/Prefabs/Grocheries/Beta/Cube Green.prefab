@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 6876700999631919821}
+    - target: {fileID: 2689763848702918009, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Name
