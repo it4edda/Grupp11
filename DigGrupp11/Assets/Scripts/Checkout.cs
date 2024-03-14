@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Checkout : MonoBehaviour
 {
     [SerializeField] string   cashTag;
     [SerializeField] string   groceryTag;
     [SerializeField] Animator payAnimator;
-
+    [SerializeField] TextMeshProUGUI checkoutText;
+    
     [Header("DONT CHANGE")]
     [SerializeField] List<GameObject> itemsInCheckout    = new List<GameObject>();
-    [SerializeField] int amountNeededInCart = 0;
-    [SerializeField] int amountNeeded       = 0;
+    [SerializeField] int  amountNeededInCart = 0;
+    [SerializeField] int  amountNeeded       = 0;
 
     public int AmountNeeded { get => amountNeeded; set => amountNeeded = value; }
 
@@ -42,6 +44,7 @@ public class Checkout : MonoBehaviour
             itemsInCheckout.Add(other.gameObject);
             if (amountNeededInCart >= amountNeeded) payAnimator.SetTrigger("PUShow");
             Debug.Log("GROCERY TOUCHED ME (Cash-out)");
+            UpdateText();
         }
     }
     IEnumerator DestroyMoney(GameObject money)
@@ -60,6 +63,11 @@ public class Checkout : MonoBehaviour
         {
             amountNeededInCart -= other.GetComponent<Groceries>().Price;
             itemsInCheckout.Remove(other.gameObject);
+            UpdateText();
         } 
+    }
+    void UpdateText()
+    {
+        checkoutText.text = ("COST     " + amountNeededInCart);
     }
 }
