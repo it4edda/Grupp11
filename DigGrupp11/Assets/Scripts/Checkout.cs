@@ -11,11 +11,11 @@ public class Checkout : MonoBehaviour
 
     [Header("DONT CHANGE")]
     [SerializeField] List<GameObject> itemsInCheckout    = new List<GameObject>();
-    [SerializeField] int              amountNeededInCart = 0;
+    [SerializeField] int amountNeededInCart = 0;
+    [SerializeField] int amountNeeded       = 0;
 
     bool canPay       = false;
     int  amountPayed  = 0;
-    int  amountNeeded = 0;
     void Start()
     {
         amountNeeded = 5;
