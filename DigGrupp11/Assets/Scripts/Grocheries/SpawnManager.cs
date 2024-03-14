@@ -19,11 +19,12 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] List<ShoppingListItem> shoppingList;
     ShoppingListUI shoppingListUI;
 
-
+    GameObject firstObjectSpawned = null;
     void Start()
     {
         shoppingList = ShoppingList.Instance.WriteList();
         RestockMandatoryGroceries(shoppingList);
+        RestockBackgroundGroceries();
         shoppingListUI = FindObjectOfType<ShoppingListUI>();
         shoppingListUI.SetUpShoppingListText(shoppingList);
     }
@@ -33,62 +34,86 @@ public class SpawnManager : MonoBehaviour
     {
         foreach (ShoppingListItem shoppingListItem in shoppingList)
         {
-            GameObject firstObjectSpawned = null;
+            firstObjectSpawned = null;
+            ShelfType itemShelfType = shoppingListItem.shelfType;
+            GameObject item = shoppingListItem.item;
             spawnPoints = new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>()
                 .Where(point => point.available && point.shelfType == shoppingListItem.shelfType));
             for (int i = 0; i < shoppingListItem.amount; i++)
             {
-                if (i == 0)
-                {
-                    GrocerySpawnPoint spawnPoint;
-                    bool rerollSpawnPoint;
-                    int breaker = 0;
-
-                    do
-                    {
-                        spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                        rerollSpawnPoint = Physics.CheckSphere(spawnPoint.transform.position, repelRange, groceriesMask) &&
-                                           Random.Range(0, 100) < chanceToRepel;
-
-                        breaker++;
-                    } 
-                    while (rerollSpawnPoint && breaker < 50);
-                    
-                    firstObjectSpawned = Instantiate(shoppingListItem.item, spawnPoint.transform);
-                    Groceries groceries = firstObjectSpawned.GetComponent<Groceries>();
-                    
-                    groceries.text = shoppingListItem.item;
-                    groceries.spawnPoint = spawnPoint.transform;
-                    spawnPoint.available = false;
-                }
-                else
-                {
-                    Collider[] closeSpawnPointsColliders =
-                        Physics.OverlapSphere(firstObjectSpawned.transform.position, sameObjectSpawnRadius, spawnPointMask, QueryTriggerInteraction.Collide);
-
-                    List<GrocerySpawnPoint> closeSpawnPoints = closeSpawnPointsColliders.Select(closeSpawnPoint => closeSpawnPoint.GetComponent<GrocerySpawnPoint>()).ToList();
-                    foreach (GrocerySpawnPoint points in closeSpawnPoints.Where(point => point.available == false && point.shelfType != shoppingListItem.shelfType))
-                    {
-                        closeSpawnPoints.Remove(points);
-                        if (closeSpawnPoints.Count <= 0)
-                        {
-                            break;
-                        }
-                    }
-
-                    GrocerySpawnPoint chosenSpawnPoint = closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)];
-                    GameObject spawnedObject = Instantiate(shoppingListItem.item, chosenSpawnPoint.transform);
-                    chosenSpawnPoint.available = false;
-                    spawnedObject.GetComponent<Groceries>().text = shoppingListItem.item;
-                    spawnedObject.GetComponent<Groceries>().spawnPoint = chosenSpawnPoint.transform;
-                }
+                SpawningGroceries(i, item, itemShelfType, true);
+            }
+        }
+    }
+    
+    void RestockBackgroundGroceries()
+    {
+        List<GrocerySpawnPoint> availableSpawns =
+            new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>().Where(point => point.available));
+        for (int i = 0; i < availableSpawns.Count / 10; i++)
+        {
+            firstObjectSpawned = null;
+            GameObject objectToSpawn = availableGroceriesToSpawn[Random.Range(0, availableGroceriesToSpawn.Count)];
+            int amountOfBackgroundObjects = Random.Range(1, 6);
+            spawnPoints = new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>()
+                .Where(point => point.available && point.shelfType == objectToSpawn.GetComponent<Groceries>().Type));
+            for (int j = 0; j < amountOfBackgroundObjects; j++)
+            {
+                SpawningGroceries(j, objectToSpawn, objectToSpawn.GetComponent<Groceries>().Type, false);
             }
         }
     }
 
-    void RestockBackgroundGroceries()
+    void SpawningGroceries(int i, GameObject item, ShelfType shelfType, bool repel)
     {
-        
+        Debug.Log(i);
+        if (i == 0)
+        {
+            GrocerySpawnPoint spawnPoint;
+            bool rerollSpawnPoint;
+            int breaker = 0;
+
+            do
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+                rerollSpawnPoint = repel &&
+                                   Physics.CheckSphere(spawnPoint.transform.position, repelRange, groceriesMask) &&
+                                   Random.Range(0, 100) < chanceToRepel;
+                breaker++;
+            } while (rerollSpawnPoint && breaker < 50);
+
+            firstObjectSpawned = Instantiate(item, spawnPoint.transform);
+            Groceries groceries = firstObjectSpawned.GetComponent<Groceries>();
+
+            groceries.text = item;
+            groceries.spawnPoint = spawnPoint.transform;
+            spawnPoint.available = false;
+        }
+        else
+        {
+            Debug.Log(firstObjectSpawned);
+            Collider[] closeSpawnPointsColliders =
+                Physics.OverlapSphere(firstObjectSpawned.transform.position, sameObjectSpawnRadius, spawnPointMask);
+
+            List<GrocerySpawnPoint> closeSpawnPoints = closeSpawnPointsColliders
+                .Select(closeSpawnPoint => closeSpawnPoint.GetComponent<GrocerySpawnPoint>()).Where(point => point.available && point.shelfType == shelfType).ToList();
+            if (closeSpawnPoints.Count(point => point.available && point.shelfType == shelfType) <= 0) { return;}
+            foreach (GrocerySpawnPoint points in closeSpawnPoints.Where(point =>
+                         point.available == false && point.shelfType != shelfType))
+            {
+                closeSpawnPoints.Remove(points);
+                if (closeSpawnPoints.Count <= 0)
+                {
+                    return;
+                }
+            }
+            
+            GrocerySpawnPoint chosenSpawnPoint = closeSpawnPoints[Random.Range(0, closeSpawnPoints.Count)];
+            GameObject spawnedObject = Instantiate(item, chosenSpawnPoint.transform);
+            chosenSpawnPoint.available = false;
+            spawnedObject.GetComponent<Groceries>().text = item;
+            spawnedObject.GetComponent<Groceries>().spawnPoint = chosenSpawnPoint.transform;
+        }
     }
 
     public void RemoveGroceryFromList(GameObject item)

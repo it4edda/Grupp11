@@ -4984,13 +4984,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
         type: 3}
+      propertyPath: chanceToRepel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
+      propertyPath: sameObjectSpawnRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
+        type: 3}
       propertyPath: numberOfSameGroceriesToSpawn.max
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
         type: 3}
       propertyPath: availableGroceriesToSpawn.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
         type: 3}
@@ -5014,7 +5024,7 @@ PrefabInstance:
         type: 3}
       propertyPath: availableGroceriesToSpawn.Array.data[3]
       value: 
-      objectReference: {fileID: 6876700999631919821, guid: 3403ef1cd2e0d2444ac9756e26cb9ae6,
+      objectReference: {fileID: 6876700999631919821, guid: 2ee871cfd545ca74eae5a8eb4ca97265,
         type: 3}
     - target: {fileID: 9043329439557786038, guid: dd976e060ef830247bb59c67e5d687d8,
         type: 3}
