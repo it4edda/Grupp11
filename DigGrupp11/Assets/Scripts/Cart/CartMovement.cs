@@ -14,13 +14,13 @@ public class CartMovement : MonoBehaviour
 
     [SerializeField] Rigidbody rb;
     TempP player;
-    RotationThingy RotationThingy;
+    RotationThingy rotationThingy;
 
     private void Start()
     {
         player = FindObjectOfType<TempP>();
         rb = GetComponent<Rigidbody>();
-        RotationThingy = FindObjectOfType<RotationThingy>();
+        rotationThingy = FindObjectOfType<RotationThingy>();
     }
 
     private void Update()
@@ -43,7 +43,7 @@ public class CartMovement : MonoBehaviour
             rb.AddForce(transform.forward * forwardSpeed, ForceMode.Force);
             //rb.velocity += transform.forward * forwardSpeed;
         }
-        if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < backMax)
+        if (Input.GetKey(KeyCode.S) && rb.velocity.magnitude < backMax && (rotationThingy.CanRotateRight && rotationThingy.CanRotateLeft))
         {
             rb.AddForce(-transform.forward * backSpeed, ForceMode.Force);
         }
