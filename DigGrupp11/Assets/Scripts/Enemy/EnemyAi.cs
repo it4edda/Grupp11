@@ -37,13 +37,6 @@ public class EnemyAi : MonoBehaviour
         velocity    += (movementVector - rb.velocity) * spring;
         velocity    -= drag                           * velocity;
         rb.velocity += velocity * speed; 
-/*
-Velocity += (targetPos - currentPos) * spring;
-Velocity -= drag * velocity;
-CurrentPos += Velocity
-drag ~0.6
-spring ~0.4
-*/
     }
     
     protected virtual bool Check()

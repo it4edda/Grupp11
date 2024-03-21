@@ -18,7 +18,7 @@ public class Groceries : Interaction
     public Transform spawnPoint;
 
     Rigidbody rb;
-    BoxCollider boxCollider;
+    Collider boxCollider;
 
     public bool isPickedUp;
     bool showShadow;
@@ -27,7 +27,7 @@ public class Groceries : Interaction
         base.Start();
         canInteract = true;
         rb = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<Collider>();
     }
 
     protected override void Update()

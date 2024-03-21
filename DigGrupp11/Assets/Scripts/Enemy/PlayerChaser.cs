@@ -11,10 +11,7 @@ public class PlayerChaser : EnemyAi
 
     protected override bool Check()
     {
-        if (!base.Check())
-        {
-            return false;
-        }
+        if (!base.Check()) return false;
         targetToChase.GetComponent<PlayerHealth>().TakeDamage(damage);
         Kill();
         return true;
