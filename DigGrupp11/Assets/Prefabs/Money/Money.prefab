@@ -154,6 +154,9 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 7628222405089690702}
+  canMultiPickup: 1
+  isBeingLookedAt: 0
+  canBePickedUp: 1
 --- !u!1 &2439944486583842987
 GameObject:
   m_ObjectHideFlags: 0

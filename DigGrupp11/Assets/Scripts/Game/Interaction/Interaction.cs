@@ -7,7 +7,9 @@ public class Interaction : MonoBehaviour
     [SerializeField] protected bool      canInteract;
     [SerializeField]           bool      hasIcon = true;
     [SerializeField] protected Animator  interactIcon;
+    [SerializeField]           bool      canMultiPickup = false;
     protected                  Transform target;
+    public                     bool      isBeingLookedAt = false;
     protected virtual void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -18,10 +20,13 @@ public class Interaction : MonoBehaviour
     {
         InteractionPassive();
 
-        bool a = Vector3.Distance(transform.position, target.position) < radius;
-        if (hasIcon) interactIcon.SetBool("Showing", a);
+        bool inRange = Vector3.Distance(transform.position, target.position) < radius;
         
-        if (canInteract && a)
+        Debug.Log(hasIcon + " " + canMultiPickup);
+        if (hasIcon && canMultiPickup) interactIcon.SetBool("Showing", inRange);
+        else if(inRange) interactIcon.SetBool("Showing", isBeingLookedAt); 
+        
+        if (canInteract && inRange)
         {
             if (Input.GetKeyDown(interactKey))
             {
@@ -37,6 +42,7 @@ public class Interaction : MonoBehaviour
     {
         canInteract = false;
     }
+    
     void OnDrawGizmos()
     {
      Gizmos.color = Color.red;
