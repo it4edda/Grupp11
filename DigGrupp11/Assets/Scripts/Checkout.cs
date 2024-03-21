@@ -55,7 +55,8 @@ public class Checkout : MonoBehaviour
     void OpenVictoryCondition()
     {
         Debug.Log("VICTORY CONDITION REACHED");
-        canPay = false;
+        canPay                                  = false;
+        FindObjectOfType<VictoryLogic>().CanWin = true;
     }
     void OnTriggerExit(Collider other) 
     { 
