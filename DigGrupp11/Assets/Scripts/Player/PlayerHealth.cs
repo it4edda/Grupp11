@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
  * if timer runs out either loose or ghost from spelunky?
  */
 
+//THIS SCRIPT ISN'T BEING USED
+
+
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] int health;

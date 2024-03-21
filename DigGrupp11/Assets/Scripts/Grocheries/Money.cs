@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Money : Interaction
 {
+    [SerializeField] bool canBePickedUp = true;
     protected override void InteractionActive()
     {
         base.InteractionActive();
-        FindObjectOfType<PlayerMoney>().CurrentMoney++;
-        Destroy(gameObject);
+
+        if (canBePickedUp)
+        {
+            FindObjectOfType<PlayerMoney>().CurrentMoney++;
+            Destroy(gameObject);
+        }
     }
 }

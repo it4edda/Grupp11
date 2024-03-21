@@ -16,5 +16,9 @@ public class PlayerMoney : MonoBehaviour
         Debug.Log("SETTING MONEY!!! CURRENT = " + currentMoney);
         return currentMoney = value;
     }
+    public void MoneyTheft()
+    {
+        currentMoney--;
+    }
     //throw money function
 }
