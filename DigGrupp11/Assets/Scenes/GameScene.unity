@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60.6, y: 44.4}
+  m_AnchoredPosition: {x: 70, y: 44.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879510
@@ -183,8 +183,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8a3580180cb168140bd6d1d33c8a8b56, type: 2}
+  m_sharedMaterial: {fileID: 4070785350986391789, guid: 8a3580180cb168140bd6d1d33c8a8b56,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,8 +209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6219,8 +6220,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'COST:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8a3580180cb168140bd6d1d33c8a8b56, type: 2}
+  m_sharedMaterial: {fileID: 4070785350986391789, guid: 8a3580180cb168140bd6d1d33c8a8b56,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6244,8 +6246,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7711,7 +7713,7 @@ PrefabInstance:
     - target: {fileID: 46904967089617279, guid: e82428f6c91e7034dae560f79e14a745,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 48.8
+      value: 41.1
       objectReference: {fileID: 0}
     - target: {fileID: 1698900761742306809, guid: e82428f6c91e7034dae560f79e14a745,
         type: 3}
