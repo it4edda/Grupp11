@@ -18,10 +18,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0efb303f2e0c42e468ed5467d687f7f3, type: 2}
+    - target: {fileID: 5066832594036504441, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.012999982
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842852999838785393, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.443
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089469417334550839, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.443
+      objectReference: {fileID: 0}
     - target: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Name
-      value: Cube Red
+      value: Tomato
       objectReference: {fileID: 0}
     - target: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
@@ -151,7 +166,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 92c095cef78e9f949b1e404187fe24aa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00013177
+      value: 0.44313174
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 92c095cef78e9f949b1e404187fe24aa,
         type: 3}
