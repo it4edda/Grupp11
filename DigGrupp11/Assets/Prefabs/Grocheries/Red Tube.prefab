@@ -23,10 +23,25 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5066832594036504441, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.10099995
+      objectReference: {fileID: 0}
     - target: {fileID: 5309052328801937428, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842852999838785393, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.53099996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089469417334550839, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.531
       objectReference: {fileID: 0}
     - target: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
@@ -140,7 +155,7 @@ CapsuleCollider:
   m_Radius: 0.35
   m_Height: 2.1526515
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5763261, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!4 &7426805186454097557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
@@ -173,12 +188,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3af3fc86b1d8d994b90d764ed3f3198e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3af3fc86b1d8d994b90d764ed3f3198e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18
+      value: 0.35099995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3af3fc86b1d8d994b90d764ed3f3198e,
         type: 3}

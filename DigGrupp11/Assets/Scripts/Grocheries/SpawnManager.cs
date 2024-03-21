@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     {
         shoppingList = ShoppingList.Instance.WriteList();
         RestockMandatoryGroceries(shoppingList);
-        RestockBackgroundGroceries();
+        ChooseBackgroundType();
         shoppingListUI = FindObjectOfType<ShoppingListUI>();
         shoppingListUI.SetUpShoppingListText(shoppingList);
     }
@@ -45,15 +45,41 @@ public class SpawnManager : MonoBehaviour
             }
         }
     }
-    
-    void RestockBackgroundGroceries()
+
+    void ChooseBackgroundType()
     {
-        List<GrocerySpawnPoint> availableFridgeSpawns =
-            new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>().Where(point => point.available && point.shelfType == ShelfType.Fridge));
-        for (int i = 0; i < availableFridgeSpawns.Count / 5; i++)
+        List<ShelfType> shelfTypes = new();
+        foreach (GameObject objects in availableGroceriesToSpawn)
+        {
+            if (!shelfTypes.Contains(objects.GetComponent<Groceries>().Type))
+            {
+                shelfTypes.Add(objects.GetComponent<Groceries>().Type);
+            }
+        }
+
+        for (int i = 0; i < shelfTypes.Count; i++)
+        {
+            RestockBackgroundGroceries(shelfTypes[i]);
+        }
+    }
+    
+    void RestockBackgroundGroceries(ShelfType type)
+    {
+        List<GrocerySpawnPoint> availableTypeSpawns =
+            new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>().Where(point => point.available && point.shelfType == type));
+        List<GameObject> typeGroceries = new();
+        foreach (GameObject grocery in availableGroceriesToSpawn)
+        {
+            if (grocery.GetComponent<Groceries>().Type == type)
+            {
+                typeGroceries.Add(grocery);
+            }
+        }
+        
+        for (int i = 0; i < availableTypeSpawns.Count / 5; i++)
         {
             firstObjectSpawned = null;
-            GameObject objectToSpawn = availableGroceriesToSpawn[Random.Range(0, availableGroceriesToSpawn.Count)];
+            GameObject objectToSpawn = typeGroceries[Random.Range(0, typeGroceries.Count)];
             int amountOfBackgroundObjects = Random.Range(1, 6);
             spawnPoints = new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>()
                 .Where(point => point.available && point.shelfType == objectToSpawn.GetComponent<Groceries>().Type));
