@@ -3,16 +3,15 @@ using UnityEngine.Serialization;
 
 public class Groceries : Interaction
 {
+    [Header("Grocery specific stuff")]
     [SerializeField] int price;
     [SerializeField] int score;
-    [FormerlySerializedAs("typte")] [SerializeField] ShelfType type;
+    [SerializeField] ShelfType type;
+    [SerializeField] GameObject originalPrefab;
     public int Price => price;
     public int Score => score;
-    public ShelfType Type
-    {
-        get => type;
-        set => type = value;
-    }
+    public ShelfType Type => type;
+    public GameObject OriginalPrefab => originalPrefab;
 
     [SerializeField] LineRenderer lineRenderer;
     public GameObject text;

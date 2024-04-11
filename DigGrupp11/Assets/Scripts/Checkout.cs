@@ -9,7 +9,8 @@ public class Checkout : MonoBehaviour
     [SerializeField] string   groceryTag;
     [SerializeField] Animator payAnimator;
     [SerializeField] TextMeshProUGUI checkoutText;
-    //[SerializeField] list
+    [SerializeField] TextMeshProUGUI coinsInSystemText;
+    [SerializeField] List<Groceries> paidGroceriesList = new();
     
     [Header("DONT CHANGE")]
     [SerializeField] List<GameObject> itemsInCheckout    = new List<GameObject>();
@@ -32,18 +33,20 @@ public class Checkout : MonoBehaviour
     {
         if (other.CompareTag(cashTag))
         {
-            if (!canPay) { Debug.Log("MAX MONEY REACHED"); return; }
+            //if (!canPay) { Debug.Log("MAX MONEY REACHED"); return; }
             Debug.Log("MONEY TOUCHED ME (Cash-out)");
             amountPayed++;
-            if (amountPayed >= amountNeeded) OpenVictoryCondition();
+            if (amountPayed >= amountNeededInCart) BuyItems();
             StartCoroutine(DestroyMoney(other.gameObject));
             Destroy(other);
+            UpdateText();
         }
         
         else if (other.CompareTag(groceryTag))
         {
             amountNeededInCart += other.GetComponent<Groceries>().Price;
             itemsInCheckout.Add(other.gameObject);
+            if (amountPayed >= amountNeededInCart) BuyItems();
             if (amountNeededInCart >= amountNeeded) payAnimator.SetTrigger("PUShow");
             Debug.Log("GROCERY TOUCHED ME (Cash-out)");
             UpdateText();
@@ -54,7 +57,22 @@ public class Checkout : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Destroy(money);
     }
-    
+
+    void BuyItems()
+    {
+        foreach (GameObject groceries in itemsInCheckout)
+        {
+            amountPayed -= groceries.GetComponent<Groceries>().Price;
+            tempScore += groceries.GetComponent<Groceries>().Score;
+            paidGroceriesList.Add(groceries.GetComponent<Groceries>());
+            groceries.SetActive(false);
+            amountNeededInCart = 0;
+        }
+
+        itemsInCheckout.Clear();
+        UpdateText();
+    }
+
     //Useless
     void OpenVictoryCondition()
     {
@@ -74,9 +92,11 @@ public class Checkout : MonoBehaviour
     void UpdateText()
     {
         checkoutText.text = ("COST     " + amountNeededInCart);
+        coinsInSystemText.text = "Coins Inserted: " + amountPayed;
     }
 }
-//TODO score to grocery
-//TODO Theives enemies that steal money and delivers it to the cash register or something
+//TODO score to grocery/display score when you exit
+//TODO Theives enemies that steal money and delivers it to the cash register or something/
+//Fix when you take the money the enemy is holding
 //TODO myltipickup or only pick up one thing att a time / pickup indication
-//TODO 
+//TODO Take controll of cart looking angle
