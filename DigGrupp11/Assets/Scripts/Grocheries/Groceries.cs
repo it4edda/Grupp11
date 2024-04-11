@@ -4,14 +4,15 @@ using UnityEngine.Serialization;
 public class Groceries : Interaction
 {
     [SerializeField] int price;
+    [SerializeField] int score;
     [FormerlySerializedAs("typte")] [SerializeField] ShelfType type;
-
+    public int Price => price;
+    public int Score => score;
     public ShelfType Type
     {
         get => type;
         set => type = value;
     }
-    public int Price => price;
 
     [SerializeField] LineRenderer lineRenderer;
     public GameObject text;

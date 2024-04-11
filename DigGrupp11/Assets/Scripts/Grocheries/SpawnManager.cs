@@ -144,6 +144,8 @@ public class SpawnManager : MonoBehaviour
 
     public void RemoveGroceryFromList(GameObject item)
     {
+        if (!shoppingListUI.currentShoppingList.FirstOrDefault(n => n.CurrentShoppingListItem.item == item)) { return; }
+        
         Debug.Log("PickingUpItem");
         SetShoppingListText text = shoppingListUI.currentShoppingList.FirstOrDefault(n => n.CurrentShoppingListItem.item == item);
         text.AmountCollected++;
@@ -152,6 +154,8 @@ public class SpawnManager : MonoBehaviour
 
     public void AddGroceryToList(GameObject item)
     {
+        if (!shoppingListUI.currentShoppingList.FirstOrDefault(n => n.CurrentShoppingListItem.item == item)) { return; }
+        
         Debug.Log("PickingUpItem");
         SetShoppingListText text = shoppingListUI.currentShoppingList.FirstOrDefault(n => n.CurrentShoppingListItem.item == item);
         text.AmountCollected--;

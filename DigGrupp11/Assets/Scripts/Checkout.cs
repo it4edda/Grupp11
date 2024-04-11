@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +9,7 @@ public class Checkout : MonoBehaviour
     [SerializeField] string   groceryTag;
     [SerializeField] Animator payAnimator;
     [SerializeField] TextMeshProUGUI checkoutText;
+    //[SerializeField] list
     
     [Header("DONT CHANGE")]
     [SerializeField] List<GameObject> itemsInCheckout    = new List<GameObject>();
@@ -18,7 +18,9 @@ public class Checkout : MonoBehaviour
 
     public int AmountNeeded { get => amountNeeded; set => amountNeeded = value; }
 
-
+    //Temporary until i find a better storage/solution
+    int tempScore;
+    
     bool canPay       = false;
     int  amountPayed  = 0;
     void Start()
@@ -52,6 +54,8 @@ public class Checkout : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         Destroy(money);
     }
+    
+    //Useless
     void OpenVictoryCondition()
     {
         Debug.Log("VICTORY CONDITION REACHED");
@@ -72,3 +76,7 @@ public class Checkout : MonoBehaviour
         checkoutText.text = ("COST     " + amountNeededInCart);
     }
 }
+//TODO score to grocery
+//TODO Theives enemies that steal money and delivers it to the cash register or something
+//TODO myltipickup or only pick up one thing att a time / pickup indication
+//TODO 
