@@ -263,7 +263,12 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 2125735058824821234}
+  canMultiPickup: 0
+  isBeingLookedAt: 0
   price: 1
+  score: 0
+  type: 0
+  originalPrefab: {fileID: 7546802652246686952}
   lineRenderer: {fileID: 1871211155348825026}
   text: {fileID: 7546802652246686952}
   spawnPoint: {fileID: 0}
