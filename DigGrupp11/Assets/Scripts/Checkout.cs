@@ -96,7 +96,5 @@ public class Checkout : MonoBehaviour
     }
 }
 //TODO score to grocery/display score when you exit
-//TODO Theives enemies that steal money and delivers it to the cash register or something/
-//Fix when you take the money the enemy is holding
 //TODO myltipickup or only pick up one thing att a time / pickup indication
 //TODO Take controll of cart looking angle
