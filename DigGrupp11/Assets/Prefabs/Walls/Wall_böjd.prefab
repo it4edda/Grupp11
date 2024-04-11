@@ -10,18 +10,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02387701
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02387701
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02387701
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -16.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5.77
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -16.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
@@ -31,7 +46,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
@@ -41,7 +56,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e851dedc2160c9f4491b3e3e8f3ad868,
         type: 3}
