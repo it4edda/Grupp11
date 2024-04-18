@@ -102,7 +102,7 @@ public class ShoppingCart : MonoBehaviour
         playerAttaching = false;
         playerAttach = true;
         cartMovement.SetHavePlayer(playerAttach);
-        c.YRotation = transform.rotation.y;
+        //c.YRotation = transform.rotation.y;
 
         player.CanMove = true;
         c.AllowRotation = true;
