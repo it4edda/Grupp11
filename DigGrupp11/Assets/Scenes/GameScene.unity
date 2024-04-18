@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: 44.4}
+  m_AnchoredPosition: {x: 74.5, y: 44.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879510
@@ -1009,6 +1009,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 287545273}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &289069520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6733855632246508989, guid: e82428f6c91e7034dae560f79e14a745,
+    type: 3}
+  m_PrefabInstance: {fileID: 2253589761754212462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &299495491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,7 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b82cfb61b9f0342950c6ce1e656ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canWin: 0
+  canWin: 1
 --- !u!1001 &627712242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1903,6 +1915,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
+        type: 3}
+      propertyPath: givenTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
+        type: 3}
+      propertyPath: givenTimeSec
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
         type: 3}
@@ -2276,7 +2298,7 @@ PrefabInstance:
         type: 3}
       propertyPath: timerText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 289069520}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4581,7 +4603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'COST:'
+  m_text: 'COST :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a3580180cb168140bd6d1d33c8a8b56, type: 2}
   m_sharedMaterial: {fileID: 4070785350986391789, guid: 8a3580180cb168140bd6d1d33c8a8b56,

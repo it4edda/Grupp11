@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int gameSceneIndex;
 
     [SerializeField] bool timerOn;
+    [SerializeField] float givenTimeSec;
     float time = 0;
     SceneLoader sceneLoader;
 
@@ -33,19 +34,19 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        sceneLoader = FindObjectOfType<SceneLoader>();
+        sceneLoader.TimerText(time);
+
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
-            time = 0f;
+            time = givenTimeSec;
             timerOn = true;
         }
         else
         {
-            timerOn= false;
+            timerOn = false;
             Cursor.lockState = CursorLockMode.None;
         }
-
-        sceneLoader = FindObjectOfType<SceneLoader>();
-        sceneLoader.TimerText(time);
     }
 
     void OnDisable()
@@ -57,7 +58,11 @@ public class GameManager : MonoBehaviour
     {
         if (timerOn)
         {
-            time += Time.deltaTime;
+            time -= Time.deltaTime;
+            if (time < 1)
+            {
+                SceneManager.LoadScene("LoseScene");
+            }
             sceneLoader.TimerText(time);
         }
     }
