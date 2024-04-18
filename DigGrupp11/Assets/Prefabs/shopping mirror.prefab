@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6193211666379374711}
   - component: {fileID: 8173681000400600219}
-  - component: {fileID: 1740581380932511808}
   - component: {fileID: 4986203642489416082}
   m_Layer: 0
   m_Name: shopping mirror
@@ -86,14 +85,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1740581380932511808
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5910493160094426816}
-  m_Enabled: 1
 --- !u!114 &4986203642489416082
 MonoBehaviour:
   m_ObjectHideFlags: 0
