@@ -18,9 +18,6 @@ public class Checkout : MonoBehaviour
     [SerializeField] int  amountNeeded       = 0;
 
     public int AmountNeeded { get => amountNeeded; set => amountNeeded = value; }
-
-    //Temporary until i find a better storage/solution
-    int tempScore;
     
     bool canPay       = false;
     int  amountPayed  = 0;
@@ -63,7 +60,7 @@ public class Checkout : MonoBehaviour
         foreach (GameObject groceries in itemsInCheckout)
         {
             amountPayed -= groceries.GetComponent<Groceries>().Price;
-            tempScore += groceries.GetComponent<Groceries>().Score;
+            GameManager.Instance.score += groceries.GetComponent<Groceries>().Score;
             paidGroceriesList.Add(groceries.GetComponent<Groceries>());
             groceries.SetActive(false);
             amountNeededInCart = 0;

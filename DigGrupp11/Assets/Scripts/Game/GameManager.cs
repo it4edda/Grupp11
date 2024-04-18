@@ -3,15 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region SetInstance
     public static GameManager Instance { get; private set; }
-
-    [SerializeField] int gameSceneIndex;
-
-    [SerializeField] bool timerOn;
-    [SerializeField] float givenTimeSec;
-    float time = 0;
-    SceneLoader sceneLoader;
-
     void Awake() 
     { 
         // If there is an instance, and it's not me, delete myself.
@@ -25,12 +18,28 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+    #endregion
 
-    #region Timer
+    [SerializeField] int gameSceneIndex;
+
+    [SerializeField] bool timerOn;
+    [SerializeField] float givenTimeSec;
+    public int score;
+    public float time = 0;
+    SceneLoader sceneLoader;
+
+
+    #region MyRegion
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    #endregion
+    #region Timer
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -49,10 +58,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
 
     private void Update()
     {
