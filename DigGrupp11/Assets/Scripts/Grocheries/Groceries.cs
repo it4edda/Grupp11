@@ -66,7 +66,7 @@ public class Groceries : Interaction
         }
     }
     
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("CartZone"))
         {
@@ -82,7 +82,7 @@ public class Groceries : Interaction
             Debug.Log(text);
             FindObjectOfType<SpawnManager>().AddGroceryToList(text);
         }
-    }
+    }*/
 
     public void GetsPickedUp(bool pickupStatus)
     {

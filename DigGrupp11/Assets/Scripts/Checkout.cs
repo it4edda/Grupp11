@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 
@@ -57,13 +58,24 @@ public class Checkout : MonoBehaviour
 
     void BuyItems()
     {
-        foreach (GameObject groceries in itemsInCheckout)
+        foreach (GameObject groceryObject in itemsInCheckout)
         {
-            amountPayed -= groceries.GetComponent<Groceries>().Price;
-            GameManager.Instance.score += groceries.GetComponent<Groceries>().Score;
-            paidGroceriesList.Add(groceries.GetComponent<Groceries>());
-            groceries.SetActive(false);
+            Groceries groceries = groceryObject.GetComponent<Groceries>();
+            amountPayed -= groceries.Price;
+            ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
+            if (shoppingListUI.currentShoppingList.FirstOrDefault(n =>
+                    n.CurrentShoppingListItem.item == groceryObject))
+            {
+                GameManager.Instance.score += groceries.Score;
+            }
+            else
+            {
+                GameManager.Instance.score -= groceries.Score;
+            }
+            paidGroceriesList.Add(groceries);
+            groceryObject.SetActive(false);
             amountNeededInCart = 0;
+            FindObjectOfType<SpawnManager>().RemoveGroceryFromList(groceries.text);
         }
 
         itemsInCheckout.Clear();
