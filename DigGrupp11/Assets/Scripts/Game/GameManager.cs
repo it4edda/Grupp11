@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] bool timerOn;
     [SerializeField] float givenTimeSec;
+    [Header("Don't change")]
     public int score;
     public float time = 0;
     SceneLoader sceneLoader;
@@ -45,8 +46,9 @@ public class GameManager : MonoBehaviour
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
         sceneLoader.TimerText(time);
+        Debug.Log(SceneManager.GetActiveScene().name);
 
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        if (SceneManager.GetActiveScene().name == "GameScene Level 1")
         {
             time = givenTimeSec;
             timerOn = true;

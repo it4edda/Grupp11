@@ -23,7 +23,7 @@ public class CalculateScore : MonoBehaviour
 
     void SetScoreText()
     {
-        var formattedScore = finalScore.ToString("N");
+        var formattedScore = finalScore.ToString("N0");
         scoreText.text = formattedScore;
     }
 }

@@ -38,9 +38,9 @@ public class SetShoppingListText : MonoBehaviour
             Complete = false;
         }
 
-        if (victoryLogic)
-        {
-            victoryLogic.CheckShoppingList();
-        }
+        // if (victoryLogic)
+        // {
+        //     victoryLogic.CheckShoppingList();
+        // }
     }
 }

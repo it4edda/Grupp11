@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589245, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -967,8 +967,12 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 1189673994}
+  canMultiPickup: 0
+  isBeingLookedAt: 0
   price: 0
+  score: 0
   type: 0
+  originalPrefab: {fileID: 0}
   lineRenderer: {fileID: 970033091}
   text: {fileID: 812251820}
   spawnPoint: {fileID: 0}
@@ -1054,6 +1058,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
+        type: 3}
+      propertyPath: givenTimeSec
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2415720370971954010, guid: 8ab137da94614fc4d8352ef9b0cde68a,
         type: 3}
@@ -1911,8 +1920,12 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 1472151128}
+  canMultiPickup: 0
+  isBeingLookedAt: 0
   price: 0
+  score: 0
   type: 0
+  originalPrefab: {fileID: 0}
   lineRenderer: {fileID: 1713374111}
   text: {fileID: 1459933366}
   spawnPoint: {fileID: 0}
@@ -2083,7 +2096,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1998947306}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadNextScene
+        m_MethodName: LoadGameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3101,8 +3114,12 @@ MonoBehaviour:
   canInteract: 1
   hasIcon: 1
   interactIcon: {fileID: 80678678}
+  canMultiPickup: 0
+  isBeingLookedAt: 0
   price: 0
+  score: 0
   type: 0
+  originalPrefab: {fileID: 0}
   lineRenderer: {fileID: 1499735348309854232}
   text: {fileID: 7321833733108537138}
   spawnPoint: {fileID: 0}

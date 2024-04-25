@@ -25,7 +25,6 @@ public class Checkout : MonoBehaviour
     void Start()
     {
         amountNeeded = 5;
-        Debug.Log("need a value for paying" + amountNeeded);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -64,7 +63,7 @@ public class Checkout : MonoBehaviour
             amountPayed -= groceries.Price;
             ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
             if (shoppingListUI.currentShoppingList.FirstOrDefault(n =>
-                    n.CurrentShoppingListItem.item == groceryObject))
+                    n.CurrentShoppingListItem.item == groceries.text))
             {
                 GameManager.Instance.score += groceries.Score;
             }

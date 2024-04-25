@@ -11,16 +11,9 @@ public class VictoryLogic : MonoBehaviour
         if (canWin && other.CompareTag("Player")) SceneManager.LoadScene("WinScene");
     }
     
-    public void CheckShoppingList()
-    {
-        ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
-        if (shoppingListUI.currentShoppingList.Count(text => text.Complete) >= shoppingListUI.currentShoppingList.Count)
-        {
-            canWin = true;
-        }
-        else
-        {
-            canWin = false;
-        }
-    }
+    // public void CheckShoppingList()
+    // {
+    //     ShoppingListUI shoppingListUI = FindObjectOfType<ShoppingListUI>();
+    //     canWin = shoppingListUI.currentShoppingList.Count(text => text.Complete) >= shoppingListUI.currentShoppingList.Count;
+    // }
 }
