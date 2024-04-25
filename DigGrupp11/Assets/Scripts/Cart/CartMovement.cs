@@ -14,17 +14,27 @@ public class CartMovement : MonoBehaviour
 
     [SerializeField] Rigidbody rb;
     TempP player;
+    private AudioSource audioSource;
     RotationThingy rotationThingy;
 
     private void Start()
     {
         player = FindObjectOfType<TempP>();
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         rotationThingy = FindObjectOfType<RotationThingy>();
     }
 
     private void Update()
     {
+        if (rb.velocity.magnitude > 0.4f)
+        {
+            if (!audioSource.isPlaying)
+            audioSource.Play();
+        }
+        else audioSource.Stop();
+        
+        
         if (!havePlayer)
         {
             return;
