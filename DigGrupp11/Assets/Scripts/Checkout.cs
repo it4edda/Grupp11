@@ -12,6 +12,7 @@ public class Checkout : MonoBehaviour
     [SerializeField] TextMeshProUGUI checkoutText;
     [SerializeField] TextMeshProUGUI coinsInSystemText;
     [SerializeField] List<Groceries> paidGroceriesList = new();
+    [SerializeField] AudioClip kaCaching;
     
     [Header("DONT CHANGE")]
     [SerializeField] List<GameObject> itemsInCheckout    = new List<GameObject>();
@@ -19,11 +20,13 @@ public class Checkout : MonoBehaviour
     [SerializeField] int  amountNeeded       = 0;
 
     public int AmountNeeded { get => amountNeeded; set => amountNeeded = value; }
-    
+
+    private AudioSource audioSource;
     bool canPay       = false;
     int  amountPayed  = 0;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         amountNeeded = 5;
     }
     void OnTriggerEnter(Collider other)
@@ -51,6 +54,7 @@ public class Checkout : MonoBehaviour
     }
     IEnumerator DestroyMoney(GameObject money)
     {
+        audioSource.PlayOneShot(kaCaching);
         yield return new WaitForSeconds(0.2f);
         Destroy(money);
     }
