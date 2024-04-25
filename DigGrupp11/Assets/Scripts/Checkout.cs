@@ -54,6 +54,7 @@ public class Checkout : MonoBehaviour
     }
     IEnumerator DestroyMoney(GameObject money)
     {
+        money.GetComponent<Money>().canBePickedUp = false;
         audioSource.PlayOneShot(kaCaching);
         yield return new WaitForSeconds(0.2f);
         Destroy(money);

@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Money : Interaction
 {
-    [SerializeField] bool canBePickedUp = true;
+    [SerializeField] public bool canBePickedUp = true;
     [SerializeField] AudioClip[] clingSounds;
     private AudioSource audioSource;
     protected override void Start()
