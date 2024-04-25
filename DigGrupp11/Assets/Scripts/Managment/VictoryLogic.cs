@@ -8,7 +8,7 @@ public class VictoryLogic : MonoBehaviour
     public bool CanWin { get => canWin; set => canWin = value; }
     void OnTriggerEnter(Collider other)
     {   
-        if (canWin && other.CompareTag("Player")) SceneManager.LoadScene("WinScene");
+        if (canWin && other.CompareTag("Player")) FindObjectOfType<SceneLoader>().LoadSceneWithString("WinScene");
     }
     
     // public void CheckShoppingList()

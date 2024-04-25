@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
             time -= Time.deltaTime;
             if (time < 1)
             {
-                SceneManager.LoadScene("LoseScene");
+                sceneLoader.LoadSceneWithString("LoseScene");
             }
             sceneLoader.TimerText(time);
         }

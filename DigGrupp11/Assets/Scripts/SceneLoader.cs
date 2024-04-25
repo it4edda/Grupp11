@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -8,20 +5,38 @@ using TMPro;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] Animator animator;
+    string queuedScene;
+    static readonly int FadeOut = Animator.StringToHash("FadeOut");
 
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    
+    public void LoadQueuedScene()
+    {
+        SceneManager.LoadScene(queuedScene);
+    }
+
+    public void LoadSceneWithString(string sceneToLoad)
+    {
+        queuedScene = "sceneToLoad";
+        animator.SetTrigger(FadeOut);
+    }
 
     public void LoadStartScene()
     {
-        SceneManager.LoadScene(0);
+        queuedScene = "StartScene";
+        animator.SetTrigger(FadeOut);
+        //SceneManager.LoadScene(0);
     }
 
     public void LoadGameScene()
     {
-        SceneManager.LoadScene(1);
+        queuedScene = "GameScene Level 1";
+        animator.SetTrigger(FadeOut);
+        //SceneManager.LoadScene(1);
     }
     public void QuitGame()
     {
