@@ -11,12 +11,12 @@ public class TempP : MonoBehaviour
     [SerializeField] float gravity = -29.46f; //-9.82
     [SerializeField] float jumpHeight = 1.5f;
     //[SerializeField] float dashPower = 3f;
-
+[SerializeField] Animator camAnim;
     [Header("Ground Check")]
     [SerializeField] float groundDistance = 0.4f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundMask;
-
+    
     float xInput;
     float zInput;
     Vector3 movement;
@@ -65,7 +65,8 @@ public class TempP : MonoBehaviour
     }
 
     void Move()
-    {
+    { 
+        camAnim.SetBool("Walking", movement.magnitude > 0);
         if (!canMove) { return;}
         float movementSpeed = 1;
         xInput = Input.GetAxis("Horizontal");
