@@ -9,6 +9,7 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] int spawnsBetweenIncreases = 3;
     [SerializeField] int increaseInSpawns = 2;
     [SerializeField] int baseEnemiesToSpawn = 1;
+    [SerializeField] int maxEnemySpawns = 10;
     [SerializeField] List<GameObject> enemiesToSpawn = new();
     [SerializeField] List<Transform> enemySpawnPoints = new();
 
@@ -30,7 +31,7 @@ public class EnemySpawning : MonoBehaviour
 
         
         spawnsBetweenIncreases--;
-        if (spawnsBetweenIncreases <= 0)
+        if (spawnsBetweenIncreases <= 0 && baseEnemiesToSpawn < maxEnemySpawns)
         {
             baseEnemiesToSpawn += increaseInSpawns;
             spawnsBetweenIncreases = baseSpawnsBetweenIncreases;

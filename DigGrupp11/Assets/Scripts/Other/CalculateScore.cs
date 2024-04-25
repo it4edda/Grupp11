@@ -10,14 +10,14 @@ public class CalculateScore : MonoBehaviour
     {
         if (GameManager.Instance)
         {
-            CalculateFinalScore(GameManager.Instance.score, GameManager.Instance.time);
+            CalculateFinalScore(GameManager.Instance.score, GameManager.Instance.scoreMult);
         }
     }
 
 
-    void CalculateFinalScore(int score, float time)
+    void CalculateFinalScore(int score, float mult)
     {
-        finalScore = (int)(score * time);
+        finalScore = (int)(score * mult);
         SetScoreText();
     }
 

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool timerOn;
     [SerializeField] float givenTimeSec;
     [Header("Don't change")]
+    public float scoreMult;
     public int score;
     public float time = 0;
     SceneLoader sceneLoader;
@@ -42,6 +43,16 @@ public class GameManager : MonoBehaviour
     #endregion
     #region Timer
 
+    public void SetGivenTime(int timeToGive)
+    {
+        givenTimeSec = timeToGive;
+    }
+
+    public void SetMult(float mult)
+    {
+        scoreMult = mult;
+    }
+    
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         sceneLoader = FindObjectOfType<SceneLoader>();

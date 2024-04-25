@@ -28,6 +28,16 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
         print("Quit");
     }
+
+    public void SetTime(int timeToSet)
+    {
+        GameManager.Instance.SetGivenTime(timeToSet);
+    }
+
+    public void SetMult(float mult)
+    {
+        GameManager.Instance.SetMult(mult);
+    }
     
     public void TimerText(float time)
     {
