@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Groceries : Interaction
 {
@@ -7,6 +9,7 @@ public class Groceries : Interaction
     [SerializeField] int score;
     [SerializeField] ShelfType type;
     [SerializeField] GameObject originalPrefab;
+    [SerializeField] AudioClip[] collisionSounds;
     public int Price => price;
     public int Score => score;
     public ShelfType Type => type;
@@ -18,12 +21,14 @@ public class Groceries : Interaction
 
     Rigidbody rb;
     Collider boxCollider;
+    AudioSource audioSource;
 
     public bool isPickedUp;
     bool showShadow;
     protected override void Start()
     {
         base.Start();
+        audioSource = GetComponent<AudioSource>();
         canInteract = true;
         rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<Collider>();
@@ -65,7 +70,8 @@ public class Groceries : Interaction
             lineRenderer.SetPosition(1, lineVector);
         }
     }
-    
+
+
     /*void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("CartZone"))
@@ -83,6 +89,10 @@ public class Groceries : Interaction
             FindObjectOfType<SpawnManager>().AddGroceryToList(text);
         }
     }*/
+        void OnCollisionEnter(Collision other)
+        {
+            audioSource.PlayOneShot(collisionSounds[Random.Range(0, collisionSounds.Length)]);
+        }
 
     public void GetsPickedUp(bool pickupStatus)
     {
