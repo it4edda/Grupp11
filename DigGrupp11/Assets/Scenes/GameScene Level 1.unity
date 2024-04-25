@@ -9359,6 +9359,11 @@ PrefabInstance:
       propertyPath: kaCaching
       value: 
       objectReference: {fileID: 8300000, guid: bf05409e49c84444dba7c770182988f5, type: 3}
+    - target: {fileID: 7866442297834837659, guid: 772970957686e0c49ae736216a419e50,
+        type: 3}
+      propertyPath: coinsInSystemText
+      value: 
+      objectReference: {fileID: 2030145506}
     - target: {fileID: 8901455854398534815, guid: 772970957686e0c49ae736216a419e50,
         type: 3}
       propertyPath: m_IsTrigger
@@ -12699,6 +12704,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1036f1c00c7687b4f9bf71629f4afe47, type: 3}
+--- !u!114 &2030145506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 978389856452140226, guid: 772970957686e0c49ae736216a419e50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1581808035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2035670990
 PrefabInstance:
   m_ObjectHideFlags: 0
