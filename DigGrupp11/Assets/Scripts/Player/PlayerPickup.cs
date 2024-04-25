@@ -33,6 +33,7 @@ public class PlayerPickup : MonoBehaviour
     {
         if (!held)
         {
+            //TODO Nils fix pickup through walls
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range, mask))
             {
                 held                              = hit.transform;

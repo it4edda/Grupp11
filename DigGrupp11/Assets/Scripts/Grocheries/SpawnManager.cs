@@ -49,17 +49,14 @@ public class SpawnManager : MonoBehaviour
     void ChooseBackgroundType()
     {
         List<ShelfType> shelfTypes = new();
-        foreach (GameObject objects in availableGroceriesToSpawn)
+        foreach (GameObject objects in availableGroceriesToSpawn.Where(objects => !shelfTypes.Contains(objects.GetComponent<Groceries>().Type)))
         {
-            if (!shelfTypes.Contains(objects.GetComponent<Groceries>().Type))
-            {
-                shelfTypes.Add(objects.GetComponent<Groceries>().Type);
-            }
+            shelfTypes.Add(objects.GetComponent<Groceries>().Type);
         }
 
-        for (int i = 0; i < shelfTypes.Count; i++)
+        foreach (ShelfType t in shelfTypes)
         {
-            RestockBackgroundGroceries(shelfTypes[i]);
+            RestockBackgroundGroceries(t);
         }
     }
     
@@ -67,15 +64,8 @@ public class SpawnManager : MonoBehaviour
     {
         List<GrocerySpawnPoint> availableTypeSpawns =
             new List<GrocerySpawnPoint>(FindObjectsOfType<GrocerySpawnPoint>().Where(point => point.available && point.shelfType == type));
-        List<GameObject> typeGroceries = new();
-        foreach (GameObject grocery in availableGroceriesToSpawn)
-        {
-            if (grocery.GetComponent<Groceries>().Type == type)
-            {
-                typeGroceries.Add(grocery);
-            }
-        }
-        
+        List<GameObject> typeGroceries = availableGroceriesToSpawn.Where(grocery => grocery.GetComponent<Groceries>().Type == type).ToList();
+
         for (int i = 0; i < availableTypeSpawns.Count / 5; i++)
         {
             firstObjectSpawned = null;
