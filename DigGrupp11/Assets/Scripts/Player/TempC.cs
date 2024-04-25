@@ -31,7 +31,6 @@ public class TempC : MonoBehaviour
     {
         SetBody();
         rb = GetComponentInParent<Rigidbody>();
-        Debug.Log(rb);
         rotationThingy = FindObjectOfType<RotationThingy>();
     }
 

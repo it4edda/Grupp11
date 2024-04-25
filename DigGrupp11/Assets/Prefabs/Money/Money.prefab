@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 3336538132545688372}
   m_Layer: 12
   m_Name: art
-  m_TagString: Untagged
+  m_TagString: Cash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

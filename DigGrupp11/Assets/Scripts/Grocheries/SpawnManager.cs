@@ -82,7 +82,6 @@ public class SpawnManager : MonoBehaviour
 
     void SpawningGroceries(int i, GameObject item, ShelfType shelfType, bool repel)
     {
-        Debug.Log(i);
         if (i == 0)
         {
             GrocerySpawnPoint spawnPoint;
@@ -107,7 +106,6 @@ public class SpawnManager : MonoBehaviour
         }
         else
         {
-            Debug.Log(firstObjectSpawned);
             Collider[] closeSpawnPointsColliders =
                 Physics.OverlapSphere(firstObjectSpawned.transform.position, sameObjectSpawnRadius, spawnPointMask);
 
