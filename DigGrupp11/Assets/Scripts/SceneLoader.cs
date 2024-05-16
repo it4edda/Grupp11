@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneWithString(string sceneToLoad)
     {
-        queuedScene = "sceneToLoad";
+        queuedScene = sceneToLoad;
         animator.SetTrigger(FadeOut);
     }
 

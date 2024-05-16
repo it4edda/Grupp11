@@ -267,7 +267,7 @@ MonoBehaviour:
   canMultiPickup: 0
   isBeingLookedAt: 0
   price: 1
-  score: 0
+  score: 100
   type: 0
   originalPrefab: {fileID: 7546802652246686952}
   collisionSounds:
