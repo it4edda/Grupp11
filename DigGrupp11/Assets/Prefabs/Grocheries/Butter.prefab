@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2c2c4b7aa0158c6449e3b5fb00473b85,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0060639
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c2c4b7aa0158c6449e3b5fb00473b85,
         type: 3}
@@ -107,6 +107,11 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 720935231740383045, guid: 3542de193b7264942993a47a328565a6,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1054646673081771494, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Enabled
@@ -130,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Name
-      value: "Sm\xF6r"
+      value: Butter
       objectReference: {fileID: 0}
     - target: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
