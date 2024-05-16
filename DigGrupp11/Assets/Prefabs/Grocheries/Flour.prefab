@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8453bfaaf1b17a34b83db258de35dcfb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8453bfaaf1b17a34b83db258de35dcfb,
         type: 3}
@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 720935231740383045, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 720935231740383045, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
@@ -125,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 720935231740383045, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Center.y
-      value: -0.15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1054646673081771494, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
@@ -135,22 +135,22 @@ PrefabInstance:
     - target: {fileID: 7546802652246686952, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_Name
-      value: FLour Variant
+      value: Flour
       objectReference: {fileID: 0}
     - target: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8933594
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.213186
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653460800923266384, guid: 3542de193b7264942993a47a328565a6,
         type: 3}
