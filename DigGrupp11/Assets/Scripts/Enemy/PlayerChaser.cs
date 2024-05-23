@@ -33,6 +33,7 @@ public class PlayerChaser : EnemyAi
     {
         if (targetToChase != playerTransform)
         {
+            if (!currentMoney) return;
             currentMoney.transform.parent = null;
             currentMoney.useGravity       = true;
             currentMoney.isKinematic      = false;

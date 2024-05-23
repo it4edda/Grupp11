@@ -36,7 +36,9 @@ public class EnemyAi : MonoBehaviour
         
         velocity    += (movementVector - rb.velocity) * spring;
         velocity    -= drag                           * velocity;
-        rb.velocity += velocity * speed; 
+        rb.velocity += velocity * speed;
+
+        transform.right = new Vector3(transform.position.x - targetToChase.transform.position.x, 0, transform.position.z - targetToChase.transform.position.z);
     }
     
     protected virtual bool Check()
