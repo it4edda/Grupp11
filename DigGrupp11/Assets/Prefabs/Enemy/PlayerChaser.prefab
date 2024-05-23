@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99aa0b6ce012ed46a014022362cc3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackPower: 5
+  knockbackPower: 2
   health: 3
   targetToChase: {fileID: 0}
   distance: 1
@@ -155,7 +155,8 @@ MonoBehaviour:
   drag: 0.6
   spring: 0.4
   damage: 1
-  moneyPrefab: {fileID: 0}
+  moneyPrefab: {fileID: 914941871061634900, guid: b964116f20d3b914f865eccd04f7a78e,
+    type: 3}
 --- !u!1001 &6078950350086026646
 PrefabInstance:
   m_ObjectHideFlags: 0
