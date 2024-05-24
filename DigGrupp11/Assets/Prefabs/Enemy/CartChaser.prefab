@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789195a795e083b409b03d1c0bb3ff74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackPower: 5
+  knockbackPower: 2
   health: 3
   targetToChase: {fileID: 0}
   distance: 1
